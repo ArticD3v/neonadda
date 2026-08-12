@@ -4,6 +4,10 @@
       "background": "#0B0A12",
       "foreground": "#F4F1FB"
     },
+    "type_body_font": "work_sans_n4",
+    "type_subheading_font": "work_sans_n5",
+    "type_heading_font": "anonymous_pro_n4",
+    "type_accent_font": "anonymous_pro_n4",
     "page_background_color": "#0B0A12",
     "page_text_color": "#F4F1FB",
     "palette_primary_button_background": "#FF3D9A",
@@ -39,6 +43,10 @@
           "background": "#0B0A12",
           "foreground": "#F4F1FB"
         },
+        "type_body_font": "work_sans_n4",
+        "type_subheading_font": "work_sans_n5",
+        "type_heading_font": "anonymous_pro_n4",
+        "type_accent_font": "anonymous_pro_n4",
         "page_background_color": "#0B0A12",
         "page_text_color": "#F4F1FB",
         "palette_primary_button_background": "#FF3D9A",
