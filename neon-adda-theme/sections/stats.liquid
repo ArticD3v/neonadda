@@ -1,0 +1,50 @@
+{%- if section.blocks.size > 0 -%}
+  <div class="stats reveal">
+    {%- for block in section.blocks -%}
+      <div class="stat" {{ block.shopify_attributes }}>
+        <b>{{ block.settings.figure }}</b>
+        <span>{{ block.settings.label }}</span>
+      </div>
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Stats",
+  "tag": "section",
+  "class": "shopify-section",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "figure",
+          "label": "Figure",
+          "default": "1,200+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Signs made to order"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats",
+      "blocks": [
+        { "type": "stat", "settings": { "figure": "1,200+", "label": "Signs made to order" } },
+        { "type": "stat", "settings": { "figure": "4.9/5", "label": "Average customer rating" } },
+        { "type": "stat", "settings": { "figure": "2 yrs", "label": "Warranty on tube & adaptor" } },
+        { "type": "stat", "settings": { "figure": "5–8 days", "label": "Typical delivery, India-wide" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
