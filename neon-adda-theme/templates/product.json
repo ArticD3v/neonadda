@@ -8,6 +8,15 @@
  * ------------------------------------------------------------
  */{
   "sections": {
+    "na_customize_link": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<a class=\"btn btn--ghost\" style=\"margin-bottom:1.25rem\" href=\"/pages/neon-customizer?p={{ product.handle }}\">Customise this sign →</a>",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -468,6 +477,7 @@
     }
   },
   "order": [
+    "na_customize_link",
     "main",
     "product_recommendations_qggXJq"
   ]
