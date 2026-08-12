@@ -1,0 +1,127 @@
+{%- capture phrases -%}
+  [{%- for block in section.blocks -%}{"t":{{ block.settings.text | json }},"c":{{ block.settings.colour | json }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]
+{%- endcapture -%}
+
+<section class="hero">
+  <div class="shell">
+    <div class="hero__stage">
+      <div class="board">
+        <span class="board__holes"></span>
+        <span class="hero__line">
+          <span class="hero__sign neon neon--boot" id="heroSign" style="--c:#FFC97A" data-phrases="{{ phrases | escape }}"></span>
+          <span class="hero__caret" id="heroCaret" style="--c:#FFC97A" aria-hidden="true"></span>
+        </span>
+        <span class="cable" aria-hidden="true"></span>
+      </div>
+      <div class="spill" id="heroSpill" aria-hidden="true"></div>
+      <p class="hero__hint">{{ section.settings.hint }}</p>
+    </div>
+
+    <div class="hero__copy">
+      {% if section.settings.eyebrow != blank %}
+        <span class="hero__eyebrow"><i class="hero__dot"></i> {{ section.settings.eyebrow }}</span>
+      {% endif %}
+      <h1>{{ section.settings.heading }}</h1>
+      {% if section.settings.lede != blank %}
+        <p class="hero__lede">{{ section.settings.lede }}</p>
+      {% endif %}
+      <div class="hero__cta">
+        {% if section.settings.cta_primary_label != blank %}
+          <a class="btn btn--primary" href="{{ section.settings.cta_primary_link | default: '/' }}">{{ section.settings.cta_primary_label }}</a>
+        {% endif %}
+        {% if section.settings.cta_secondary_label != blank %}
+          <a class="btn btn--ghost" href="{{ section.settings.cta_secondary_link | default: '/' }}">{{ section.settings.cta_secondary_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Neon hero",
+  "tag": "section",
+  "class": "shopify-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Handmade in Kolkata · Shipped India-wide"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Say it in light."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Lede",
+      "default": "Custom LED neon signs for birthdays, weddings, homes and storefronts. Design yours in under a minute, see it glow on screen, and we'll send a free proof before anything is made."
+    },
+    {
+      "type": "text",
+      "id": "hint",
+      "label": "Hint under the sign",
+      "default": "Every sign is cut to your words. Preview it before you pay."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary button label",
+      "default": "Design your sign"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary button label",
+      "default": "Browse ready designs"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "phrase",
+      "name": "Typing phrase",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Phrase",
+          "default": "Happy Birthday"
+        },
+        {
+          "type": "color",
+          "id": "colour",
+          "label": "Glow colour",
+          "default": "#FFC97A"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Neon hero",
+      "blocks": [
+        { "type": "phrase", "settings": { "text": "Happy Birthday", "colour": "#FFC97A" } },
+        { "type": "phrase", "settings": { "text": "Shubh Vivah", "colour": "#FFE45C" } },
+        { "type": "phrase", "settings": { "text": "Mom to be", "colour": "#FF3D9A" } },
+        { "type": "phrase", "settings": { "text": "Good Vibes", "colour": "#21D4FD" } },
+        { "type": "phrase", "settings": { "text": "your words", "colour": "#4ADE80" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
