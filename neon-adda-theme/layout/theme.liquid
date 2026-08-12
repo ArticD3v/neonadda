@@ -42,6 +42,9 @@
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-palette' -%}
+    {%- render 'na-fonts' -%}
+    {{ 'neonadda.css' | asset_url | stylesheet_tag }}
+    {{ 'neonadda.js' | asset_url | script_tag }}
 
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
@@ -50,7 +53,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if settings.highlight_placeholders %} na-highlight-ph{% endif %}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
 
     {% render 'chat-drawer' %}
@@ -191,5 +194,7 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+    {% render 'na-wa-float' %}
   </body>
 </html>

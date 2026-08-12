@@ -1052,3 +1052,6 @@ h1,h2,h3,h4,.h1,.h2,.h3,.h4{ font-family: var(--display); }
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+.wa-float__icon{ width:20px; height:20px; }
+.wa-float__label{ line-height:1; }
