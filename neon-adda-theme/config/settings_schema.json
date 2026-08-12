@@ -2116,5 +2116,90 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Neon Adda — business",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Business details (used across the whole theme)"
+      },
+      {
+        "type": "text",
+        "id": "na_whatsapp",
+        "label": "WhatsApp number (digits only, country code + number)",
+        "default": "919000000000",
+        "info": "Example: 919000000000 for +91 90000 00000"
+      },
+      {
+        "type": "text",
+        "id": "na_phone_human",
+        "label": "Phone (display format)",
+        "default": "+91 90000 00000"
+      },
+      {
+        "type": "text",
+        "id": "na_email",
+        "label": "Email",
+        "default": "hello@neonadda.in"
+      },
+      {
+        "type": "url",
+        "id": "na_instagram",
+        "label": "Instagram URL",
+        "default": "https://instagram.com/neonadda"
+      },
+      {
+        "type": "text",
+        "id": "na_city",
+        "label": "City",
+        "default": "Kolkata"
+      },
+      {
+        "type": "text",
+        "id": "na_address",
+        "label": "Workshop address",
+        "default": "Studio address line 1, Kolkata, West Bengal 700000"
+      },
+      {
+        "type": "text",
+        "id": "na_hours",
+        "label": "Hours",
+        "default": "Mon–Sat, 10am – 7pm IST"
+      },
+      {
+        "type": "header",
+        "content": "Claim copy (placeholder text, editable later)"
+      },
+      {
+        "type": "text",
+        "id": "na_warranty",
+        "label": "Warranty claim",
+        "default": "2-year warranty"
+      },
+      {
+        "type": "text",
+        "id": "na_delivery_days",
+        "label": "Delivery time claim",
+        "default": "5–8 days"
+      },
+      {
+        "type": "text",
+        "id": "na_build_days",
+        "label": "Build time claim",
+        "default": "3–4 days"
+      },
+      {
+        "type": "header",
+        "content": "Placeholders"
+      },
+      {
+        "type": "checkbox",
+        "id": "highlight_placeholders",
+        "label": "Highlight placeholder text",
+        "default": true,
+        "info": "Draws a dashed amber underline under [data-ph] spans so unfinished copy is easy to spot. Turn off when content is real."
+      }
+    ]
   }
 ]
