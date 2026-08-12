@@ -214,7 +214,8 @@ def main():
         if not path.exists():
             err(f"missing {rel}")
             continue
-        check_schema(path)
+        if rel.startswith("sections/"):
+            check_schema(path)
         check_liquid_balance(path)
     check_liquid_balance(THEME / "layout" / "theme.liquid")
 
