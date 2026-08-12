@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "hero": {
+      "type": "neon-page-hero",
+      "settings": {
+        "eyebrow": "About us",
+        "heading": "Our story",
+        "lede": "Neon Adda began the way most good small businesses do — someone wanted something that didn't exist yet, so they made it themselves."
+      }
+    },
+    "content": {
+      "type": "main-page",
+      "blocks": {
+        "heading": { "type": "text", "settings": { "text": "<h1>{{ closest.page.title }}</h1>" } },
+        "page-content": { "type": "page-content" }
+      },
+      "block_order": ["heading", "page-content"]
+    },
+    "closing": { "type": "cta-band" }
+  },
+  "order": ["hero", "content", "closing"]
+}

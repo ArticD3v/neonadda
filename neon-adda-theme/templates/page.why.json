@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "hero": {
+      "type": "neon-page-hero",
+      "settings": {
+        "eyebrow": "About us",
+        "heading": "Why Neon Adda",
+        "lede": "The honest version: what these signs are made of, what they cost to run, and what we'll do if something goes wrong."
+      }
+    },
+    "stats": {
+      "type": "stats",
+      "blocks": {
+        "stat_1": { "type": "stat", "settings": { "figure": "1,200+", "label": "Signs made to order" } },
+        "stat_2": { "type": "stat", "settings": { "figure": "4.9/5", "label": "Average customer rating" } },
+        "stat_3": { "type": "stat", "settings": { "figure": "2 yrs", "label": "Warranty on tube & adaptor" } },
+        "stat_4": { "type": "stat", "settings": { "figure": "5–8 days", "label": "Typical delivery, India-wide" } }
+      },
+      "block_order": ["stat_1", "stat_2", "stat_3", "stat_4"]
+    },
+    "content": {
+      "type": "main-page",
+      "blocks": {
+        "heading": { "type": "text", "settings": { "text": "<h1>{{ closest.page.title }}</h1>" } },
+        "page-content": { "type": "page-content" }
+      },
+      "block_order": ["heading", "page-content"]
+    },
+    "closing": { "type": "cta-band" }
+  },
+  "order": ["hero", "stats", "content", "closing"]
+}
