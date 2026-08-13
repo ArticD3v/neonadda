@@ -1,49 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Monoton&family=Yellowtail&display=swap');
+
 /* ===========================================================
-   NEON ADDA — design system
-   Concept: a dark room at night, lit by the product itself.
+   NEON ADDA — Premium Design System
+   Concept: Ultra-modern dark mode, frosted glass, glowing neon.
    =========================================================== */
 
 /* ---------- tokens ---------- */
 :root{
   color-scheme: dark;
 
-  /* surfaces — deep indigo-black, never flat #000 */
-  --ink:        #0B0A12;
-  --ink-2:      #100E1A;
-  --surface:    #161424;
-  --surface-2:  #1F1B31;
-  --surface-3:  #292339;
+  /* surfaces — deep space black, richer contrast */
+  --ink:        #050505;
+  --ink-2:      #0A0A0C;
+  --surface:    #121214;
+  --surface-2:  #1A1A1E;
+  --surface-3:  #24242A;
 
-  --line:       rgba(255,255,255,.09);
-  --line-2:     rgba(255,255,255,.18);
+  --line:       rgba(255,255,255,.06);
+  --line-2:     rgba(255,255,255,.12);
 
-  /* accents — pink & cyan lifted from the logo, amber from the products */
-  --pink:       #FF3D9A;
-  --pink-soft:  #FF7FBC;
-  --cyan:       #21D4FD;
-  --amber:      #FFC97A;
-  --mint:       #4ADE80;
+  /* accents — vibrant neon punch */
+  --pink:       #FF107A;
+  --pink-soft:  #FF5C9D;
+  --cyan:       #00E5FF;
+  --amber:      #FFB03A;
+  --mint:       #10E560;
 
   /* text */
-  --text:       #F4F1FB;
-  --muted:      #ABA5C2;
-  --muted-2:    #837D9C;
+  --text:       #F8F9FA;
+  --muted:      #9CA3AF;
+  --muted-2:    #6B7280;
 
   /* type */
-  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
-  --body:    "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Outfit", system-ui, sans-serif;
+  --body:    "Inter", system-ui, -apple-system, sans-serif;
   --script:  "Yellowtail", "Brush Script MT", cursive;
-  --tube:    "Monoton", "Bricolage Grotesque", sans-serif;
+  --tube:    "Monoton", sans-serif;
 
   /* rhythm */
-  --gut: 18px;
-  --sect: clamp(3rem, 8vw, 6rem);
-  --r-sm: 10px;
-  --r:    16px;
-  --r-lg: 24px;
+  --gut: 20px;
+  --sect: clamp(4rem, 10vw, 8rem);
+  --r-sm: 12px;
+  --r:    20px;
+  --r-lg: 32px;
 
-  --shell: 1180px;
-  --header-h: 62px;
+  --shell: 1280px;
+  --header-h: 70px;
 }
 
 @media (min-width:520px){ :root{ --gut:24px; } }
@@ -211,58 +213,73 @@ p:last-child{ margin-bottom:0; }
 }
 
 /* ---------- buttons ----------
-   Lit objects, not flat swatches: a top inner highlight, a tight contact
-   shadow, and a wider colour bloom. The bloom grows on hover, the button
-   doesn't — moving buttons under a thumb is how you get mis-taps. */
+   Premium liquid gradients with intense glowing hover states. */
 .btn{
   position:relative;
   display:inline-flex; align-items:center; justify-content:center; gap:.55em;
-  min-height:50px; padding:.85em 1.6em;
+  min-height:54px; padding:.85em 2em;
   border-radius:999px; border:1px solid transparent;
-  font-family:var(--body); font-size:1rem; font-weight:600; letter-spacing:-.01em;
+  font-family:var(--body); font-size:1.05rem; font-weight:600; letter-spacing:-.01em;
   text-decoration:none; cursor:pointer; white-space:nowrap;
-  transition:box-shadow .24s ease, background .18s ease, transform .1s ease;
+  transition:all .3s cubic-bezier(.2,.8,.2,1);
+  overflow:hidden;
 }
-.btn:active{ transform:translateY(1px); }
+.btn::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.2) 50%, rgba(255,255,255,0) 70%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-position 0.6s;
+}
+.btn:hover::before { background-position: 0 0; }
+.btn:active{ transform:translateY(2px); scale: 0.98; }
 
 .btn--primary{
-  background:linear-gradient(178deg, #FF5AAB, var(--pink) 62%, #EE2E88);
+  background:linear-gradient(135deg, #FF107A, #FF5C9D);
   color:#fff;
+  border: 1px solid rgba(255,255,255,0.2);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.34),
-    0 1px 2px rgba(0,0,0,.4),
-    0 4px 22px -6px rgba(255,61,154,.6);
+    inset 0 1px 1px rgba(255,255,255,.4),
+    0 4px 15px rgba(255, 16, 122, 0.4);
 }
 .btn--primary:hover{
+  background:linear-gradient(135deg, #FF5C9D, #FF107A);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.4),
-    0 1px 2px rgba(0,0,0,.4),
-    0 6px 34px -6px rgba(255,61,154,.9);
+    inset 0 1px 1px rgba(255,255,255,.6),
+    0 8px 30px rgba(255, 16, 122, 0.6),
+    0 0 20px rgba(255, 16, 122, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn--ghost{
-  background:rgba(255,255,255,.045); color:var(--text);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.16), inset 0 1px 0 rgba(255,255,255,.09);
-  backdrop-filter:blur(6px);
+  background:rgba(255,255,255,.03); color:var(--text);
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  backdrop-filter:blur(10px);
 }
 .btn--ghost:hover{
-  background:rgba(255,255,255,.09);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.26), inset 0 1px 0 rgba(255,255,255,.12);
+  background:rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  transform: translateY(-2px);
 }
 
 .btn--wa{
-  background:linear-gradient(178deg, #34E074, #25D366 60%, #1BB855);
-  color:#06301A;
+  background:linear-gradient(135deg, #10E560, #1BB855);
+  color:#042111;
+  border: 1px solid rgba(255,255,255,0.2);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.4),
-    0 1px 2px rgba(0,0,0,.4),
-    0 4px 22px -8px rgba(37,211,102,.6);
+    inset 0 1px 1px rgba(255,255,255,.4),
+    0 4px 15px rgba(16, 229, 96, 0.4);
 }
 .btn--wa:hover{
+  background:linear-gradient(135deg, #1BB855, #10E560);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.45),
-    0 1px 2px rgba(0,0,0,.4),
-    0 6px 32px -8px rgba(37,211,102,.85);
+    inset 0 1px 1px rgba(255,255,255,.5),
+    0 8px 30px rgba(16, 229, 96, 0.6),
+    0 0 20px rgba(16, 229, 96, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn--block{ width:100%; }
@@ -271,9 +288,11 @@ p:last-child{ margin-bottom:0; }
 /* ---------- header ---------- */
 .header{
   position:sticky; top:0; z-index:100;
-  background:rgba(11,10,18,.82);
-  backdrop-filter:blur(14px) saturate(1.3);
-  border-bottom:1px solid var(--line);
+  background:rgba(5, 5, 5, 0.65);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 .header__bar{
   height:var(--header-h);
@@ -522,24 +541,25 @@ p:last-child{ margin-bottom:0; }
   border-radius:14px;
   overflow:hidden;
   isolation:isolate;
-  background:
-    /* pool of light cast by the sign itself */
-    radial-gradient(68% 58% at 50% 46%, rgba(255,255,255,.10), transparent 70%),
-    /* wall */
-    linear-gradient(168deg, #221D33 0%, #171327 55%, #100D1D 100%);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 /* subtle wall texture so it doesn't read as a flat CSS gradient */
 .card__art::after{
   content:""; position:absolute; inset:0; z-index:-1;
-  opacity:.5; pointer-events:none;
+  opacity:.15; pointer-events:none;
   background-image:
-    repeating-linear-gradient(94deg, rgba(255,255,255,.014) 0 2px, transparent 2px 5px);
+    repeating-linear-gradient(94deg, rgba(255,255,255,.05) 0 1px, transparent 1px 4px);
 }
 /* floor line — grounds the sign so it reads as a real object in a room */
 .card__art::before{
   content:""; position:absolute; left:0; right:0; bottom:0; height:26%;
-  background:linear-gradient(to bottom, transparent, rgba(0,0,0,.42));
+  background:linear-gradient(to bottom, transparent, rgba(0,0,0,.6));
   pointer-events:none;
 }
 
@@ -1008,3 +1028,13 @@ select.input option{ background:#161424; color:#F4F1FB; }
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1; transform:none; transition:none; }
 }
+
+/* ---------- global animations ---------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.section {
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
