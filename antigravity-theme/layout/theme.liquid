@@ -48,6 +48,7 @@
     {% endif %}
 
     {{ content_for_header }}
+    <link rel="stylesheet" href="{{ 'custom-style.css' | asset_url }}">
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
@@ -56,9 +57,7 @@
     {% render 'chat-drawer' %}
 
     <div class="page-wrapper">
-      <div id="header-group">
-        {% sections 'header-group' %}
-      </div>
+      {% section 'custom-header' %}
 
       <script>
         /**
@@ -179,7 +178,7 @@
       </main>
 
       <footer>
-        {% sections 'footer-group' %}
+        {% section 'custom-footer' %}
       </footer>
     </div>
 
@@ -191,5 +190,6 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+    <script src="{{ 'custom-app.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

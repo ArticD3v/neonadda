@@ -1,5 +1,27 @@
 {% style %}
   {%- liquid
+    # Neon Adda: the store's font_picker settings can resolve as plain strings
+    # (stale values after a theme re-import). Horizon's font_face / font_modify
+    # filters hard-error on non-font values ("can only be used with a font"),
+    # which breaks every page. Only generate the @font-face rules when the
+    # settings really are font drops; the Google Fonts stack is injected by
+    # neonadda.css instead, so skipping is safe.
+    assign font_drops_ok = true
+    if settings.type_body_font.system? == nil
+      assign font_drops_ok = false
+    endif
+    if settings.type_subheading_font.system? == nil
+      assign font_drops_ok = false
+    endif
+    if settings.type_heading_font.system? == nil
+      assign font_drops_ok = false
+    endif
+    if settings.type_accent_font.system? == nil
+      assign font_drops_ok = false
+    endif
+  -%}
+  {%- if font_drops_ok -%}
+    {%- liquid
     assign rendered_fonts = ''
 
     assign primary_font = settings.type_body_font
@@ -121,7 +143,8 @@
       echo accent_font_bold_italic | font_face: font_display: 'swap'
       assign rendered_fonts = rendered_fonts | append: accent_font_bold_italic_face_id
     endunless
-  %}
+    %}
+  {%- endif -%}
 
   :root {
     /* Page Layout */
@@ -153,19 +176,20 @@
     /* Letter spacing */
     --letter-spacing-sm: 0.06em;
 
-    /* Font families */
-    --font-body--family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-    --font-body--style: {{ settings.type_body_font.style }};
-    --font-body--weight: {{ settings.type_body_font.weight }};
-    --font-subheading--family: {{ settings.type_subheading_font.family }}, {{ settings.type_subheading_font.fallback_families }};
-    --font-subheading--style: {{ settings.type_subheading_font.style }};
-    --font-subheading--weight: {{ settings.type_subheading_font.weight }};
-    --font-heading--family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
-    --font-heading--style: {{ settings.type_heading_font.style }};
-    --font-heading--weight: {{ settings.type_heading_font.weight }};
-    --font-accent--family: {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
-    --font-accent--style: {{ settings.type_accent_font.style }};
-    --font-accent--weight: {{ settings.type_accent_font.weight }};
+    /* Font families — fall back to the Neon Adda Google stacks when the
+       font_picker settings aren't font drops (stale store values). */
+    --font-body--family: {% if font_drops_ok %}{{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }}{% else %}"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif{% endif %};
+    --font-body--style: {% if font_drops_ok %}{{ settings.type_body_font.style }}{% else %}normal{% endif %};
+    --font-body--weight: {% if font_drops_ok %}{{ settings.type_body_font.weight }}{% else %}400{% endif %};
+    --font-subheading--family: {% if font_drops_ok %}{{ settings.type_subheading_font.family }}, {{ settings.type_subheading_font.fallback_families }}{% else %}"Instrument Sans", system-ui, sans-serif{% endif %};
+    --font-subheading--style: {% if font_drops_ok %}{{ settings.type_subheading_font.style }}{% else %}normal{% endif %};
+    --font-subheading--weight: {% if font_drops_ok %}{{ settings.type_subheading_font.weight }}{% else %}500{% endif %};
+    --font-heading--family: {% if font_drops_ok %}{{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }}{% else %}"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif{% endif %};
+    --font-heading--style: {% if font_drops_ok %}{{ settings.type_heading_font.style }}{% else %}normal{% endif %};
+    --font-heading--weight: {% if font_drops_ok %}{{ settings.type_heading_font.weight }}{% else %}700{% endif %};
+    --font-accent--family: {% if font_drops_ok %}{{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }}{% else %}"Monoton", "Bricolage Grotesque", sans-serif{% endif %};
+    --font-accent--style: {% if font_drops_ok %}{{ settings.type_accent_font.style }}{% else %}normal{% endif %};
+    --font-accent--weight: {% if font_drops_ok %}{{ settings.type_accent_font.weight }}{% else %}400{% endif %};
 
     /* Margin sizes */
     --font-heading--spacing: 0.25em;

@@ -1,0 +1,94 @@
+<section class="section section--tight">
+  <div class="shell">
+    <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+    <h1>{{ section.settings.title }}</h1>
+    <p class="lead" style="max-width:60ch;color:var(--muted)">{{ section.settings.subheading }}</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="shell">
+    <div class="prose">
+      {{ section.settings.content }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="band reveal">
+      <h2>{{ section.settings.cta_title }}</h2>
+      <p>{{ section.settings.cta_text }}</p>
+      <div class="band__cta">
+        <a class="btn btn--primary" href="{{ section.settings.cta_link_1 }}">{{ section.settings.cta_button_1 }}</a>
+        <a class="btn btn--wa" data-wa="Hi Neon Adda, I'd like to ask about a custom sign." href="#">{{ section.settings.cta_button_2 }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "About us"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our story"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Neon Adda began the way most good small businesses do — someone wanted something that didn't exist yet, so they made it themselves."
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Story Content",
+      "default": "<p>In 2024 we made a single sign for a friend's engagement party. It took three attempts, a burnt adaptor and a very late night. The photographs from that evening got shared enough times that strangers started asking where the sign came from.</p><p>That's how Neon Adda started — not with a business plan, but with a workshop table, a length of LED tube and a habit of saying yes to slightly difficult requests.</p><h2>What we actually do</h2><p>Every sign is made to order. There is no warehouse of finished stock. When you place an order, someone cuts a sheet of acrylic to the shape of your words, bends LED tube along the outline by hand, wires it, tests it lit for 24 hours, and boxes it with the screws and template you'll need to hang it.</p><p>That's slower than printing something. It's also why a sign lasts years instead of months.</p><h2>Why we send a proof first</h2><p>A neon sign is a permanent thing on your wall, and you're buying it from a photograph on a phone. That's a lot of trust to ask for. So before we make anything, we send you a mockup of your exact words in your exact colour — often on a photo of your own wall. Change it as many times as you like. Nothing goes into production until you say yes.</p><p>We'd rather redraw a design four times than ship something you're quietly disappointed by.</p><h2>Who we make for</h2><ul><li><strong>Families</strong> marking birthdays, baby showers and anniversaries</li><li><strong>Couples and wedding planners</strong> who need a backdrop that photographs well</li><li><strong>Cafés, salons, gyms and studios</strong> that want a wall people stop to photograph</li><li><strong>Anyone</strong> who has wanted their own words up in light</li></ul><h2>Where we are</h2><p>The workshop is in Kolkata. We ship anywhere in India, and most orders leave within three to four days of you approving the proof.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Heading",
+      "default": "Ready to see yours glow?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Design it on screen now, or send us a photo of your wall and we'll suggest a size."
+    },
+    {
+      "type": "text",
+      "id": "cta_button_1",
+      "label": "Button 1 Text",
+      "default": "Design your sign"
+    },
+    {
+      "type": "url",
+      "id": "cta_link_1",
+      "label": "Button 1 Link",
+      "default": "/pages/customizer"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_2",
+      "label": "Button 2 Text",
+      "default": "Ask on WhatsApp"
+    }
+  ]
+}
+{% endschema %}

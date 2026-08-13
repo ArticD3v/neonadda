@@ -81,6 +81,15 @@
         {% endif %}
       "
     >
+      <div class="menu-drawer__brand">
+        <a
+          href="{{ routes.root_url }}"
+          class="menu-drawer__brand-link"
+          aria-label="{{ shop.name | escape }}"
+        >
+          {% render 'na-logo' %}
+        </a>
+      </div>
       <button
         class="button close-button menu-drawer__close-button focus-inset"
         type="button"

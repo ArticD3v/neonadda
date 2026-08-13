@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "custom_hero": {
+      "type": "custom-hero",
+      "settings": {}
+    },
+    "custom_trust": {
+      "type": "custom-trust",
+      "settings": {}
+    },
+    "custom_bestsellers": {
+      "type": "custom-bestsellers",
+      "settings": {}
+    },
+    "custom_occasions": {
+      "type": "custom-occasions",
+      "settings": {}
+    },
+    "custom_teaser": {
+      "type": "custom-teaser",
+      "settings": {}
+    },
+    "custom_new_arrivals": {
+      "type": "custom-new-arrivals",
+      "settings": {}
+    },
+    "custom_how_it_works": {
+      "type": "custom-how-it-works",
+      "settings": {}
+    },
+    "custom_reviews": {
+      "type": "custom-reviews",
+      "settings": {}
+    },
+    "custom_faq_teaser": {
+      "type": "custom-faq-teaser",
+      "settings": {}
+    },
+    "custom_closing_cta": {
+      "type": "custom-closing-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "custom_hero",
+    "custom_trust",
+    "custom_bestsellers",
+    "custom_occasions",
+    "custom_teaser",
+    "custom_new_arrivals",
+    "custom_how_it_works",
+    "custom_reviews",
+    "custom_faq_teaser",
+    "custom_closing_cta"
+  ]
+}

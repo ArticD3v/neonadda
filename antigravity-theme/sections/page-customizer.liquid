@@ -1,0 +1,89 @@
+<section class="section section--tight">
+  <div class="shell">
+    <span class="eyebrow">Neon Customizer</span>
+    <h1 id="czHeading">Design your sign</h1>
+    <p class="lead" style="max-width:58ch;color:var(--muted);margin-bottom:2.2rem">
+      Type anything up to 24 characters. The preview and the price update as you go — what you see is what we build.
+    </p>
+
+    <div class="cz">
+      <!-- preview -->
+      <div class="cz__preview">
+        <div class="cz__stage">
+          <div class="board board--bare">
+            <span class="cz__sign neon" id="czSign" style="--c:#FFC97A">Your Words</span>
+          </div>
+        </div>
+        <div class="spill" id="czSpill" aria-hidden="true"></div>
+        <div style="display:flex;justify-content:center;margin-top:.4rem">
+          <button class="toggle" id="czPower" type="button" aria-pressed="true">
+            <span class="toggle__track" aria-hidden="true"></span>
+            <span>Lit</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- controls -->
+      <div class="cz__controls">
+        <div class="cz__field">
+          <label class="cz__label" for="czText">
+            <span>Your text</span><b id="czCount">10/24</b>
+          </label>
+          <input class="input" id="czText" type="text" maxlength="24" value="Your Words"
+                 placeholder="e.g. Happy Birthday" autocomplete="off">
+        </div>
+
+        <div class="cz__field">
+          <span class="cz__label"><span>Font</span></span>
+          <div class="opts" id="czFonts">
+            <button class="opt" type="button" data-font="script" aria-pressed="true"
+                    style="font-family:var(--script);font-size:1.1rem">Script</button>
+            <button class="opt" type="button" data-font="tube" aria-pressed="false"
+                    style="font-family:var(--tube);font-size:.85rem">BLOCK</button>
+          </div>
+        </div>
+
+        <div class="cz__field">
+          <span class="cz__label"><span>Tube colour</span><b id="czColourName">Warm White</b></span>
+          <div class="swatches" id="czColours"></div>
+        </div>
+
+        <div class="cz__field">
+          <span class="cz__label"><span>Size</span><b id="czSizeName">Medium · 60 × 30 cm</b></span>
+          <div class="sizes" id="czSizes"></div>
+        </div>
+
+        <div class="total">
+          <div class="total__row">
+            <span>Your price, all inclusive</span>
+            <span class="total__val" id="czTotal">₹3,350</span>
+          </div>
+          <div style="display:grid;gap:.6rem">
+            <button class="btn btn--primary btn--block" id="czAdd" type="button">Add to cart</button>
+            <a class="btn btn--wa btn--block" data-wa-order href="#">Send this design on WhatsApp</a>
+          </div>
+          <p class="total__note">Free design proof before payment · Free shipping · <span data-ph>2-year warranty</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell">
+    <div class="head"><span class="eyebrow">Good to know</span><h2>How pricing works</h2></div>
+    <div class="notes">
+      <div class="note"><h3>Base price</h3><p>Covers the acrylic backing, LED tube, adaptor and mounting kit.</p></div>
+      <div class="note"><h3>Size</h3><p>Larger boards need more tube and a heavier backing, so they cost more.</p></div>
+      <div class="note"><h3>Characters</h3><p>The first ten characters are included. After that it's <span data-ph>₹145</span> each.</p></div>
+      <div class="note"><h3>Nothing hidden</h3><p>Shipping and GST are already in the number above.</p></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customizer Page",
+  "settings": []
+}
+{% endschema %}

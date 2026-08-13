@@ -31,6 +31,9 @@
   {% if template.name == 'index' and block_settings.hide_logo_on_home_page %}
     data-hidden-on-home-page
   {% endif %}
+  {% if settings.logo == blank %}
+    aria-label="{{ shop.name | escape }}"
+  {% endif %}
   href="{{ routes.root_url }}"
   class="size-style spacing-style header-logo"
   style="
@@ -51,34 +54,38 @@
     assign inverse_logo_style = '--header-logo-image-width: ' | append: inverse_logo_width | append: 'px;' | append: '--header-logo-image-width-mobile: ' | append: inverse_logo_width_mobile | append: 'px; --header-logo-image-height: ' | append: settings.logo_height | append: 'px; --header-logo-image-height-mobile: ' | append: settings.logo_height_mobile | append: 'px;'
   %}
 
-  <span
-    class="header-logo__image-container header-logo__image-container--original"
-    data-testid="header-logo"
-  >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      alt_text_fallback: alt_text_fallback,
-      text_fallback: shop.name,
-      style: logo_style
-    %}
-  </span>
-
-  {% if use_inverse_logo %}
+  {% if settings.logo != blank %}
     <span
-      class="header-logo__image-container header-logo__image-container--inverse"
-      data-testid="header-logo-inverse"
+      class="header-logo__image-container header-logo__image-container--original"
+      data-testid="header-logo"
     >
       {% render 'image',
-        image: inverse_logo,
+        image: settings.logo,
         class: 'header-logo__image',
         height: settings.logo_height,
         alt_text_fallback: alt_text_fallback,
         text_fallback: shop.name,
-        style: inverse_logo_style
+        style: logo_style
       %}
     </span>
+
+    {% if use_inverse_logo %}
+      <span
+        class="header-logo__image-container header-logo__image-container--inverse"
+        data-testid="header-logo-inverse"
+      >
+        {% render 'image',
+          image: inverse_logo,
+          class: 'header-logo__image',
+          height: settings.logo_height,
+          alt_text_fallback: alt_text_fallback,
+          text_fallback: shop.name,
+          style: inverse_logo_style
+        %}
+      </span>
+    {% endif %}
+  {% else %}
+    {% render 'na-logo' %}
   {% endif %}
 </a>
 

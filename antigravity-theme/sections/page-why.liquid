@@ -1,0 +1,167 @@
+<section class="section section--tight">
+  <div class="shell">
+    <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+    <h1>{{ section.settings.title }}</h1>
+    <p class="lead" style="max-width:60ch;color:var(--muted)">{{ section.settings.subheading }}</p>
+  </div>
+</section>
+
+<section class="section section--tight" style="padding-top:0">
+  <div class="shell">
+    <div class="stats reveal">
+      {% for block in section.blocks %}
+        {% if block.type == 'stat' %}
+          <div class="stat"><b>{{ block.settings.value }}</b><span>{{ block.settings.label }}</span></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <p style="color:var(--muted-2);font-size:.8rem;margin-top:1rem">
+      {{ section.settings.stats_note }}
+    </p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="shell">
+    <div class="prose">
+      {{ section.settings.content }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="band reveal">
+      <h2>{{ section.settings.cta_title }}</h2>
+      <p>{{ section.settings.cta_text }}</p>
+      <div class="band__cta">
+        <a class="btn btn--primary" href="{{ section.settings.cta_link_1 }}">{{ section.settings.cta_button_1 }}</a>
+        <a class="btn btn--wa" data-wa="Hi Neon Adda, I'd like to ask about a custom sign." href="#">{{ section.settings.cta_button_2 }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "About us"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why Neon Adda"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The honest version: what these signs are made of, what they cost to run, and what we'll do if something goes wrong."
+    },
+    {
+      "type": "text",
+      "id": "stats_note",
+      "label": "Stats Note",
+      "default": "Figures current as of 2026."
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Story Content",
+      "default": "<h2>LED neon, not glass</h2><p>Our signs use LED neon flex — a flexible silicone tube lit from inside — mounted on laser-cut clear acrylic. Compared with traditional glass neon it uses roughly a tenth of the electricity, stays cool to touch, won't shatter, and survives being couriered across the country. It's safe in a nursery and safe in a busy café.</p><h2>What it costs to run</h2><p>A medium sign draws about 18 watts — less than an old incandescent bulb. Leaving it on for five hours a night works out to a few rupees a month.</p><h2>What the warranty covers</h2><p>Two years on the LED tubing and the adaptor. If the light fails or dims unevenly in normal indoor use, we repair or replace it. Physical damage, water damage and DIY rewiring aren't covered — but message us anyway, because repairs are usually cheap.</p><h2>Made to order, one at a time</h2><ul><li><strong>Hand-bent tube.</strong> Every curve is shaped by a person, not a machine.</li><li><strong>Cut-to-shape backing.</strong> The acrylic follows your text outline, so it disappears against the wall.</li><li><strong>Tested lit.</strong> Each sign runs for 24 hours before it's packed.</li><li><strong>Ready to hang.</strong> Screws, wall plugs, a paper drilling template and the adaptor are all in the box.</li></ul><h2>If it arrives damaged</h2><p>Send us a photo within 48 hours and we'll remake it at no cost. We've shipped enough of these to know courier handling isn't always gentle, so the packing is over-engineered on purpose.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Heading",
+      "default": "Ready to see yours glow?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Design it on screen now, or send us a photo of your wall and we'll suggest a size."
+    },
+    {
+      "type": "text",
+      "id": "cta_button_1",
+      "label": "Button 1 Text",
+      "default": "Design your sign"
+    },
+    {
+      "type": "url",
+      "id": "cta_link_1",
+      "label": "Button 1 Link",
+      "default": "/pages/customizer"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_2",
+      "label": "Button 2 Text",
+      "default": "Ask on WhatsApp"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "1,200+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Signs made to order"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "stat",
+        "settings": {
+          "value": "1,200+",
+          "label": "Signs made to order"
+        }
+      },
+      {
+        "type": "stat",
+        "settings": {
+          "value": "4.9/5",
+          "label": "Average customer rating"
+        }
+      },
+      {
+        "type": "stat",
+        "settings": {
+          "value": "2 yrs",
+          "label": "Warranty on tube & adaptor"
+        }
+      },
+      {
+        "type": "stat",
+        "settings": {
+          "value": "5–8 days",
+          "label": "Typical delivery, India-wide"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}
