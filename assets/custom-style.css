@@ -252,13 +252,13 @@
     font-family:var(--heading);font-weight:700;font-size:22px;margin:0 0 6px;
   }
   .controls-pane .sub{font-size:13.5px;color:var(--muted);margin:0 0 30px;line-height:1.6;}
-  .field{margin-bottom:28px;}
-  .field label{
+  .customizer .field { margin-bottom:28px; display:block !important; width:100% !important; }
+  .customizer .field label {
     display:flex;justify-content:space-between;align-items:baseline;
     font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--muted);margin-bottom:10px;
+    color:var(--muted);margin-bottom:10px; width:100%;
   }
-  .field label .val{color:var(--cyan);}
+  .customizer .field label .val { color:var(--cyan); }
   #textInput{
     width:100%;background:var(--void);border:1px solid var(--line);border-radius:12px;
     color:var(--ivory);font-family:var(--body);font-size:15px;padding:13px 16px;
