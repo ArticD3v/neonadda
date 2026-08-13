@@ -1,0 +1,106 @@
+<section style="padding: 100px 0 60px;">
+  <div class="wrap">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+      
+      <!-- Product Images -->
+      <div class="product-media" style="position: sticky; top: 120px;">
+        <div style="border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--panel); position: relative; aspect-ratio: 1/1;">
+          {% if product.featured_image %}
+            <div class="brickwall" style="background-image: url('{{ product.featured_image | img_url: '1000x' }}'); background-size: cover; background-position: center; opacity: 1; filter: none;"></div>
+          {% else %}
+            <div class="brickwall"></div>
+            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Great Vibes', cursive; font-size: 64px; color: var(--cyan); text-shadow: 0 0 24px var(--cyan); text-align: center; padding: 40px; line-height: 1.2;">
+              {{ product.title }}
+            </div>
+          {% endif %}
+        </div>
+        {% if product.images.size > 1 %}
+          <div style="display: flex; gap: 12px; margin-top: 16px; overflow-x: auto;">
+            {% for image in product.images %}
+              <div style="width: 80px; height: 80px; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; cursor: pointer; flex-shrink: 0;">
+                <img src="{{ image | img_url: '200x' }}" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-details" style="padding-top: 20px;">
+        <div class="eyebrow" style="margin-bottom: 16px;">{{ product.type | default: "Premium Neon" }}</div>
+        <h1 style="font-family: var(--display); font-size: 48px; margin: 0 0 16px; line-height: 1.1;">{{ product.title }}</h1>
+        <div style="font-family: var(--mono); font-size: 24px; color: var(--pink); margin-bottom: 32px; letter-spacing: 0.05em;">
+          {{ product.selected_or_first_available_variant.price | money }}
+        </div>
+        
+        <div style="color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 40px;">
+          {{ product.description | default: "Handcrafted LED neon sign built to last. Comes with a free dimmer, mounting kit, and power supply. Shipped securely and ready to plug in." }}
+        </div>
+
+        {%- form 'product', product, id: 'product-form-installment', class: 'product-form' -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          
+          {% unless product.has_only_default_variant %}
+            <div style="margin-bottom: 30px;">
+              {% for option in product.options_with_values %}
+                <div class="customizer field" style="margin-bottom: 20px;">
+                  <label style="display: flex; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px;">{{ option.name }}</label>
+                  <select name="options[{{ option.name | escape }}]" style="width: 100%; background: var(--void); border: 1px solid var(--line); border-radius: 12px; color: var(--ivory); font-family: var(--body); font-size: 15px; padding: 13px 16px; outline: none; appearance: none;">
+                    {% for value in option.values %}
+                      <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                        {{ value }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            </div>
+          {% endunless %}
+
+          <div style="display: grid; gap: 16px; margin-bottom: 32px;">
+            <button type="submit" name="add" class="btn btn-neon" style="width: 100%; justify-content: center;" {% if product.available == false %}disabled{% endif %}>
+              {% if product.available %}Add to cart{% else %}Sold out{% endif %}
+            </button>
+            <a href="#" class="btn btn-ghost" style="width: 100%; justify-content: center; border-color: #25D366; color: #25D366;">Ask on WhatsApp</a>
+          </div>
+        {%- endform -%}
+        
+        <!-- Features List -->
+        <ul style="list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); padding-top: 32px;">
+          <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: var(--muted); font-size: 14px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Free dimmer & remote included
+          </li>
+          <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: var(--muted); font-size: 14px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Ready to mount with included kit
+          </li>
+          <li style="display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 14px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            24-month premium warranty
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 900px) {
+    .wrap > div {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+    .product-media {
+      position: static !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Page",
+  "settings": []
+}
+{% endschema %}
