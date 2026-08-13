@@ -114,12 +114,20 @@
           </div>
         </div>
 
-        <div class="price-row">
-          <div>
+        <div class="price-row" style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <div class="price"><span class="cur">₹</span><span id="priceVal">3,600</span></div>
             <div class="note">Incl. remote control &amp; mounting kit</div>
           </div>
-          <a href="#" class="btn btn-neon">Add to cart</a>
+          {% assign current_product = all_products['neon-customizer'] %}
+          {% if current_product == blank %}
+            {% assign current_product = collections.all.products.first %}
+          {% endif %}
+          {% assign first_variant_id = current_product.selected_or_first_available_variant.id %}
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%;">
+            <button type="button" class="btn btn-neon" id="addToCartBtn" data-variant-id="{{ first_variant_id }}" style="flex: 1; min-width: 140px; justify-content: center;">Add to cart</button>
+            <a href="#" class="btn btn-ghost" id="whatsappOrderBtn" target="_blank" rel="noopener noreferrer" style="flex: 1; min-width: 140px; justify-content: center;">WhatsApp Order →</a>
+          </div>
         </div>
       </div>
     </div>
