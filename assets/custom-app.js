@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       chip.classList.add('active');
       state.color = chip.dataset.color;
       currentColorName = chip.dataset.name || 'Signal Pink';
-      if (colorName) colorName.textContent = `${currentColorName} (${state.color.toUpperCase()})`;
+      if (colorName) colorName.textContent = currentColorName;
       applyGlow();
       updateWhatsAppLink();
     });
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (colorName) colorName.textContent = `${currentColorName} (${state.color.toUpperCase()})`;
+  if (colorName) colorName.textContent = currentColorName;
   applyGlow();
   updateText();
   updateWhatsAppLink();
