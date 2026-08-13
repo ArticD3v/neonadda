@@ -26,7 +26,7 @@
       </div>
 
       <!-- Product Info -->
-      <div class="neon-product-info" style="padding-top: 20px; display: block; width: 100%;">
+      <div class="neon-product-info glass-panel" style="padding: 40px; display: block; width: 100%;">
         <div class="eyebrow" style="margin-bottom: 16px; display: inline-flex;">{{ product.type | default: "Premium Neon" }}</div>
         <h1 style="font-family: var(--display); font-size: 48px; margin: 0 0 16px; line-height: 1.1; display: block;">{{ product.title }}</h1>
         <div style="font-family: var(--mono); font-size: 24px; color: var(--pink); margin-bottom: 32px; letter-spacing: 0.05em; display: block;">
@@ -45,7 +45,7 @@
               {% for option in product.options_with_values %}
                 <div class="customizer field" style="margin-bottom: 20px; display: block;">
                   <label style="display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; width: 100%;">{{ option.name }}</label>
-                  <select name="options[{{ option.name | escape }}]" style="display: block; width: 100%; background: var(--void); border: 1px solid var(--line); border-radius: 12px; color: var(--ivory); font-family: var(--body); font-size: 15px; padding: 13px 16px; outline: none; appearance: none;">
+                  <select name="options[{{ option.name | escape }}]" class="glass-chip" style="display: block; width: 100%; text-align: left; padding: 13px 16px; font-family: var(--body); font-size: 15px; outline: none; appearance: none;">
                     {% for value in option.values %}
                       <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
                         {{ value }}
