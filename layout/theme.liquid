@@ -48,6 +48,7 @@
     {% endif %}
 
     {{ content_for_header }}
+    {%- render 'custom-fonts' -%}
     <link rel="stylesheet" href="{{ 'custom-style.css' | asset_url }}">
   </head>
 

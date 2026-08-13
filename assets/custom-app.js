@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     textInput.addEventListener('input', updateText);
   }
 
+  const selectedFontName = document.getElementById('selectedFontName');
+
   if (fontRow) {
     fontRow.addEventListener('click', (e) => {
       const chip = e.target.closest('.font-chip');
@@ -65,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
       [...fontRow.children].forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       if (preview) preview.style.fontFamily = chip.dataset.font;
-      currentFontName = chip.dataset.font.split(',')[0].replace(/'/g, '');
+      currentFontName = chip.dataset.name || chip.dataset.font.split(',')[0].replace(/'/g, '');
+      if (selectedFontName) selectedFontName.textContent = currentFontName;
       updateWhatsAppLink();
     });
   }

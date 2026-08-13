@@ -69,13 +69,92 @@
         </div>
 
         <div class="field">
-          <label>Font style</label>
-          <div class="swatch-row" id="fontRow">
-            <div class="font-chip active" data-font="'Great Vibes',cursive" style="font-family:'Great Vibes',cursive;">Aa</div>
-            <div class="font-chip" data-font="'Pacifico',cursive" style="font-family:'Pacifico',cursive;">Aa</div>
-            <div class="font-chip" data-font="'Caveat',cursive" style="font-family:'Caveat',cursive;">Aa</div>
-            <div class="font-chip" data-font="'Permanent Marker',cursive" style="font-family:'Permanent Marker',cursive;">Aa</div>
-            <div class="font-chip" data-font="'Space Grotesk',sans-serif" style="font-family:'Space Grotesk',sans-serif;font-weight:700;">Aa</div>
+          <label>Font style <span class="val" id="selectedFontName">Great Vibes</span></label>
+          <div class="font-picker-grid" id="fontRow">
+            <div class="font-chip active" data-font="'Great Vibes', cursive" data-name="Great Vibes" style="font-family:'Great Vibes', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Great Vibes</span>
+            </div>
+            <div class="font-chip" data-font="'Alex Brush', cursive" data-name="Alex Brush" style="font-family:'Alex Brush', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Alex Brush</span>
+            </div>
+            <div class="font-chip" data-font="'Allura', cursive" data-name="Allura" style="font-family:'Allura', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Allura</span>
+            </div>
+            <div class="font-chip" data-font="'Better Grade', cursive" data-name="Better Grade" style="font-family:'Better Grade', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Better Grade</span>
+            </div>
+            <div class="font-chip" data-font="'Brittany Signature', cursive" data-name="Brittany Signature" style="font-family:'Brittany Signature', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Brittany</span>
+            </div>
+            <div class="font-chip" data-font="'Brotherside Signature', cursive" data-name="Brotherside Signature" style="font-family:'Brotherside Signature', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Brotherside</span>
+            </div>
+            <div class="font-chip" data-font="'Busted Soul', cursive" data-name="Busted Soul" style="font-family:'Busted Soul', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Busted Soul</span>
+            </div>
+            <div class="font-chip" data-font="'Corinthia', cursive" data-name="Corinthia" style="font-family:'Corinthia', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Corinthia</span>
+            </div>
+            <div class="font-chip" data-font="'Grayscale Signature', cursive" data-name="Grayscale Signature" style="font-family:'Grayscale Signature', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Grayscale</span>
+            </div>
+            <div class="font-chip" data-font="'Hamilton Signature', cursive" data-name="Hamilton Signature" style="font-family:'Hamilton Signature', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Hamilton</span>
+            </div>
+            <div class="font-chip" data-font="'Ink Free', cursive" data-name="Ink Free" style="font-family:'Ink Free', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Ink Free</span>
+            </div>
+            <div class="font-chip" data-font="'Lavanderia', cursive" data-name="Lavanderia" style="font-family:'Lavanderia', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Lavanderia</span>
+            </div>
+            <div class="font-chip" data-font="'Lavanderia Delicate', cursive" data-name="Lavanderia Delicate" style="font-family:'Lavanderia Delicate', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Lavanderia Del</span>
+            </div>
+            <div class="font-chip" data-font="'Lavanderia Sturdy', cursive" data-name="Lavanderia Sturdy" style="font-family:'Lavanderia Sturdy', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Lavanderia Stu</span>
+            </div>
+            <div class="font-chip" data-font="'Neoneon', sans-serif" data-name="Neoneon" style="font-family:'Neoneon', sans-serif;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Neoneon</span>
+            </div>
+            <div class="font-chip" data-font="'Ocean Trace', cursive" data-name="Ocean Trace" style="font-family:'Ocean Trace', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Ocean Trace</span>
+            </div>
+            <div class="font-chip" data-font="'Retake', sans-serif" data-name="Retake" style="font-family:'Retake', sans-serif;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Retake</span>
+            </div>
+            <div class="font-chip" data-font="'Pacifico', cursive" data-name="Pacifico" style="font-family:'Pacifico', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Pacifico</span>
+            </div>
+            <div class="font-chip" data-font="'Caveat', cursive" data-name="Caveat" style="font-family:'Caveat', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Caveat</span>
+            </div>
+            <div class="font-chip" data-font="'Permanent Marker', cursive" data-name="Permanent Marker" style="font-family:'Permanent Marker', cursive;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Marker</span>
+            </div>
+            <div class="font-chip" data-font="'Space Grotesk', sans-serif" data-name="Space Grotesk" style="font-family:'Space Grotesk', sans-serif; font-weight:700;">
+              <span class="f-sample">Aa</span>
+              <span class="f-name">Grotesk</span>
+            </div>
           </div>
         </div>
 
