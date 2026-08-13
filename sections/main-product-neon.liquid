@@ -6,91 +6,91 @@
 {% if current_product == blank %}
   {% assign current_product = collections.all.products.first %}
 {% endif %}
+{% assign default_text = current_product.title | default: "Good Vibes" %}
 
-<section id="customizer" class="section section--tight">
-  <div class="shell">
-    <span class="eyebrow">Neon Customizer</span>
-    <h1 id="czHeading">{{ current_product.title | default: "Custom Neon Sign" }}</h1>
-    <p class="lead" style="max-width:58ch;color:var(--muted);margin-bottom:2.2rem">
-      Type anything up to 24 characters. The preview and the price update as you go — what you see is what we build.
-    </p>
+<section id="customizer" class="customizer animate-on-scroll">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Live Neon Customizer</div>
+      <h2>Type it. Light it. <span class="accent">See it glow.</span></h2>
+      <p>Write your text, pick a font and colour, choose a size — the preview lights up exactly like the sign that lands on your wall.</p>
+    </div>
 
-    <div class="cz">
-      <!-- preview -->
-      <div class="cz__preview">
-        <div class="cz__stage">
-          <div class="board board--bare">
-            {% assign default_text = current_product.title | default: "Neon Customizer" %}
-            <span class="cz__sign neon" id="czSign" style="--c:#FFC97A" data-default-text="{{ default_text | escape }}">{{ default_text }}</span>
-          </div>
+    <div class="customizer-grid">
+      <div class="preview-pane">
+        <div class="brickwall"></div>
+        <div class="preview-stage">
+          <div id="czSign" class="neon-on" style="font-family:var(--display); color:var(--pink); font-size:64px; line-height:1.15; word-break:break-word; max-width:100%; transition:color .25s ease, text-shadow .25s ease, font-family .2s ease, font-size .2s ease;" data-default-text="{{ default_text | escape }}">{{ default_text }}</div>
         </div>
-        <div class="spill" id="czSpill" aria-hidden="true"></div>
-        <div style="display:flex;justify-content:center;margin-top:.4rem">
-          <button class="toggle" id="czPower" type="button" aria-pressed="true">
-            <span class="toggle__track" aria-hidden="true"></span>
-            <span>Lit</span>
-          </button>
+        <div id="czSpill" style="display:none;"></div>
+        <div class="preview-footer">
+          <div class="power-toggle" id="czPower" aria-pressed="true">
+            <span class="power-dot on" id="powerDot"></span>
+            <span id="powerLabel">Lit</span>
+          </div>
+          <div class="mount-hint">Preview updates in real time</div>
         </div>
       </div>
 
-      <!-- controls -->
-      <div class="cz__controls">
+      <div class="controls-pane">
+        <h3>Build your sign</h3>
+        <p class="sub">This is a working demo of the customizer — plug in your Shopify product variants to make it checkout-ready.</p>
+
         {% form 'product', current_product, id: 'customizer-form' %}
           <input type="hidden" name="id" id="czVariantId" value="{{ current_product.selected_or_first_available_variant.id }}">
           
-          <div class="cz__field">
-            <label class="cz__label" for="czText">
-              <span>Your text</span><b id="czCount">{{ default_text.size }}/24</b>
-            </label>
-            <input class="input" id="czText" name="properties[Text]" type="text" maxlength="24" value="{{ default_text | escape }}"
-                   placeholder="e.g. Happy Birthday" autocomplete="off">
+          <div class="field">
+            <label>Your text <span class="val" id="czCount">{{ default_text.size }} / 24</span></label>
+            <input type="text" id="czText" name="properties[Text]" maxlength="24" value="{{ default_text | escape }}" placeholder="Type your phrase…">
           </div>
 
-          <div class="cz__field">
-            <span class="cz__label"><span>Font</span></span>
+          <div class="field">
+            <label>Font style</label>
             <input type="hidden" id="czFontHidden" name="properties[Font]" value="Script">
-            <div class="opts" id="czFonts">
-              <button class="opt" type="button" data-font="script" aria-pressed="true"
-                      style="font-family:var(--script);font-size:1.1rem">Script</button>
-              <button class="opt" type="button" data-font="tube" aria-pressed="false"
-                      style="font-family:var(--tube);font-size:.85rem">BLOCK</button>
+            <div class="swatch-row" id="czFonts">
+              <div class="opt font-chip active" data-font="script" aria-pressed="true" style="font-family:var(--display);">Aa</div>
+              <div class="opt font-chip" data-font="tube" aria-pressed="false" style="font-family:var(--heading);font-weight:700;">Aa</div>
             </div>
           </div>
 
-          <div class="cz__field">
-            <span class="cz__label"><span>Tube colour</span><b id="czColourName">Warm White</b></span>
+          <div class="field">
+            <label>Glow colour <span class="val" id="czColourName">Warm White</span></label>
             <input type="hidden" id="czColourHidden" name="properties[Color]" value="Warm White">
-            <div class="swatches" id="czColours"></div>
+            <div class="swatch-row" id="czColours"></div>
           </div>
 
-          <div class="cz__field">
-            <span class="cz__label"><span>Size</span><b id="czSizeName">Medium</b></span>
-            <div class="sizes" id="czSizes">
+          <div class="field">
+            <label>Size <span class="val" id="czSizeName">Medium</span></label>
+            <div class="size-row" id="czSizes">
               {% if current_product.has_only_default_variant or current_product == blank %}
-                <!-- Fallback to static sizes if product has no variants (dummy mode) -->
                 <input type="hidden" id="czSizeHidden" name="properties[Size]" value="Medium">
               {% else %}
-                <!-- Real Shopify Variants -->
                 {% for variant in current_product.variants %}
-                  <button class="opt" type="button" data-vid="{{ variant.id }}" data-price="{{ variant.price }}" data-label="{{ variant.title }}" aria-pressed="{% if variant.id == current_product.selected_or_first_available_variant.id %}true{% else %}false{% endif %}">
-                    {{ variant.title }}
-                  </button>
+                  <div class="opt size-chip {% if variant.id == current_product.selected_or_first_available_variant.id %}active{% endif %}" data-vid="{{ variant.id }}" data-price="{{ variant.price }}" data-label="{{ variant.title }}" aria-pressed="{% if variant.id == current_product.selected_or_first_available_variant.id %}true{% else %}false{% endif %}">
+                    <div class="s-name">{{ variant.title }}</div>
+                  </div>
                 {% endfor %}
               {% endif %}
             </div>
           </div>
 
-          <div class="total">
-            <div class="total__row">
-              <span>Your price, all inclusive</span>
-              <span class="total__val" id="czTotal">{{ current_product.selected_or_first_available_variant.price | money }}</span>
+          <div class="field" style="margin-bottom:0;">
+            <label>Mounting wall</label>
+            <div class="bg-row" id="bgRow">
+              <div class="bg-chip active" data-bg="dark">Dark brick</div>
+              <div class="bg-chip" data-bg="light">Bare plaster</div>
             </div>
-            <div style="display:grid;gap:.6rem">
-              <button class="btn btn--primary btn--block" id="czAdd" type="submit" name="add">Add to cart</button>
-              <a class="btn btn--wa btn--block" data-wa-order href="#">Send this design on WhatsApp</a>
-            </div>
-            <p class="total__note">Free design proof before payment · Free shipping · <span data-ph>2-year warranty</span></p>
           </div>
+
+          <div class="price-row">
+            <div>
+              <div class="price"><span class="cur"></span><span id="czTotal">{{ current_product.selected_or_first_available_variant.price | money }}</span></div>
+              <div class="note">Incl. remote control &amp; mounting kit</div>
+            </div>
+            <button type="submit" name="add" id="czAdd" class="btn btn-neon">Add to cart</button>
+          </div>
+          
+          <a class="btn btn-ghost" style="width:100%; justify-content:center; margin-top: 15px;" data-wa-order href="#">Send this design on WhatsApp</a>
         {% endform %}
       </div>
     </div>

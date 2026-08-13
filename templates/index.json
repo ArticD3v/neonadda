@@ -1,61 +1,46 @@
 {
   "sections": {
-    "customizer": {
-      "type": "main-product-neon",
-      "settings": {}
-    },
     "custom_hero": {
       "type": "custom-hero",
       "settings": {}
     },
-    "custom_trust": {
-      "type": "custom-trust",
+    "marquee": {
+      "type": "marquee",
       "settings": {}
     },
-    "custom_bestsellers": {
-      "type": "custom-bestsellers",
-      "settings": {}
-    },
-    "custom_occasions": {
-      "type": "custom-occasions",
-      "settings": {}
-    },
-    "custom_teaser": {
-      "type": "custom-teaser",
-      "settings": {}
-    },
-    "custom_new_arrivals": {
-      "type": "custom-new-arrivals",
+    "customizer": {
+      "type": "main-product-neon",
       "settings": {}
     },
     "custom_how_it_works": {
       "type": "custom-how-it-works",
       "settings": {}
     },
+    "custom_features": {
+      "type": "custom-features",
+      "settings": {}
+    },
+    "custom_categories": {
+      "type": "custom-categories",
+      "settings": {}
+    },
     "custom_reviews": {
       "type": "custom-reviews",
       "settings": {}
     },
-    "custom_faq_teaser": {
-      "type": "custom-faq-teaser",
-      "settings": {}
-    },
-    "custom_closing_cta": {
-      "type": "custom-closing-cta",
+    "custom_final_cta": {
+      "type": "custom-final-cta",
       "settings": {}
     }
   },
   "order": [
     "custom_hero",
+    "marquee",
     "customizer",
-    "custom_trust",
-    "custom_bestsellers",
-    "custom_occasions",
-    "custom_teaser",
-    "custom_new_arrivals",
     "custom_how_it_works",
+    "custom_features",
+    "custom_categories",
     "custom_reviews",
-    "custom_faq_teaser",
-    "custom_closing_cta"
+    "custom_final_cta"
   ]
 }
