@@ -24,19 +24,25 @@
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background: linear-gradient(-45deg, #09090e, #130f24, #0b1a2b, #190919);
-    background-size: 400% 400%;
-    animation: AmbientMesh 20s ease infinite;
+    background-color:#020204;
+    background-image: 
+      radial-gradient(ellipse at 80% 20%, rgba(0, 110, 255, 0.45) 0%, transparent 40%),
+      radial-gradient(ellipse at 20% 70%, rgba(200, 0, 255, 0.35) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 50%, rgba(0, 255, 170, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 10% 10%, rgba(255, 0, 128, 0.25) 0%, transparent 35%);
+    background-size: 150% 150%;
+    background-attachment: fixed;
+    animation: glowFloat 25s ease-in-out infinite alternate;
     color:var(--ivory);
     font-family:var(--body);
     font-size:16px;
     line-height:1.6;
     overflow-x:hidden;
   }
-  @keyframes AmbientMesh {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  @keyframes glowFloat {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 100%; }
   }
   
   /* ---------- scrollbar ---------- */
@@ -550,16 +556,12 @@
 
 .glass-panel {
   position: relative;
-  background: 
-    radial-gradient(circle at 10% 0%, rgba(255,255,255,0.15) 0%, transparent 40%),
-    rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 24px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 .glass-panel::before {
@@ -568,13 +570,16 @@
   inset: 0;
   background: repeating-linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.1) 0px,
-    rgba(255, 255, 255, 0.06) 12px,
-    rgba(0, 0, 0, 0.1) 24px
+    rgba(255, 255, 255, 0.08) 0px,
+    rgba(255, 255, 255, 0.01) 2px,
+    rgba(0, 0, 0, 0.05) 12px,
+    rgba(0, 0, 0, 0.2) 20px,
+    rgba(255, 255, 255, 0.08) 20px
   );
   z-index: 0;
   pointer-events: none;
   mix-blend-mode: overlay;
+  opacity: 0.8;
 }
 .glass-panel > * {
   position: relative;
