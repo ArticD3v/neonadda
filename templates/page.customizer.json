@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "page-customizer",
+      "type": "main-product-neon",
       "settings": {}
     }
   },

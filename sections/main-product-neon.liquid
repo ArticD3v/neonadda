@@ -1,8 +1,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSK74T+ts+94qhBvVDwcxc=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% assign current_product = product %}
+{% if current_product == blank %}
+  {% assign current_product = all_products['neon-customizer'] %}
+{% endif %}
+{% if current_product == blank %}
+  {% assign current_product = collections.all.products.first %}
+{% endif %}
+
 <section class="section section--tight">
   <div class="shell">
     <span class="eyebrow">Neon Customizer</span>
-    <h1 id="czHeading">{{ product.title }}</h1>
+    <h1 id="czHeading">{{ current_product.title | default: "Custom Neon Sign" }}</h1>
     <p class="lead" style="max-width:58ch;color:var(--muted);margin-bottom:2.2rem">
       Type anything up to 24 characters. The preview and the price update as you go — what you see is what we build.
     </p>
@@ -12,7 +20,7 @@
       <div class="cz__preview">
         <div class="cz__stage">
           <div class="board board--bare">
-            {% assign default_text = product.title %}
+            {% assign default_text = current_product.title | default: "Neon Customizer" %}
             <span class="cz__sign neon" id="czSign" style="--c:#FFC97A" data-default-text="{{ default_text | escape }}">{{ default_text }}</span>
           </div>
         </div>
@@ -27,8 +35,8 @@
 
       <!-- controls -->
       <div class="cz__controls">
-        {% form 'product', product, id: 'customizer-form' %}
-          <input type="hidden" name="id" id="czVariantId" value="{{ product.selected_or_first_available_variant.id }}">
+        {% form 'product', current_product, id: 'customizer-form' %}
+          <input type="hidden" name="id" id="czVariantId" value="{{ current_product.selected_or_first_available_variant.id }}">
           
           <div class="cz__field">
             <label class="cz__label" for="czText">
@@ -58,13 +66,13 @@
           <div class="cz__field">
             <span class="cz__label"><span>Size</span><b id="czSizeName">Medium</b></span>
             <div class="sizes" id="czSizes">
-              {% if product.has_only_default_variant %}
+              {% if current_product.has_only_default_variant or current_product == blank %}
                 <!-- Fallback to static sizes if product has no variants (dummy mode) -->
                 <input type="hidden" id="czSizeHidden" name="properties[Size]" value="Medium">
               {% else %}
                 <!-- Real Shopify Variants -->
-                {% for variant in product.variants %}
-                  <button class="opt" type="button" data-vid="{{ variant.id }}" data-price="{{ variant.price }}" data-label="{{ variant.title }}" aria-pressed="{% if variant.id == product.selected_or_first_available_variant.id %}true{% else %}false{% endif %}">
+                {% for variant in current_product.variants %}
+                  <button class="opt" type="button" data-vid="{{ variant.id }}" data-price="{{ variant.price }}" data-label="{{ variant.title }}" aria-pressed="{% if variant.id == current_product.selected_or_first_available_variant.id %}true{% else %}false{% endif %}">
                     {{ variant.title }}
                   </button>
                 {% endfor %}
@@ -75,7 +83,7 @@
           <div class="total">
             <div class="total__row">
               <span>Your price, all inclusive</span>
-              <span class="total__val" id="czTotal">{{ product.selected_or_first_available_variant.price | money }}</span>
+              <span class="total__val" id="czTotal">{{ current_product.selected_or_first_available_variant.price | money }}</span>
             </div>
             <div style="display:grid;gap:.6rem">
               <button class="btn btn--primary btn--block" id="czAdd" type="submit" name="add">Add to cart</button>
@@ -91,9 +99,9 @@
 
 <script>
   window.ShopifyProduct = {
-    id: {{ product.id | json }},
-    price: {{ product.selected_or_first_available_variant.price | json }},
-    has_variants: {% if product.has_only_default_variant %}false{% else %}true{% endif %}
+    id: {{ current_product.id | json }},
+    price: {{ current_product.selected_or_first_available_variant.price | json }},
+    has_variants: {% if current_product.has_only_default_variant or current_product == blank %}false{% else %}true{% endif %}
   };
 </script>
 
