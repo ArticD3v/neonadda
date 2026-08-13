@@ -461,12 +461,12 @@
   }
 
 /* Fix Shopify Cart Discount pill color */
-.discounts__discount, .discount, .discount-code, .cart-discount, .order-discount, .cart-items__discount, .cart-item__discount, .discount-application {
+.discounts__discount, .discount-code, .cart-discount__pill, .order-discount, .cart-items__discount, .cart-item__discount {
   color: var(--pink) !important;
   background-color: transparent !important;
   border: 1px solid var(--pink) !important;
 }
-.discounts__discount svg, .discount svg, .discount-code svg, .discount-application svg {
+.discounts__discount svg, .cart-discount__pill svg, .discount-code svg {
   fill: var(--pink) !important;
   color: var(--pink) !important;
 }
