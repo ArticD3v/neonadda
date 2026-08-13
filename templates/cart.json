@@ -46,7 +46,7 @@
           "static": true,
           "settings": {
             "extend_summary": true,
-            "background_color": "{{ settings.color_palette.color2 }}",
+            "background_color": "#111111",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
@@ -57,7 +57,7 @@
       },
       "settings": {
         "section_width": "page-width",
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "#070707", "text_color": "#ffffff",
         "padding-block-start": 24,
         "padding-block-end": 0
       }
@@ -242,7 +242,7 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "#070707", "text_color": "#ffffff",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
