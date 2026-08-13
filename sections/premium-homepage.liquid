@@ -1,0 +1,250 @@
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Handcrafted in India · Est. 2022</div>
+      <h1>This isn't lighting.<br><span class="dim">It's</span></h1>
+      <div class="script-line">branding.</div>
+      <p class="lede">Every neon sign we build is bent, wired, and tested by hand in our Hyderabad workshop — then mounted on your wall as a permanent glow-up for your room, cafe, or storefront.</p>
+      <div class="hero-actions">
+        <a href="#customizer" class="btn btn-neon">Design your sign →</a>
+        <a href="#categories" class="btn btn-ghost">Browse the shop</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num"><em>10,000+</em> km</div><div class="lbl">Neon flex used</div></div>
+        <div><div class="num"><em>3,000+</em></div><div class="lbl">Signs shipped</div></div>
+        <div><div class="num"><em>2 yr</em></div><div class="lbl">Warranty</div></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="brickwall"></div>
+      <div class="leafshadow"></div>
+      <div class="hero-art-content">
+        <div class="goodvibes">Good</div>
+        <div class="vibes2">Vibes</div>
+      </div>
+      <div class="plate">Mounted · 18×11 in · Warm Pink</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>Weddings <em>·</em></span><span>Cafés &amp; Bars <em>·</em></span><span>Home Studios <em>·</em></span><span>Storefronts <em>·</em></span><span>Gaming Rooms <em>·</em></span><span>Birthdays <em>·</em></span><span>Brand Logos <em>·</em></span>
+    <span>Weddings <em>·</em></span><span>Cafés &amp; Bars <em>·</em></span><span>Home Studios <em>·</em></span><span>Storefronts <em>·</em></span><span>Gaming Rooms <em>·</em></span><span>Birthdays <em>·</em></span><span>Brand Logos <em>·</em></span>
+  </div>
+</div>
+
+<!-- ================= CUSTOMIZER ================= -->
+<section class="customizer" id="customizer">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Live Neon Customizer</div>
+      <h2>Type it. Light it. <span class="accent">See it glow.</span></h2>
+      <p>Write your text, pick a font and colour, choose a size — the preview lights up exactly like the sign that lands on your wall.</p>
+    </div>
+
+    <div class="customizer-grid">
+      <div class="preview-pane">
+        <div class="brickwall"></div>
+        <div class="preview-stage">
+          <div id="neonPreview" class="neon-on" style="font-family:'Great Vibes',cursive; color:#ff2f92;">Good Vibes</div>
+        </div>
+        <div class="preview-footer">
+          <div class="power-toggle" id="powerToggle">
+            <span class="power-dot on" id="powerDot"></span>
+            <span id="powerLabel">Power on</span>
+          </div>
+          <div class="mount-hint">Preview updates in real time</div>
+        </div>
+      </div>
+
+      <div class="controls-pane">
+        <h3>Build your sign</h3>
+        <p class="sub">This is a working demo of the customizer — plug in your Shopify product variants to make it checkout-ready.</p>
+
+        <div class="field">
+          <label>Your text <span class="val" id="charCount">10 / 24</span></label>
+          <input type="text" id="textInput" maxlength="24" value="Good Vibes" placeholder="Type your phrase…">
+        </div>
+
+        <div class="field">
+          <label>Font style</label>
+          <div class="swatch-row" id="fontRow">
+            <div class="font-chip active" data-font="'Great Vibes',cursive" style="font-family:'Great Vibes',cursive;">Aa</div>
+            <div class="font-chip" data-font="'Pacifico',cursive" style="font-family:'Pacifico',cursive;">Aa</div>
+            <div class="font-chip" data-font="'Caveat',cursive" style="font-family:'Caveat',cursive;">Aa</div>
+            <div class="font-chip" data-font="'Permanent Marker',cursive" style="font-family:'Permanent Marker',cursive;">Aa</div>
+            <div class="font-chip" data-font="'Space Grotesk',sans-serif" style="font-family:'Space Grotesk',sans-serif;font-weight:700;">Aa</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Glow colour <span class="val" id="colorName">Signal Pink</span></label>
+          <div class="swatch-row" id="colorRow">
+            <div class="color-chip active" data-color="#ff2f92" data-name="Signal Pink" style="background:#ff2f92;"></div>
+            <div class="color-chip" data-color="#35f0ff" data-name="Electric Cyan" style="background:#35f0ff;"></div>
+            <div class="color-chip" data-color="#b26bff" data-name="Ultraviolet" style="background:#b26bff;"></div>
+            <div class="color-chip" data-color="#ffb52e" data-name="Amber Glow" style="background:#ffb52e;"></div>
+            <div class="color-chip" data-color="#3dff8c" data-name="Mint Flash" style="background:#3dff8c;"></div>
+            <div class="color-chip" data-color="#ffffff" data-name="Ice White" style="background:#ffffff;"></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Size</label>
+          <div class="size-row" id="sizeRow">
+            <div class="size-chip" data-size="42" data-price="2250">
+              <div class="s-name">Small</div><div class="s-dim">~10 in · ₹2,250</div>
+            </div>
+            <div class="size-chip active" data-size="64" data-price="3600">
+              <div class="s-name">Medium</div><div class="s-dim">~14 in · ₹3,600</div>
+            </div>
+            <div class="size-chip" data-size="86" data-price="5350">
+              <div class="s-name">Large</div><div class="s-dim">~20 in · ₹5,350</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" style="margin-bottom:0;">
+          <label>Mounting wall</label>
+          <div class="bg-row" id="bgRow">
+            <div class="bg-chip active" data-bg="dark">Dark brick</div>
+            <div class="bg-chip" data-bg="light">Bare plaster</div>
+          </div>
+        </div>
+
+        <div class="price-row">
+          <div>
+            <div class="price"><span class="cur">₹</span><span id="priceVal">3,600</span></div>
+            <div class="note">Incl. remote control &amp; mounting kit</div>
+          </div>
+          <a href="#" class="btn btn-neon">Add to cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Order to Wall</div>
+      <h2>Three steps, <span class="accent">one glow</span></h2>
+      <p>No showroom visit needed — everything from font choice to final mounting happens through the customizer and a WhatsApp check-in.</p>
+    </div>
+    <div class="steps">
+      <div class="step-card">
+        <span class="step-idx">01 / DESIGN</span>
+        <h4>Build it live</h4>
+        <p>Use the customizer above to lock in your text, font, colour and size. What you see is what gets bent into tubing.</p>
+        <div class="glowline"></div>
+      </div>
+      <div class="step-card">
+        <span class="step-idx">02 / CRAFT</span>
+        <h4>Handmade in Hyderabad</h4>
+        <p>Our artisans shape LED neon flex to your exact design, mount it on acrylic, and test every sign before it ships.</p>
+        <div class="glowline"></div>
+      </div>
+      <div class="step-card">
+        <span class="step-idx">03 / INSTALL</span>
+        <h4>Mount and switch on</h4>
+        <p>Signs arrive pre-drilled with a mounting kit and remote — most customers have it glowing within 15 minutes.</p>
+        <div class="glowline"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why Neon Adda</div>
+      <h2>Built to <span class="accent">outshine</span> the rest</h2>
+    </div>
+    <div class="features">
+      <div class="feature"><div class="ficon">01</div><h4>Un-matched craftsmanship</h4><p>Every sign is hand-bent and finished by artisans who've shaped over 10,000 km of neon flex.</p></div>
+      <div class="feature"><div class="ficon">02</div><h4>Remote control included</h4><p>Dim it, flash it, or switch colours on multi-tone signs — all from the included remote.</p></div>
+      <div class="feature"><div class="ficon">03</div><h4>Premium materials</h4><p>High-grade acrylic backing and 2nd-gen LED flex built to stay bright for years, not months.</p></div>
+      <div class="feature"><div class="ficon">04</div><h4>All-India express delivery</h4><p>Tracked, insured shipping to every pin code, with express options for time-bound events.</p></div>
+      <div class="feature"><div class="ficon">05</div><h4>True-to-preview colour</h4><p>What glows in the customizer is what glows on your wall — no surprise tints.</p></div>
+      <div class="feature"><div class="ficon">06</div><h4>Real human support</h4><p>Message us on WhatsApp at any stage — design, order status, or install help.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+<section id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Shop by Mood</div>
+      <h2>Find your <span class="accent">glow</span></h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card"><div class="brickwall"></div><div class="catlabel"><div class="cattag">Romance</div><h4>You &amp; Me</h4></div></div>
+      <div class="cat-card"><div class="brickwall"></div><div class="catlabel"><div class="cattag">Celebration</div><h4>Let's Party</h4></div></div>
+      <div class="cat-card"><div class="brickwall"></div><div class="catlabel"><div class="cattag">Business</div><h4>Your Logo</h4></div></div>
+      <div class="cat-card"><div class="brickwall"></div><div class="catlabel"><div class="cattag">Milestones</div><h4>Just Married</h4></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">1,000+ Happy Walls</div>
+      <h2>What the <span class="accent">Adda</span> hears</h2>
+    </div>
+    <div class="testi-track">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"The customizer showed me exactly what I'd get before I paid a rupee. My café's logo sign matched the preview down to the pink."</p>
+        <div class="testi-who"><div class="testi-avatar">R</div><div><div class="testi-name">Rehan K.</div><div class="testi-loc">Café owner, Hyderabad</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Ordered a 'Mr &amp; Mrs' sign for our wedding stage. Arrived two days early, mounted itself in minutes with the included kit."</p>
+        <div class="testi-who"><div class="testi-avatar">P</div><div><div class="testi-name">Priya S.</div><div class="testi-loc">Bengaluru</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Remote lets my kid switch between four colours for her room. Genuinely feels like a premium product, not a knockoff."</p>
+        <div class="testi-who"><div class="testi-avatar">A</div><div><div class="testi-name">Anaya M.</div><div class="testi-loc">Mumbai</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Support answered on WhatsApp within the hour, twice — once for sizing, once for install questions. Rare these days."</p>
+        <div class="testi-who"><div class="testi-avatar">V</div><div><div class="testi-name">Vikram T.</div><div class="testi-loc">Pune</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section>
+  <div class="wrap">
+    <div class="final-cta">
+      <div class="brickwall"></div>
+      <div class="final-cta-inner">
+        <div class="eyebrow">Ready when you are</div>
+        <h2>Let's light up your wall.</h2>
+        <p>Every project begins with a story. Bring yours to the customizer, or message our team directly and we'll design it with you.</p>
+        <a href="#customizer" class="btn btn-neon">Start designing →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Premium Homepage",
+  "presets": [
+    {
+      "name": "Premium Homepage"
+    }
+  ]
+}
+{% endschema %}

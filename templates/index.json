@@ -1,46 +1,11 @@
 {
   "sections": {
-    "custom_hero": {
-      "type": "custom-hero",
-      "settings": {}
-    },
-    "marquee": {
-      "type": "marquee",
-      "settings": {}
-    },
-    "customizer": {
-      "type": "main-product-neon",
-      "settings": {}
-    },
-    "custom_how_it_works": {
-      "type": "custom-how-it-works",
-      "settings": {}
-    },
-    "custom_features": {
-      "type": "custom-features",
-      "settings": {}
-    },
-    "custom_categories": {
-      "type": "custom-categories",
-      "settings": {}
-    },
-    "custom_reviews": {
-      "type": "custom-reviews",
-      "settings": {}
-    },
-    "custom_final_cta": {
-      "type": "custom-final-cta",
+    "premium-homepage": {
+      "type": "premium-homepage",
       "settings": {}
     }
   },
   "order": [
-    "custom_hero",
-    "marquee",
-    "customizer",
-    "custom_how_it_works",
-    "custom_features",
-    "custom_categories",
-    "custom_reviews",
-    "custom_final_cta"
+    "premium-homepage"
   ]
 }
