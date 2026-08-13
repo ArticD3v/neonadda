@@ -154,12 +154,12 @@
   .hero-copy h1 .dim{color:var(--muted);font-weight:500;}
   .hero-copy .script-line{
     font-family:var(--display);font-size:clamp(46px,6.5vw,78px);
-    color:#050508; line-height:1;margin:6px 0 22px;
+    color:var(--pink); line-height:1;margin:6px 0 22px;
     animation:flicker 5.5s infinite;
     text-shadow:
-      0 0 4px rgba(255,143,196,.95),
-      0 0 10px rgba(255,47,146,.95),
-      0 0 24px rgba(255,47,146,.85),
+      0 0 8px rgba(255,143,196,.95),
+      0 0 18px rgba(255,47,146,.85),
+      0 0 40px rgba(255,47,146,.55),
       0 0 80px rgba(255,47,146,.3);
   }
   .hero-copy p.lede{
@@ -235,7 +235,7 @@
     font-family:var(--heading);font-weight:700;font-size:clamp(28px,3.4vw,42px);
     line-height:1.15;margin:0 0 14px;letter-spacing:-.01em;
   }
-  .section-head h2 .accent{color:#050508;font-family:var(--display);font-size:1.25em;font-weight:400; text-shadow: 0 0 4px rgba(255,143,196,.95), 0 0 10px rgba(255,47,146,.95), 0 0 24px rgba(255,47,146,.85);}
+  .section-head h2 .accent{color:var(--pink);font-family:var(--display);font-size:1.25em;font-weight:400;}
   .section-head p{color:var(--muted);font-size:16px;line-height:1.7;margin:0;}
 
   /* ================= CUSTOMIZER (signature element) ================= */
@@ -470,7 +470,7 @@
   .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
   .cat-card{
     border-radius:18px;overflow:hidden;position:relative;aspect-ratio:1/1.12;
-    cursor:pointer;
+    border:1px solid var(--line);cursor:pointer;
   }
   .cat-card .brickwall{position:absolute;inset:0;transition:transform .4s ease;}
   .cat-card:hover .brickwall{transform:scale(1.06);}
@@ -488,7 +488,7 @@
   .testi-track{display:flex;gap:22px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none;}
   .testi-track::-webkit-scrollbar{display:none;}
   .testi-card{
-    flex:0 0 320px;padding:28px;
+    flex:0 0 320px;border:1px solid var(--line);border-radius:18px;padding:28px;background:var(--panel);
   }
   .testi-stars{color:var(--amber);font-size:14px;letter-spacing:2px;margin-bottom:16px;}
   .testi-card p{font-size:14.5px;line-height:1.7;color:var(--ivory);margin:0 0 20px;}
@@ -551,18 +551,18 @@
 
 /* ---------- Glassmorphism ---------- */
 .glass-panel {
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 24px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .glass-chip {
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -590,7 +590,7 @@
   border-radius: 50%;
   filter: blur(140px);
   -webkit-filter: blur(140px);
-  opacity: 0.2;
+  opacity: 0.65;
   animation: float 20s infinite alternate ease-in-out;
 }
 .blob-1 {

@@ -298,7 +298,7 @@
       {% assign shop_collection = collections.all %}
       {% for product in shop_collection.products limit: 4 %}
         <a href="{{ product.url }}" style="text-decoration: none;">
-          <div class="cat-card glass-panel" style="aspect-ratio: 1/1.2;">
+          <div class="cat-card" style="aspect-ratio: 1/1.2; box-shadow: 0 4px 24px rgba(0,0,0,0.4);">
             {% if product.featured_image %}
               <div class="brickwall" style="background-image: url('{{ product.featured_image | img_url: '600x' }}'); background-size: cover; background-position: center; filter: none; opacity: 1;"></div>
               <div class="brickwall" style="opacity: 0.15;"></div>
@@ -328,22 +328,22 @@
       <h2>What the <span class="accent">Adda</span> hears</h2>
     </div>
     <div class="testi-track">
-      <div class="testi-card glass-panel">
+      <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
         <p>"The customizer showed me exactly what I'd get before I paid a rupee. My café's logo sign matched the preview down to the pink."</p>
         <div class="testi-who"><div class="testi-avatar">R</div><div><div class="testi-name">Rehan K.</div><div class="testi-loc">Café owner, Hyderabad</div></div></div>
       </div>
-      <div class="testi-card glass-panel">
+      <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
         <p>"Ordered a 'Mr &amp; Mrs' sign for our wedding stage. Arrived two days early, mounted itself in minutes with the included kit."</p>
         <div class="testi-who"><div class="testi-avatar">P</div><div><div class="testi-name">Priya S.</div><div class="testi-loc">Bengaluru</div></div></div>
       </div>
-      <div class="testi-card glass-panel">
+      <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
         <p>"Remote lets my kid switch between four colours for her room. Genuinely feels like a premium product, not a knockoff."</p>
         <div class="testi-who"><div class="testi-avatar">A</div><div><div class="testi-name">Anaya M.</div><div class="testi-loc">Mumbai</div></div></div>
       </div>
-      <div class="testi-card glass-panel">
+      <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
         <p>"Support answered on WhatsApp within the hour, twice — once for sizing, once for install questions. Rare these days."</p>
         <div class="testi-who"><div class="testi-avatar">V</div><div><div class="testi-name">Vikram T.</div><div class="testi-loc">Pune</div></div></div>
