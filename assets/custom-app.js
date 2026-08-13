@@ -142,7 +142,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (addToCartBtn) {
     addToCartBtn.addEventListener('click', async (e) => {
       e.preventDefault();
-      const variantId = addToCartBtn.dataset.variantId;
+      
+      let variantId = addToCartBtn.dataset.variantId;
+      // If we have a map of variants, try to find the one matching the selected size name
+      if (window.customizerVariants && currentSizeName) {
+        const matchingId = window.customizerVariants[currentSizeName.toLowerCase()];
+        if (matchingId) {
+          variantId = matchingId;
+        }
+      }
+
       const text = textInput ? (textInput.value || 'Good Vibes') : 'Good Vibes';
 
       addToCartBtn.textContent = 'Adding...';
@@ -173,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
           window.location.href = '/cart';
         } else {
+          console.error('Add to cart failed:', await res.text());
           window.location.href = '/cart';
         }
       } catch (err) {

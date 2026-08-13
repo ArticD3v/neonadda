@@ -190,13 +190,28 @@
             <div class="price"><span class="cur">₹</span><span id="priceVal">3,600</span></div>
             <div class="note">Incl. remote control &amp; mounting kit</div>
           </div>
-          {% assign current_product = all_products['neon-customizer'] %}
+          {% assign current_product = section.settings.customizer_product %}
           {% if current_product == blank %}
-            {% assign current_product = collections.all.products.first %}
+            {% for p in collections.all.products limit: 1 %}
+              {% assign current_product = p %}
+            {% endfor %}
           {% endif %}
-          {% assign first_variant_id = current_product.selected_or_first_available_variant.id %}
-          <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%;">
-            <button type="button" class="btn btn-neon" id="addToCartBtn" data-variant-id="{{ first_variant_id }}" style="flex: 1; min-width: 140px; justify-content: center;">Add to cart</button>
+          
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%;" id="customizer-add-buttons">
+            {% if current_product != blank %}
+              {% assign first_variant_id = current_product.selected_or_first_available_variant.id %}
+              <script>
+                window.customizerVariants = {
+                  {% for variant in current_product.variants %}
+                    "{{ variant.title | escape | downcase }}": {{ variant.id }}{% unless forloop.last %},{% endunless %}
+                  {% endfor %}
+                };
+              </script>
+              <button type="button" class="btn btn-neon" id="addToCartBtn" data-variant-id="{{ first_variant_id }}" style="flex: 1; min-width: 140px; justify-content: center;">Add to cart</button>
+            {% else %}
+              <script>window.customizerVariants = {};</script>
+              <button type="button" class="btn btn-neon" disabled style="flex: 1; min-width: 140px; justify-content: center;">Add to cart</button>
+            {% endif %}
             <a href="#" class="btn btn-ghost" id="whatsappOrderBtn" target="_blank" rel="noopener noreferrer" style="flex: 1; min-width: 140px; justify-content: center;">WhatsApp Order →</a>
           </div>
         </div>
@@ -337,6 +352,14 @@
 {% schema %}
 {
   "name": "Premium Homepage",
+  "settings": [
+    {
+      "type": "product",
+      "id": "customizer_product",
+      "label": "Base Product for Customizer",
+      "info": "This product will be added to the cart when someone orders from the customizer."
+    }
+  ],
   "presets": [
     {
       "name": "Premium Homepage"
