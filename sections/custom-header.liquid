@@ -2,8 +2,8 @@
   <nav class="nav">
     <a href="{{ routes.root_url }}" class="logo">Neon<span>Adda</span></a>
     <div class="navlinks">
-      <a href="/#customizer" class="active">Customizer</a>
-      <a href="/collections/all">Shop</a>
+      <a href="/#customizer" {% if request.path == '/' %}class="active"{% endif %}>Customizer</a>
+      <a href="/collections/all" {% if request.path contains '/collections' or request.path contains '/products' %}class="active"{% endif %}>Shop</a>
       <a href="/#how">How it works</a>
       <a href="/#reviews">Reviews</a>
       <a href="#contact">Contact</a>

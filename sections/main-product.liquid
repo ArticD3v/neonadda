@@ -4,9 +4,9 @@
       
       <!-- Product Images -->
       <div class="neon-product-media" style="position: sticky; top: 120px; display: block; width: 100%;">
-        <div style="border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--panel); position: relative; aspect-ratio: 1/1; width: 100%;">
+        <div style="border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--panel); position: relative; aspect-ratio: 1/1; width: 100%; display: block;">
           {% if product.featured_image %}
-            <div class="brickwall" style="background-image: url('{{ product.featured_image | img_url: '1000x' }}'); background-size: cover; background-position: center; opacity: 1; filter: none; z-index: 0;"></div>
+            <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title | escape }}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1; display: block;">
           {% else %}
             <div class="brickwall" style="z-index: 0;"></div>
             <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Great Vibes', cursive; font-size: clamp(32px, 5vw, 64px); color: var(--cyan); text-shadow: 0 0 24px var(--cyan); text-align: center; padding: 40px; line-height: 1.2; z-index: 1;">
