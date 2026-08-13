@@ -1,5 +1,9 @@
 {
   "sections": {
+    "customizer": {
+      "type": "main-product-neon",
+      "settings": {}
+    },
     "custom_hero": {
       "type": "custom-hero",
       "settings": {}
@@ -43,6 +47,7 @@
   },
   "order": [
     "custom_hero",
+    "customizer",
     "custom_trust",
     "custom_bestsellers",
     "custom_occasions",

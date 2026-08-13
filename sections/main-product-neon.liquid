@@ -7,7 +7,7 @@
   {% assign current_product = collections.all.products.first %}
 {% endif %}
 
-<section class="section section--tight">
+<section id="customizer" class="section section--tight">
   <div class="shell">
     <span class="eyebrow">Neon Customizer</span>
     <h1 id="czHeading">{{ current_product.title | default: "Custom Neon Sign" }}</h1>
@@ -108,6 +108,11 @@
 {% schema %}
 {
   "name": "Neon Customizer",
-  "settings": []
+  "settings": [],
+  "presets": [
+    {
+      "name": "Neon Customizer"
+    }
+  ]
 }
 {% endschema %}
