@@ -196,6 +196,25 @@
                         -%}
                       {%- endif -%}
                     </a>
+                  {%- else -%}
+                    <a href="{{ item.url }}" class="cart-items__media-container" style="--ratio: 1; display: block; position: relative; background: #0c0b0f; overflow: hidden; border-radius: 8px; border: 1px solid var(--line);">
+                      <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 10px;">
+                        {%- assign custom_text = item.product.title -%}
+                        {%- assign custom_color = 'var(--cyan)' -%}
+                        {%- assign custom_font = 'Great Vibes' -%}
+                        {%- for property in item.properties -%}
+                          {%- if property.first == 'Custom Text' -%}{%- assign custom_text = property.last -%}{%- endif -%}
+                          {%- if property.first == 'Font Style' -%}{%- assign custom_font = property.last -%}{%- endif -%}
+                          {%- if property.first == 'Glow Color' -%}
+                            {%- assign custom_color = property.last -%}
+                            {%- if property.last == 'Signal Pink' -%}{%- assign custom_color = '#ff2f92' -%}{%- endif -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                        <span style="font-family: '{{ custom_font }}', cursive; color: {{ custom_color }}; text-shadow: 0 0 12px {{ custom_color }}; font-size: 20px; text-align: center; line-height: 1.1; display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                          {{ custom_text }}
+                        </span>
+                      </div>
+                    </a>
                   {%- endif %}
                 </td>
                 <td
