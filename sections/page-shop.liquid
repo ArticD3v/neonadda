@@ -8,9 +8,12 @@
 
 <section class="section section--tight" style="padding-top:0">
   <div class="shell">
-    {% assign shop_collection = collections[section.settings.collection] %}
-    {% if section.settings.collection == blank %}
-      {% assign shop_collection = collections.all %}
+    {% assign shop_collection = collection %}
+    {% if shop_collection == blank %}
+      {% assign shop_collection = collections[section.settings.collection] %}
+      {% if section.settings.collection == blank %}
+        {% assign shop_collection = collections.all %}
+      {% endif %}
     {% endif %}
 
     <div class="grid">
@@ -41,7 +44,7 @@
       <h2>Ready to see yours glow?</h2>
       <p>Design it on screen now, or send us a photo of your wall and we'll suggest a size.</p>
       <div class="band__cta">
-        <a class="btn btn--primary" href="/pages/customizer">Design your sign</a>
+        <a class="btn btn--primary" href="/products/neon-customizer">Design your sign</a>
         <a class="btn btn--wa" data-wa="Hi Neon Adda, I'd like to ask about a custom sign." href="#">Ask on WhatsApp</a>
       </div>
     </div>
