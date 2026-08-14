@@ -16,7 +16,7 @@
     --muted:#a49bb3;
     --line:rgba(244,238,227,0.09);
     --display: 'Great Vibes', cursive;
-    --heading: 'Outfit', sans-serif;
+    --heading: 'Plus Jakarta Sans', sans-serif;
     --mono: 'Space Mono', monospace;
     --body: 'Plus Jakarta Sans', sans-serif;
   }
@@ -24,25 +24,19 @@
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background-color:#020204;
+    background-color:#0b0c10;
     background-image: 
-      radial-gradient(ellipse at 80% 20%, rgba(0, 110, 255, 0.45) 0%, transparent 40%),
-      radial-gradient(ellipse at 20% 70%, rgba(200, 0, 255, 0.35) 0%, transparent 40%),
-      radial-gradient(ellipse at 50% 50%, rgba(0, 255, 170, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 10% 10%, rgba(255, 0, 128, 0.25) 0%, transparent 35%);
-    background-size: 150% 150%;
+      radial-gradient(circle at 10% 40%, rgba(68, 52, 48, 0.4) 0%, transparent 60%),
+      radial-gradient(circle at 90% 80%, rgba(38, 55, 66, 0.5) 0%, transparent 60%),
+      radial-gradient(circle at 60% 0%, rgba(35, 33, 45, 0.6) 0%, transparent 50%);
+    background-size: 100vw 100vh;
     background-attachment: fixed;
-    animation: glowFloat 25s ease-in-out infinite alternate;
     color:var(--ivory);
-    font-family:var(--body);
-    font-size:16px;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:15.5px;
     line-height:1.6;
+    letter-spacing:-0.01em;
     overflow-x:hidden;
-  }
-  @keyframes glowFloat {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0% 100%; }
   }
   
   /* ---------- scrollbar ---------- */
@@ -556,51 +550,45 @@
 
 .glass-panel {
   position: relative;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(25, 25, 30, 0.35);
+  backdrop-filter: blur(48px);
+  -webkit-backdrop-filter: blur(48px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.05);
   overflow: hidden;
-}
-.glass-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.08) 0px,
-    rgba(255, 255, 255, 0.01) 2px,
-    rgba(0, 0, 0, 0.05) 12px,
-    rgba(0, 0, 0, 0.2) 20px,
-    rgba(255, 255, 255, 0.08) 20px
-  );
-  z-index: 0;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  opacity: 0.8;
+  transition: all 0.3s ease;
 }
 .glass-panel > * {
   position: relative;
   z-index: 1;
 }
 .glass-chip {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(25, 25, 30, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .glass-chip:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(45, 45, 55, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
 }
 .glass-chip.active {
-  background: rgba(255, 47, 146, 0.08);
-  border-color: var(--pink);
-  box-shadow: 0 0 12px rgba(255, 47, 146, 0.2), inset 0 0 8px rgba(255, 47, 146, 0.1);
+  background: rgba(138, 180, 255, 0.1);
+  border: 1px solid rgba(138, 180, 255, 0.6);
+  box-shadow: 
+    0 0 20px rgba(138, 180, 255, 0.2), 
+    inset 0 0 15px rgba(138, 180, 255, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 /* ---------- Animated Liquid Background ---------- */
@@ -667,16 +655,4 @@ html, body, .font-picker-grid {
 }
 
 /* ---------- Specular Highlights ---------- */
-.glass-panel, .glass-chip {
-  position: relative;
-  overflow: hidden;
-}
-.glass-panel::before, .glass-chip::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 40%);
-  pointer-events: none;
-  z-index: 0;
-}
 .glass-chip > * { position: relative; z-index: 1; }
