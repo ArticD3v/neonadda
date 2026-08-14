@@ -22,21 +22,24 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
+  body {
     margin:0;
-    background-color:#0b0c10;
+    background-color:#0b0c10 !important;
     background-image: 
       radial-gradient(circle at 10% 40%, rgba(68, 52, 48, 0.4) 0%, transparent 60%),
       radial-gradient(circle at 90% 80%, rgba(38, 55, 66, 0.5) 0%, transparent 60%),
-      radial-gradient(circle at 60% 0%, rgba(35, 33, 45, 0.6) 0%, transparent 50%);
-    background-size: 100vw 100vh;
-    background-attachment: fixed;
+      radial-gradient(circle at 60% 0%, rgba(35, 33, 45, 0.6) 0%, transparent 50%) !important;
+    background-size: 100vw 100vh !important;
+    background-attachment: fixed !important;
     color:var(--ivory);
     font-family:'Plus Jakarta Sans', sans-serif;
     font-size:15.5px;
     line-height:1.6;
     letter-spacing:-0.01em;
     overflow-x:hidden;
+  }
+  main, .page-wrapper, .shopify-section, .gradient, .color-scheme-1, .color-scheme-2 {
+    background: transparent !important;
   }
   
   /* ---------- scrollbar ---------- */
@@ -76,6 +79,10 @@
     padding:14px 26px;border-radius:999px;border:1px solid transparent;
     cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
     text-decoration:none;
+  }
+  .script-line{
+    font-family:var(--display);font-size:84px;color:var(--pink);
+    text-shadow: none !important;
   }
   .btn-neon{
     background:var(--pink);color:#0a0308;
@@ -168,6 +175,22 @@
   .hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
   .hero-stats div{font-family:var(--heading);}
   .hero-stats .num{font-size:22px;font-weight:700;color:var(--ivory);}
+  .hero-stats .accent{
+    display: inline-block;
+    padding: 2px 24px;
+    border-radius: 999px;
+    background: rgba(25, 25, 30, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    vertical-align: middle;
+    line-height: 1.2;
+    transform: translateY(-2px);
+    color: var(--pink);
+    text-shadow: none !important;
+  }
   .hero-stats .num em{color:var(--cyan);font-style:normal;text-shadow:0 0 12px rgba(53,240,255,.6);}
   .hero-stats .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;}
 
@@ -656,3 +679,19 @@ html, body, .font-picker-grid {
 
 /* ---------- Specular Highlights ---------- */
 .glass-chip > * { position: relative; z-index: 1; }
+.accent {
+  display: inline-block;
+  padding: 4px 20px;
+  border-radius: 999px;
+  background: rgba(25, 25, 30, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  vertical-align: middle;
+  line-height: 1.2;
+  transform: translateY(-2px);
+  color: var(--pink);
+  text-shadow: none !important;
+}
