@@ -695,3 +695,78 @@ html, body, .font-picker-grid {
   color: var(--pink);
   text-shadow: none !important;
 }
+
+/* ================= LEAK CARDS ================= */
+.leak-card {
+  position: relative;
+  background: rgba(10, 10, 13, 0.75);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: 24px;
+  padding: 40px 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 10px 40px rgba(0, 0, 0, 0.4);
+  color: var(--ivory);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.leak-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+}
+.leak-bottom-purple::before { background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(147, 85, 255, 0.85) 0%, transparent 100%); }
+.leak-top-blue::before { background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(53, 140, 255, 0.8) 0%, transparent 100%); }
+.leak-top-cyan::before { background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(53, 240, 255, 0.6) 0%, transparent 100%); }
+.leak-bottom-pink::before { background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255, 47, 146, 0.7) 0%, transparent 100%); }
+.leak-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 24px;
+  position: relative;
+  z-index: 1;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 4px 12px rgba(0,0,0,0.3);
+}
+.leak-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+.leak-card h3 {
+  font-family: var(--heading);
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  position: relative;
+  z-index: 1;
+}
+.leak-card p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 24px;
+  position: relative;
+  z-index: 1;
+}
+.leak-card .btn-ghost {
+  margin-top: auto;
+  align-self: flex-start;
+  position: relative;
+  z-index: 1;
+  padding: 10px 24px;
+}
