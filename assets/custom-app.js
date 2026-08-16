@@ -145,14 +145,22 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       
       let variantId = addToCartBtn.dataset.variantId;
+      console.log('Default variantId from button:', variantId);
+      console.log('Available variants map:', window.customizerVariants);
+      console.log('Current Size Name:', currentSizeName);
+      
       if (window.customizerVariants && currentSizeName) {
         // Map 'Regular' to 'Small' for Shopify variant matching
         let searchName = currentSizeName.toLowerCase();
         if (searchName === 'regular') searchName = 'small';
         
+        console.log('Searching for variant:', searchName);
         const matchingId = window.customizerVariants[searchName];
         if (matchingId) {
           variantId = matchingId;
+          console.log('Found matching variantId:', variantId);
+        } else {
+          console.log('No matching variant found, falling back to default.');
         }
       }
 
@@ -170,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (giftPhone) {
         properties['Free Gift Linked Number'] = giftPhone;
       }
+
+      console.log('Payload being sent:', { id: variantId, quantity: 1, properties });
 
       addToCartBtn.textContent = 'Adding...';
       addToCartBtn.disabled = true;
@@ -195,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const errData = await res.json().catch(() => ({}));
           console.error('Add to cart failed:', errData);
           if (errData.description && errData.description.includes('sold out')) {
-            alert('Sorry, this product is currently out of stock. Please contact support.');
+            alert(`Sorry, this product is currently out of stock.\nDebug ID: ${variantId}\nError: ${errData.description}`);
           } else {
             alert('An error occurred while adding to cart. ' + (errData.description || 'Please try again.'));
           }
