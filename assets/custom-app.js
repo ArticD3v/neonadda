@@ -27,6 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentColorName = 'Signal Pink';
   let currentSizeName = 'Regular';
 
+  // Initialize color from active chip
+  const activeColorChip = document.querySelector('.color-chip.active');
+  if (activeColorChip) {
+    state.color = activeColorChip.dataset.color;
+    currentColorName = activeColorChip.dataset.name || 'Signal Pink';
+  }
+
   function hexToRgb(hex) {
     const v = hex.replace('#', '');
     const n = parseInt(v.length === 3 ? v.split('').map(c => c + c).join('') : v, 16);
@@ -75,7 +82,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateWhatsAppLink() {
     if (!whatsappOrderBtn) return;
     const text = textInput ? (textInput.value || 'Good Vibes') : 'Good Vibes';
-    const msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: "${text}"\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}\n\nPlease confirm availability and details!`;
+    let msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: "${text}"\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}`;
+    
+    const giftPhone = localStorage.getItem('neonGiftPhone');
+    if (giftPhone) {
+      msg += `\n• Linked Free Gift Number: ${giftPhone}`;
+    }
+    msg += `\n\nPlease confirm availability and details!`;
+    
     whatsappOrderBtn.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(msg)}`;
   }
 
@@ -131,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       
       let variantId = addToCartBtn.dataset.variantId;
-      // If we have a map of variants, try to find the one matching the selected size name
       if (window.customizerVariants && currentSizeName) {
         const matchingId = window.customizerVariants[currentSizeName.toLowerCase()];
         if (matchingId) {
@@ -140,6 +153,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const text = textInput ? (textInput.value || 'Good Vibes') : 'Good Vibes';
+      
+      const properties = {
+        'Custom Text': text,
+        'Font Style': currentFontName,
+        'Glow Color': currentColorName,
+        'Size': currentSizeName,
+        'Customizer Price': `₹${state.price.toLocaleString('en-IN')}`
+      };
+
+      const giftPhone = localStorage.getItem('neonGiftPhone');
+      if (giftPhone) {
+        properties['Free Gift Linked Number'] = giftPhone;
+      }
 
       addToCartBtn.textContent = 'Adding...';
       addToCartBtn.disabled = true;
@@ -149,13 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
           items: [{
             id: variantId ? parseInt(variantId, 10) : undefined,
             quantity: 1,
-            properties: {
-              'Custom Text': text,
-              'Font Style': currentFontName,
-              'Glow Color': currentColorName,
-              'Size': currentSizeName,
-              'Customizer Price': `₹${state.price.toLocaleString('en-IN')}`
-            }
+            properties: properties
           }]
         };
 
@@ -168,12 +188,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
           window.location.href = '/cart';
         } else {
-          console.error('Add to cart failed:', await res.text());
-          window.location.href = '/cart';
+          const errData = await res.json().catch(() => ({}));
+          console.error('Add to cart failed:', errData);
+          if (errData.description && errData.description.includes('sold out')) {
+            alert('Sorry, this product is currently out of stock. Please contact support.');
+          } else {
+            alert('An error occurred while adding to cart. ' + (errData.description || 'Please try again.'));
+          }
         }
       } catch (err) {
         console.error('Error adding to cart:', err);
-        window.location.href = '/cart';
+        alert('A network error occurred. Please try again.');
       } finally {
         addToCartBtn.textContent = 'Add to cart';
         addToCartBtn.disabled = false;
@@ -185,4 +210,75 @@ document.addEventListener('DOMContentLoaded', () => {
   applyGlow();
   updateText();
   updateWhatsAppLink();
+
+  // --- FREE GIFT POPUP LOGIC ---
+  const popup = document.getElementById('freeGiftPopup');
+  const closePopupBtn = document.getElementById('closeGiftPopup');
+  const giftForm = document.getElementById('freeGiftForm');
+  const giftPhoneInput = document.getElementById('giftPhone');
+  const giftSubmitBtn = document.getElementById('giftSubmitBtn');
+
+  if (popup && !localStorage.getItem('neonGiftPhone')) {
+    setTimeout(() => {
+      popup.style.display = 'flex';
+      // Trigger reflow for transition
+      popup.offsetHeight;
+      popup.style.opacity = '1';
+    }, 6000);
+  }
+
+  if (closePopupBtn) {
+    closePopupBtn.addEventListener('click', () => {
+      popup.style.opacity = '0';
+      setTimeout(() => popup.style.display = 'none', 400);
+    });
+  }
+
+  if (giftForm) {
+    giftForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const phone = giftPhoneInput.value.trim();
+      if (phone.length < 5) return;
+
+      giftSubmitBtn.textContent = 'Claiming...';
+      giftSubmitBtn.disabled = true;
+
+      // Dummy email to satisfy Shopify's customer creation requirements if needed
+      const dummyEmail = `gift_${phone}@guest.neonadda.com`;
+
+      const formData = new URLSearchParams();
+      formData.append('form_type', 'customer');
+      formData.append('utf8', '✓');
+      formData.append('contact[tags]', 'prospect, free-gift');
+      formData.append('contact[phone]', phone);
+      formData.append('contact[email]', dummyEmail);
+      formData.append('contact[first_name]', 'Free Gift');
+      formData.append('contact[last_name]', 'Lead');
+
+      try {
+        await fetch('/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: formData.toString()
+        });
+        
+        // Assume success since Shopify /contact endpoint rarely returns standard JSON errors for normal submissions
+        localStorage.setItem('neonGiftPhone', phone);
+        updateWhatsAppLink(); // Add the number to the WhatsApp message dynamically!
+        
+        giftSubmitBtn.textContent = 'Gift Claimed! 🎉';
+        giftSubmitBtn.style.background = '#3dff8c';
+        
+        setTimeout(() => {
+          popup.style.opacity = '0';
+          setTimeout(() => popup.style.display = 'none', 400);
+        }, 1500);
+
+      } catch (err) {
+        console.error('Error submitting form', err);
+        giftSubmitBtn.textContent = 'Claim Gift';
+        giftSubmitBtn.disabled = false;
+      }
+    });
+  }
 });
