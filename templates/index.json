@@ -11,8 +11,34 @@
   "sections": {
     "premium-homepage": {
       "type": "premium-homepage",
+      "blocks": {
+        "color_cYgrYL": {
+          "type": "color",
+          "settings": {
+            "color_name": "RED",
+            "color_hex": "#E10505"
+          }
+        },
+        "color_7qpPqC": {
+          "type": "color",
+          "settings": {
+            "color_name": "Signal Pink",
+            "color_hex": "#ff2f92"
+          }
+        }
+      },
+      "block_order": [
+        "color_cYgrYL",
+        "color_7qpPqC"
+      ],
       "settings": {
-        "customizer_product": "custom-neon-sign"
+        "customizer_product": "custom-neon-sign",
+        "price_regular_chars": 8,
+        "price_medium_chars": 12,
+        "price_base": 1500,
+        "price_addon_medium": 800,
+        "price_addon_large": 1000,
+        "whatsapp_number": "919876543210"
       }
     }
   },
