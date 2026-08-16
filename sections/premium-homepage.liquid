@@ -448,6 +448,20 @@
   </div>
 </div>
 
+<!-- Hidden iframe for silent background submission -->
+<iframe name="gift_iframe" id="gift_iframe" style="display:none;"></iframe>
+
+<!-- Real Liquid Form to bypass bot protection -->
+<div style="display:none;">
+  {% form 'customer', id: 'realShopifyGiftForm' %}
+    <input type="hidden" name="contact[tags]" value="prospect, free-gift">
+    <input type="hidden" name="contact[first_name]" value="Free Gift">
+    <input type="hidden" name="contact[last_name]" value="Lead">
+    <input type="hidden" name="contact[email]" id="realGiftEmail">
+    <input type="hidden" name="contact[phone]" id="realGiftPhone">
+  {% endform %}
+</div>
+
 <script>
   window.neonConfig = {
     pricing: {

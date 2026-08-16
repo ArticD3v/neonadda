@@ -260,23 +260,35 @@ document.addEventListener('DOMContentLoaded', () => {
       // Dummy email to satisfy Shopify's customer creation requirements if needed
       const dummyEmail = `gift_${phone}@guest.neonadda.com`;
 
-      const formData = new URLSearchParams();
-      formData.append('form_type', 'customer');
-      formData.append('utf8', '✓');
-      formData.append('contact[tags]', 'prospect, free-gift');
-      formData.append('contact[phone]', phone);
-      formData.append('contact[email]', dummyEmail);
-      formData.append('contact[first_name]', 'Free Gift');
-      formData.append('contact[last_name]', 'Lead');
-
       try {
-        await fetch('/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: formData.toString()
-        });
+        const realForm = document.getElementById('realShopifyGiftForm');
+        const realEmailInput = document.getElementById('realGiftEmail');
+        const realPhoneInput = document.getElementById('realGiftPhone');
+
+        if (realForm && realEmailInput && realPhoneInput) {
+          realEmailInput.value = dummyEmail;
+          realPhoneInput.value = phone;
+          realForm.target = 'gift_iframe';
+          realForm.submit();
+        } else {
+          // Fallback to fetch if the form wasn't rendered
+          const formData = new URLSearchParams();
+          formData.append('form_type', 'customer');
+          formData.append('utf8', '✓');
+          formData.append('contact[tags]', 'prospect, free-gift');
+          formData.append('contact[phone]', phone);
+          formData.append('contact[email]', dummyEmail);
+          formData.append('contact[first_name]', 'Free Gift');
+          formData.append('contact[last_name]', 'Lead');
+
+          await fetch('/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formData.toString()
+          });
+        }
         
-        // Assume success since Shopify /contact endpoint rarely returns standard JSON errors for normal submissions
+        // Assume success
         localStorage.setItem('neonGiftPhone', phone);
         updateWhatsAppLink(); // Add the number to the WhatsApp message dynamically!
         
