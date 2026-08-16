@@ -14,12 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const previewPane = document.querySelector('.preview-pane');
   const addToCartBtn = document.getElementById('addToCartBtn');
   const whatsappOrderBtn = document.getElementById('whatsappOrderBtn');
+  const autoSizeIndicator = document.getElementById('autoSizeIndicator');
 
-  let state = { color: '#ff2f92', size: 64, price: 3600, on: true };
+  // Fallback defaults if config is missing
+  const config = window.neonConfig || {
+    pricing: { regularChars: 8, mediumChars: 12, basePrice: 1500, addonMedium: 800, addonLarge: 1000 },
+    whatsappNumber: '919876543210'
+  };
+
+  let state = { color: '#ff2f92', price: config.pricing.basePrice, on: true };
   let currentFontName = 'Great Vibes';
   let currentColorName = 'Signal Pink';
-  let currentSizeName = 'Medium';
-  let currentWallName = 'Dark brick';
+  let currentSizeName = 'Regular';
 
   function hexToRgb(hex) {
     const v = hex.replace('#', '');
@@ -36,22 +42,41 @@ document.addEventListener('DOMContentLoaded', () => {
       0 0 16px rgba(${rgb},.85),
       0 0 36px rgba(${rgb},.55),
       0 0 72px rgba(${rgb},.3)`;
-    preview.style.fontSize = state.size + 'px';
   }
 
   function updateText() {
     if (!textInput || !preview) return;
     const val = textInput.value || 'Good Vibes';
     preview.textContent = val;
-    if (charCount) charCount.textContent = `${textInput.value.length} / 24`;
+    
+    // Auto pricing logic
+    const charLen = textInput.value.length;
+    if (charLen <= config.pricing.regularChars) {
+      currentSizeName = 'Regular';
+      state.price = config.pricing.basePrice;
+      preview.style.fontSize = '42px';
+    } else if (charLen <= config.pricing.mediumChars) {
+      currentSizeName = 'Medium';
+      state.price = config.pricing.basePrice + config.pricing.addonMedium;
+      preview.style.fontSize = '64px';
+    } else {
+      currentSizeName = 'Large';
+      state.price = config.pricing.basePrice + config.pricing.addonLarge;
+      preview.style.fontSize = '86px';
+    }
+
+    if (autoSizeIndicator) autoSizeIndicator.textContent = currentSizeName;
+    if (priceVal) priceVal.textContent = state.price.toLocaleString('en-IN');
+    if (charCount) charCount.textContent = `${charLen} / 24`;
+    
     updateWhatsAppLink();
   }
 
   function updateWhatsAppLink() {
     if (!whatsappOrderBtn) return;
     const text = textInput ? (textInput.value || 'Good Vibes') : 'Good Vibes';
-    const msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: "${text}"\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Wall: ${currentWallName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}\n\nPlease confirm availability and details!`;
-    whatsappOrderBtn.href = `https://wa.me/919876543210?text=${encodeURIComponent(msg)}`;
+    const msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: "${text}"\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}\n\nPlease confirm availability and details!`;
+    whatsappOrderBtn.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(msg)}`;
   }
 
   if (textInput) {
@@ -87,45 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (sizeRow) {
-    sizeRow.addEventListener('click', (e) => {
-      const chip = e.target.closest('.size-chip');
-      if (!chip) return;
-      [...sizeRow.children].forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      state.size = parseInt(chip.dataset.size, 10);
-      state.price = parseInt(chip.dataset.price, 10);
-      const sNameEl = chip.querySelector('.s-name');
-      currentSizeName = sNameEl ? sNameEl.textContent.trim() : 'Medium';
-      applyGlow();
-      if (priceVal) priceVal.textContent = state.price.toLocaleString('en-IN');
-      updateWhatsAppLink();
-    });
-  }
 
-  if (bgRow) {
-    bgRow.addEventListener('click', (e) => {
-      const chip = e.target.closest('.bg-chip');
-      if (!chip) return;
-      [...bgRow.children].forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      currentWallName = chip.textContent.trim();
-      if (chip.dataset.bg === 'light') {
-        if (previewPane) {
-          previewPane.style.setProperty('--brick-1', '#2a2630');
-          previewPane.style.setProperty('--brick-2', '#221f28');
-          previewPane.style.setProperty('--mortar', '#161319');
-        }
-      } else {
-        if (previewPane) {
-          previewPane.style.removeProperty('--brick-1');
-          previewPane.style.removeProperty('--brick-2');
-          previewPane.style.removeProperty('--mortar');
-        }
-      }
-      updateWhatsAppLink();
-    });
-  }
 
   if (powerToggle) {
     powerToggle.addEventListener('click', () => {
@@ -167,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
               'Font Style': currentFontName,
               'Glow Color': currentColorName,
               'Size': currentSizeName,
-              'Wall Backing': currentWallName,
               'Customizer Price': `₹${state.price.toLocaleString('en-IN')}`
             }
           }]

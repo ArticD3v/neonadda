@@ -153,53 +153,24 @@
         <div class="field">
           <label>Glow colour <span class="val" id="colorName">Signal Pink</span></label>
           <div class="swatch-row" id="colorRow" style="display:flex; flex-wrap:wrap; gap:12px;">
-            <div class="color-chip glass-chip active" data-color="#ff2f92" data-name="Signal Pink" style="display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; cursor:pointer;">
-              <div class="color-dot" style="width:16px; height:16px; border-radius:50%; background:#ff2f92; box-shadow:0 0 10px #ff2f92;"></div>
-              <span class="color-label" style="font-family:var(--heading); font-size:12px; font-weight:500; color:var(--ivory); position:relative; z-index:2;">Signal Pink <span style="color:rgba(255,255,255,0.4); margin-left:6px;">#FF2F92</span></span>
-            </div>
-            <div class="color-chip glass-chip" data-color="#35f0ff" data-name="Electric Cyan" style="display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; cursor:pointer;">
-              <div class="color-dot" style="width:16px; height:16px; border-radius:50%; background:#35f0ff; box-shadow:0 0 10px #35f0ff;"></div>
-              <span class="color-label" style="font-family:var(--heading); font-size:12px; font-weight:500; color:var(--ivory); position:relative; z-index:2;">Electric Cyan <span style="color:rgba(255,255,255,0.4); margin-left:6px;">#35F0FF</span></span>
-            </div>
-            <div class="color-chip glass-chip" data-color="#b26bff" data-name="Ultraviolet" style="display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; cursor:pointer;">
-              <div class="color-dot" style="width:16px; height:16px; border-radius:50%; background:#b26bff; box-shadow:0 0 10px #b26bff;"></div>
-              <span class="color-label" style="font-family:var(--heading); font-size:12px; font-weight:500; color:var(--ivory); position:relative; z-index:2;">Ultraviolet <span style="color:rgba(255,255,255,0.4); margin-left:6px;">#B26BFF</span></span>
-            </div>
-            <div class="color-chip glass-chip" data-color="#ffb52e" data-name="Amber Glow" style="display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; cursor:pointer;">
-              <div class="color-dot" style="width:16px; height:16px; border-radius:50%; background:#ffb52e; box-shadow:0 0 10px #ffb52e;"></div>
-              <span class="color-label" style="font-family:var(--heading); font-size:12px; font-weight:500; color:var(--ivory); position:relative; z-index:2;">Amber Glow <span style="color:rgba(255,255,255,0.4); margin-left:6px;">#FFB52E</span></span>
-            </div>
-            <div class="color-chip glass-chip" data-color="#3dff8c" data-name="Mint Flash" style="display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; cursor:pointer;">
-              <div class="color-dot" style="width:16px; height:16px; border-radius:50%; background:#3dff8c; box-shadow:0 0 10px #3dff8c;"></div>
-              <span class="color-label" style="font-family:var(--heading); font-size:12px; font-weight:500; color:var(--ivory); position:relative; z-index:2;">Mint Flash <span style="color:rgba(255,255,255,0.4); margin-left:6px;">#3DFF8C</span></span>
-            </div>
-            <div class="color-chip glass-chip" data-color="#ffffff" data-name="Ice White" style="display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; cursor:pointer;">
-              <div class="color-dot" style="width:16px; height:16px; border-radius:50%; background:#ffffff; box-shadow:0 0 10px #ffffff;"></div>
-              <span class="color-label" style="font-family:var(--heading); font-size:12px; font-weight:500; color:var(--ivory); position:relative; z-index:2;">Ice White <span style="color:rgba(255,255,255,0.4); margin-left:6px;">#FFFFFF</span></span>
-            </div>
+            {% for block in section.blocks %}
+              {% if block.type == 'color' %}
+                <div class="color-chip glass-chip {% if forloop.first %}active{% endif %}" data-color="{{ block.settings.color_hex }}" data-name="{{ block.settings.color_name | escape }}" style="display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; cursor:pointer;" {{ block.shopify_attributes }}>
+                  <div class="color-dot" style="width:16px; height:16px; border-radius:50%; background:{{ block.settings.color_hex }}; box-shadow:0 0 10px {{ block.settings.color_hex }};"></div>
+                  <span class="color-label" style="font-family:var(--heading); font-size:12px; font-weight:500; color:var(--ivory); position:relative; z-index:2;">{{ block.settings.color_name }} <span style="color:rgba(255,255,255,0.4); margin-left:6px;">{{ block.settings.color_hex | upcase }}</span></span>
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% if section.blocks.size == 0 %}
+              <p style="color:var(--muted); font-size:14px; width:100%;">No colors configured. Add them in the Theme Editor.</p>
+            {% endif %}
           </div>
         </div>
 
         <div class="field">
-          <label>Size</label>
-          <div class="size-row" id="sizeRow">
-            <div class="size-chip" data-size="42" data-price="2250">
-              <div class="s-name">Small</div><div class="s-dim">~10 in · ₹2,250</div>
-            </div>
-            <div class="size-chip active" data-size="64" data-price="3600">
-              <div class="s-name">Medium</div><div class="s-dim">~14 in · ₹3,600</div>
-            </div>
-            <div class="size-chip" data-size="86" data-price="5350">
-              <div class="s-name">Large</div><div class="s-dim">~20 in · ₹5,350</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="field" style="margin-bottom:0;">
-          <label>Mounting wall</label>
-          <div class="bg-row" id="bgRow">
-            <div class="bg-chip active" data-bg="dark">Dark brick</div>
-            <div class="bg-chip" data-bg="light">Bare plaster</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px 20px; border-radius:12px;">
+            <label style="margin:0; font-size:14px; color:var(--muted);">Calculated Size</label>
+            <div id="autoSizeIndicator" style="font-family:var(--heading); font-size:18px; font-weight:600; color:var(--ivory);">Regular</div>
           </div>
         </div>
 
@@ -454,6 +425,19 @@
   </div>
 </section>
 
+<script>
+  window.neonConfig = {
+    pricing: {
+      regularChars: {{ section.settings.price_regular_chars | default: 8 }},
+      mediumChars: {{ section.settings.price_medium_chars | default: 12 }},
+      basePrice: {{ section.settings.price_base | default: 1500 }},
+      addonMedium: {{ section.settings.price_addon_medium | default: 800 }},
+      addonLarge: {{ section.settings.price_addon_large | default: 1000 }}
+    },
+    whatsappNumber: "{{ section.settings.whatsapp_number | default: '919876543210' | escape }}"
+  };
+</script>
+
 {% schema %}
 {
   "name": "Premium Homepage",
@@ -463,11 +447,84 @@
       "id": "customizer_product",
       "label": "Base Product for Customizer",
       "info": "This product will be added to the cart when someone orders from the customizer."
+    },
+    {
+      "type": "header",
+      "content": "Pricing Rules"
+    },
+    {
+      "type": "number",
+      "id": "price_regular_chars",
+      "label": "Max characters for Regular size",
+      "default": 8
+    },
+    {
+      "type": "number",
+      "id": "price_medium_chars",
+      "label": "Max characters for Medium size",
+      "default": 12
+    },
+    {
+      "type": "number",
+      "id": "price_base",
+      "label": "Base Price (Regular Size)",
+      "default": 1500
+    },
+    {
+      "type": "number",
+      "id": "price_addon_medium",
+      "label": "Medium Size Add-on Price",
+      "default": 800
+    },
+    {
+      "type": "number",
+      "id": "price_addon_large",
+      "label": "Large Size Add-on Price",
+      "default": 1000
+    },
+    {
+      "type": "header",
+      "content": "WhatsApp Integration"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp Number",
+      "default": "919876543210",
+      "info": "Include country code without '+' (e.g., 919876543210)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "color",
+      "name": "Glow Color",
+      "settings": [
+        {
+          "type": "text",
+          "id": "color_name",
+          "label": "Color Name",
+          "default": "Signal Pink"
+        },
+        {
+          "type": "color",
+          "id": "color_hex",
+          "label": "Hex Color",
+          "default": "#ff2f92"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Premium Homepage"
+      "name": "Premium Homepage",
+      "blocks": [
+        { "type": "color", "settings": { "color_name": "Signal Pink", "color_hex": "#ff2f92" } },
+        { "type": "color", "settings": { "color_name": "Electric Cyan", "color_hex": "#35f0ff" } },
+        { "type": "color", "settings": { "color_name": "Ultraviolet", "color_hex": "#b26bff" } },
+        { "type": "color", "settings": { "color_name": "Amber Glow", "color_hex": "#ffb52e" } },
+        { "type": "color", "settings": { "color_name": "Mint Flash", "color_hex": "#3dff8c" } },
+        { "type": "color", "settings": { "color_name": "Ice White", "color_hex": "#ffffff" } }
+      ]
     }
   ]
 }
