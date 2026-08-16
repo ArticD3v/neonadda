@@ -146,7 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
       
       let variantId = addToCartBtn.dataset.variantId;
       if (window.customizerVariants && currentSizeName) {
-        const matchingId = window.customizerVariants[currentSizeName.toLowerCase()];
+        // Map 'Regular' to 'Small' for Shopify variant matching
+        let searchName = currentSizeName.toLowerCase();
+        if (searchName === 'regular') searchName = 'small';
+        
+        const matchingId = window.customizerVariants[searchName];
         if (matchingId) {
           variantId = matchingId;
         }
