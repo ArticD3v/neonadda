@@ -83,11 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!whatsappOrderBtn) return;
     const text = textInput ? (textInput.value || 'Good Vibes') : 'Good Vibes';
     let msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: "${text}"\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}`;
-    
-    const giftPhone = localStorage.getItem('neonGiftPhone');
-    if (giftPhone) {
-      msg += `\n• Linked Free Gift Number: ${giftPhone}`;
-    }
     msg += `\n\nPlease confirm availability and details!`;
     
     whatsappOrderBtn.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(msg)}`;
@@ -174,11 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'Customizer Price': `₹${state.price.toLocaleString('en-IN')}`
       };
 
-      const giftPhone = localStorage.getItem('neonGiftPhone');
-      if (giftPhone) {
-        properties['Free Gift Linked Number'] = giftPhone;
-      }
-
       console.log('Payload being sent:', { id: variantId, quantity: 1, properties });
 
       addToCartBtn.textContent = 'Adding...';
@@ -224,87 +214,4 @@ document.addEventListener('DOMContentLoaded', () => {
   applyGlow();
   updateText();
   updateWhatsAppLink();
-
-  // --- FREE GIFT POPUP LOGIC ---
-  const popup = document.getElementById('freeGiftPopup');
-  const closePopupBtn = document.getElementById('closeGiftPopup');
-  const giftForm = document.getElementById('freeGiftForm');
-  const giftPhoneInput = document.getElementById('giftPhone');
-  const giftSubmitBtn = document.getElementById('giftSubmitBtn');
-
-  if (popup && !localStorage.getItem('neonGiftPhone')) {
-    setTimeout(() => {
-      popup.style.display = 'flex';
-      // Trigger reflow for transition
-      popup.offsetHeight;
-      popup.style.opacity = '1';
-    }, 6000);
-  }
-
-  if (closePopupBtn) {
-    closePopupBtn.addEventListener('click', () => {
-      popup.style.opacity = '0';
-      setTimeout(() => popup.style.display = 'none', 400);
-    });
-  }
-
-  if (giftForm) {
-    giftForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const phone = giftPhoneInput.value.trim();
-      if (phone.length < 5) return;
-
-      giftSubmitBtn.textContent = 'Claiming...';
-      giftSubmitBtn.disabled = true;
-
-      // Dummy email to satisfy Shopify's customer creation requirements if needed
-      const dummyEmail = `gift_${phone}@guest.neonadda.com`;
-
-      try {
-        const realForm = document.getElementById('realShopifyGiftForm');
-        const realEmailInput = document.getElementById('realGiftEmail');
-        const realPhoneInput = document.getElementById('realGiftPhone');
-
-        if (realForm && realEmailInput && realPhoneInput) {
-          realEmailInput.value = dummyEmail;
-          realPhoneInput.value = phone;
-          realForm.target = 'gift_iframe';
-          realForm.submit();
-        } else {
-          // Fallback to fetch if the form wasn't rendered
-          const formData = new URLSearchParams();
-          formData.append('form_type', 'customer');
-          formData.append('utf8', '✓');
-          formData.append('contact[tags]', 'prospect, free-gift');
-          formData.append('contact[phone]', phone);
-          formData.append('contact[email]', dummyEmail);
-          formData.append('contact[first_name]', 'Free Gift');
-          formData.append('contact[last_name]', 'Lead');
-
-          await fetch('/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: formData.toString()
-          });
-        }
-        
-        // Assume success
-        localStorage.setItem('neonGiftPhone', phone);
-        updateWhatsAppLink(); // Add the number to the WhatsApp message dynamically!
-        
-        giftSubmitBtn.textContent = 'Gift Claimed! 🎉';
-        giftSubmitBtn.style.background = '#3dff8c';
-        
-        setTimeout(() => {
-          popup.style.opacity = '0';
-          setTimeout(() => popup.style.display = 'none', 400);
-        }, 1500);
-
-      } catch (err) {
-        console.error('Error submitting form', err);
-        giftSubmitBtn.textContent = 'Claim Gift';
-        giftSubmitBtn.disabled = false;
-      }
-    });
-  }
 });
