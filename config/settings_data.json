@@ -118,6 +118,11 @@
         "type": "shopify://apps/attrac/blocks/app-embed/b783956d-47a9-4434-91ad-4ec960bd74b0",
         "disabled": false,
         "settings": {}
+      },
+      "17270581071990108477": {
+        "type": "shopify://apps/hoppy-popups/blocks/Email_collection_Bar/0403c282-cb2c-4202-b054-d6c540cb0df9",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_palette": {
