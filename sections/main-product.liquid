@@ -1,6 +1,6 @@
 <section style="padding: 100px 0 60px;">
   <div class="wrap">
-    <div class="neon-product-grid" style="display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; gap: 60px !important; align-items: start !important; width: 100% !important;">
+    <div class="neon-product-grid">
       
       <!-- Product Images -->
       <div class="neon-product-media" style="position: sticky; top: 120px; display: block; width: 100%;">
@@ -87,12 +87,19 @@
 </section>
 
 <style>
+  .neon-product-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 60px;
+    align-items: start;
+    width: 100%;
+  }
   @media (max-width: 900px) {
-    .wrap > div {
-      grid-template-columns: 1fr !important;
-      gap: 40px !important;
+    .neon-product-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
     }
-    .product-media {
+    .neon-product-media {
       position: static !important;
     }
   }

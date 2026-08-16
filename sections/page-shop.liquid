@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="section-head" style="margin:0 auto 60px; text-align: center;">
       <div class="eyebrow" style="justify-content: center;">{{ section.settings.eyebrow }}</div>
-      <h2>{{ section.settings.heading | replace: ' ', ' <span class="accent">' | append: '</span>' | replace_first: '<span class="accent">', '' }}</h2>
+      <h2>{{ section.settings.heading }}</h2>
       <p style="margin: 0 auto; max-width: 600px;">{{ section.settings.description }}</p>
     </div>
 
@@ -74,7 +74,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Every sign ready to customise"
+      "default": "Every sign, <span class=\"accent\">ready to customise</span>"
     },
     {
       "type": "textarea",
