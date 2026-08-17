@@ -1,6 +1,8 @@
 <header>
   <nav class="nav">
-    <a href="{{ routes.root_url }}" class="logo">Neon<span>Adda</span></a>
+    <a href="{{ routes.root_url }}" class="logo-img" style="display: flex; align-items: center;">
+      <img src="{{ 'logo.png' | asset_url }}" alt="Neon Adda" style="height: 48px; width: auto; object-fit: contain;">
+    </a>
     <div class="navlinks">
       <a href="/#customizer" {% if request.path == '/' %}class="active"{% endif %}>Customizer</a>
       <a href="/collections/all" {% if request.path contains '/collections' or request.path contains '/products' %}class="active"{% endif %}>Shop</a>
