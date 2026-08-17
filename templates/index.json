@@ -12,11 +12,29 @@
     "premium-homepage": {
       "type": "premium-homepage",
       "blocks": {
+        "collection_card_cpU9mJ": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "asset-pack-102983335938-example-products",
+            "title": "",
+            "subtitle": "Make your space glow.",
+            "leak_color": "leak-bottom-pink"
+          }
+        },
+        "collection_card_LPMwHR": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "frontpage",
+            "title": "",
+            "subtitle": "Make your space glow.",
+            "leak_color": "leak-bottom-pink"
+          }
+        },
         "color_cYgrYL": {
           "type": "color",
           "settings": {
             "color_name": "Laal - Red",
-            "color_hex": "#E10505"
+            "color_hex": "#e10505"
           }
         },
         "color_7qpPqC": {
@@ -28,6 +46,8 @@
         }
       },
       "block_order": [
+        "collection_card_cpU9mJ",
+        "collection_card_LPMwHR",
         "color_cYgrYL",
         "color_7qpPqC"
       ],
