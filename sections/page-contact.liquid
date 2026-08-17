@@ -1,92 +1,44 @@
-<section class="section section--tight">
-  <div class="shell">
-    <span class="eyebrow">{{ section.settings.eyebrow }}</span>
-    <h1>{{ section.settings.title }}</h1>
-    <p class="lead" style="max-width:60ch;color:var(--muted)">{{ section.settings.subheading }}</p>
-  </div>
-</section>
+<section style="padding: 120px 0 80px; min-height: 80vh; display: flex; align-items: center;">
+  <div class="wrap" style="max-width: 800px;">
+    <div class="section-head" style="text-align: center; margin-bottom: 60px;">
+      <div class="eyebrow" style="justify-content: center;">We're here to help</div>
+      <h2>Get in <span class="accent">Touch</span></h2>
+      <p style="margin: 0 auto; max-width: 500px;">Need help with a custom design, order status, or installation? Send us a message or WhatsApp us directly.</p>
+    </div>
 
-<section class="section" style="padding-top:0">
-  <div class="shell">
-    <div class="contact">
-
-      <div>
-        <div class="contact__card" style="margin-bottom:1rem">
-          <h3 style="margin-bottom:.4rem">{{ section.settings.wa_heading }}</h3>
-          <p style="color:var(--muted);font-size:.94rem;margin-bottom:1.1rem">
-            {{ section.settings.wa_text }}
-          </p>
-          <a class="btn btn--wa btn--block" data-wa="{{ section.settings.wa_prefill }}" href="#">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1a12 12 0 01-5.6-4.9c-.4-.7-.8-1.5-.8-2.3 0-.9.4-1.3.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2 0 .4-.1.5l-.4.5c-.1.2-.3.3-.1.6a8 8 0 003.7 3.2c.3.1.5.1.6-.1l.8-1c.2-.2.3-.2.6-.1l1.8.9c.3.1.5.2.5.3z"/></svg>
-            {{ section.settings.wa_button }}
-          </a>
-        </div>
-
-        <div class="contact__card">
-          <ul class="contact__list">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg>
-              <div><b>Phone</b><a data-tel href="#"><span data-biz-phone data-ph>{{ section.settings.phone }}</span></a></div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
-              <div><b>Email</b><a data-mail href="#"><span data-biz-email data-ph>{{ section.settings.email }}</span></a></div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <div><b>Workshop</b><span data-biz-address data-ph>{{ section.settings.address }}</span></div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-              <div><b>Hours</b><span data-biz-hours data-ph>{{ section.settings.hours }}</span></div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              <div><b>Instagram</b><a data-ig href="#">{{ section.settings.instagram }}</a></div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="contact__card">
-        <h3 style="margin-bottom:1.2rem">{{ section.settings.form_heading }}</h3>
-        {% form 'contact', id: 'enquiry', novalidate: 'novalidate' %}
+    <div class="glass-panel leak-bottom-pink" style="padding: 40px; position: relative; z-index: 1;">
+      <div class="brickwall" style="opacity: 0.2;"></div>
+      <div style="position: relative; z-index: 2;">
+        {% form 'contact' %}
           {% if form.posted_successfully? %}
-            <p id="formNote" role="status" style="margin-top:1rem;padding:.9rem 1rem;border-radius:10px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.4);font-size:.9rem">Thanks for contacting us. We'll get back to you as soon as possible.</p>
-          {% elsif form.errors %}
-            <p id="formNote" role="status" style="margin-top:1rem;padding:.9rem 1rem;border-radius:10px;background:rgba(255,90,90,.12);border:1px solid rgba(255,90,90,.45);font-size:.9rem">Please fix the errors below.</p>
+            <div style="background: rgba(37, 211, 102, 0.1); border: 1px solid #25D366; color: #25D366; padding: 16px; border-radius: 8px; margin-bottom: 24px; text-align: center;">
+              Thanks for contacting us! We'll get back to you soon.
+            </div>
           {% endif %}
+          {{ form.errors | default_errors }}
           
-          <div class="cz__field">
-            <label class="cz__label" for="fName"><span>Your name</span></label>
-            <input class="input" id="fName" name="contact[name]" type="text" autocomplete="name" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+            <div class="field">
+              <label style="display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Name</label>
+              <input type="text" name="contact[name]" id="ContactFormName" class="glass-chip" style="width: 100%; border: 1px solid var(--line); outline: none; color: var(--ivory); padding: 14px 16px; font-family: var(--body); font-size: 15px;" placeholder="Your Name">
+            </div>
+            <div class="field">
+              <label style="display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Email</label>
+              <input type="email" name="contact[email]" id="ContactFormEmail" class="glass-chip" style="width: 100%; border: 1px solid var(--line); outline: none; color: var(--ivory); padding: 14px 16px; font-family: var(--body); font-size: 15px;" placeholder="you@example.com">
+            </div>
           </div>
-          <div class="cz__field">
-            <label class="cz__label" for="fPhone"><span>WhatsApp number</span></label>
-            <input class="input" id="fPhone" name="contact[phone]" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91" required value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+          
+          <div class="field" style="margin-bottom: 32px;">
+            <label style="display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Message</label>
+            <textarea rows="5" name="contact[body]" id="ContactFormMessage" class="glass-chip" style="width: 100%; border: 1px solid var(--line); outline: none; color: var(--ivory); padding: 14px 16px; font-family: var(--body); font-size: 15px; resize: vertical;" placeholder="How can we help you?"></textarea>
           </div>
-          <div class="cz__field">
-            <label class="cz__label" for="fEmail"><span>Email</span></label>
-            <input class="input" id="fEmail" name="contact[email]" type="email" autocomplete="email" required value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+          
+          <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+            <button type="submit" class="btn btn-neon" style="flex: 1; justify-content: center; min-width: 200px;">Send Message</button>
+            <a href="https://wa.me/919876543210" target="_blank" class="btn btn-ghost" style="flex: 1; justify-content: center; min-width: 200px; border-color: #25D366; color: #25D366;">Chat on WhatsApp</a>
           </div>
-          <div class="cz__field">
-            <label class="cz__label" for="fOcc"><span>What's it for?</span></label>
-            <select class="input" id="fOcc" name="contact[occasion]">
-              <option>Birthday</option><option>Wedding</option><option>Baby shower</option>
-              <option>Home decor</option><option>Business or café</option><option>Something else</option>
-            </select>
-          </div>
-          <div class="cz__field">
-            <label class="cz__label" for="fMsg"><span>Your idea</span></label>
-            <textarea class="input" id="fMsg" name="contact[body]" rows="4" placeholder="The words you want, roughly what size, and when you need it.">{% if form.body %}{{ form.body }}{% endif %}</textarea>
-          </div>
-          <button class="btn btn--primary btn--block" type="submit">Send enquiry</button>
-          <p class="fine">
-            {{ section.settings.form_note }}
-          </p>
         {% endform %}
       </div>
-
     </div>
   </div>
 </section>
@@ -94,103 +46,6 @@
 {% schema %}
 {
   "name": "Contact Page",
-  "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Contact"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Talk to us"
-    },
-    {
-      "type": "textarea",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "Most orders start with a message. Send your idea, your wall photo, or just a question — there's no obligation and the design proof is free."
-    },
-    {
-      "type": "header",
-      "content": "WhatsApp Callout"
-    },
-    {
-      "type": "text",
-      "id": "wa_heading",
-      "label": "Heading",
-      "default": "Fastest: WhatsApp"
-    },
-    {
-      "type": "textarea",
-      "id": "wa_text",
-      "label": "Text",
-      "default": "Send a photo of your wall and the words you want. We'll reply with a mockup and a price."
-    },
-    {
-      "type": "text",
-      "id": "wa_button",
-      "label": "Button Text",
-      "default": "Message on WhatsApp"
-    },
-    {
-      "type": "text",
-      "id": "wa_prefill",
-      "label": "Message Prefill",
-      "default": "Hi Neon Adda, I'd like to ask about a custom neon sign."
-    },
-    {
-      "type": "header",
-      "content": "Business Details"
-    },
-    {
-      "type": "text",
-      "id": "phone",
-      "label": "Phone",
-      "default": "+91 90000 00000"
-    },
-    {
-      "type": "text",
-      "id": "email",
-      "label": "Email",
-      "default": "hello@neonadda.in"
-    },
-    {
-      "type": "text",
-      "id": "address",
-      "label": "Address",
-      "default": "Studio address line 1, Kolkata, West Bengal 700000"
-    },
-    {
-      "type": "text",
-      "id": "hours",
-      "label": "Hours",
-      "default": "Mon–Sat, 10am – 7pm IST"
-    },
-    {
-      "type": "text",
-      "id": "instagram",
-      "label": "Instagram Handle",
-      "default": "@neonadda"
-    },
-    {
-      "type": "header",
-      "content": "Contact Form"
-    },
-    {
-      "type": "text",
-      "id": "form_heading",
-      "label": "Form Heading",
-      "default": "Or send an enquiry"
-    },
-    {
-      "type": "text",
-      "id": "form_note",
-      "label": "Form Note",
-      "default": "We reply within one working day. Your details are never shared."
-    }
-  ]
+  "settings": []
 }
 {% endschema %}

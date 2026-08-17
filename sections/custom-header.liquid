@@ -4,9 +4,8 @@
     <div class="navlinks">
       <a href="/#customizer" {% if request.path == '/' %}class="active"{% endif %}>Customizer</a>
       <a href="/collections/all" {% if request.path contains '/collections' or request.path contains '/products' %}class="active"{% endif %}>Shop</a>
-      <a href="/#how">How it works</a>
       <a href="/#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
+      <a href="/pages/contact" {% if request.path contains '/pages/contact' %}class="active"{% endif %}>Contact</a>
     </div>
     <div class="nav-cart">
       <a href="{{ routes.cart_url }}" class="cart-btn">Cart · {{ cart.total_price | money }}</a>
