@@ -218,41 +218,35 @@
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
       
-      <!-- Category 1 -->
-      <a href="/collections/all" style="text-decoration: none;">
-        <div class="cat-card glass-panel leak-bottom-pink" style="aspect-ratio: 4/3; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; position: relative;">
-          <div class="brickwall" style="opacity: 0.3;"></div>
-          <div style="position: relative; z-index: 2;">
-            <h3 style="color: var(--ivory); font-family: var(--heading); font-size: 32px; margin: 0 0 8px; line-height: 1.1;">Weddings & Events</h3>
-            <p style="color: var(--muted); margin: 0 0 20px; font-size: 15px;">Make your special day glow.</p>
-            <span class="btn btn-ghost" style="padding: 8px 18px; font-size: 13px;">Shop Collection →</span>
-          </div>
+      {% assign has_categories = false %}
+      {% for block in section.blocks %}
+        {% if block.type == 'collection_card' %}
+          {% assign has_categories = true %}
+          {% assign col = collections[block.settings.collection] %}
+          {% assign title = block.settings.title | default: col.title %}
+          {% if title == blank %}{% assign title = "Collection" %}{% endif %}
+          
+          <a href="{{ col.url | default: '/collections/all' }}" style="text-decoration: none;" {{ block.shopify_attributes }}>
+            <div class="cat-card glass-panel {{ block.settings.leak_color }}" style="aspect-ratio: 4/3; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden;">
+              <div class="brickwall" style="opacity: 0.3; {% if col.image %}background-image: url('{{ col.image | img_url: '600x' }}'); background-size: cover; background-position: center; filter: none; opacity: 0.75;{% endif %}"></div>
+              {% if col.image %}
+                <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,7,11,0) 0%, rgba(7,7,11,0.95) 100%); z-index: 1;"></div>
+              {% endif %}
+              <div style="position: relative; z-index: 2;">
+                <h3 style="color: var(--ivory); font-family: var(--heading); font-size: 32px; margin: 0 0 8px; line-height: 1.1;">{{ title }}</h3>
+                <p style="color: var(--muted); margin: 0 0 20px; font-size: 15px;">{{ block.settings.subtitle }}</p>
+                <span class="btn btn-ghost" style="padding: 8px 18px; font-size: 13px;">Shop Collection →</span>
+              </div>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+      
+      {% if has_categories == false %}
+        <div style="grid-column: 1/-1; text-align: center; padding: 40px; border: 1px dashed var(--line); border-radius: 12px;">
+          <p style="color: var(--muted); margin: 0;">Add Category Cards in the Theme Editor.</p>
         </div>
-      </a>
-
-      <!-- Category 2 -->
-      <a href="/collections/all" style="text-decoration: none;">
-        <div class="cat-card glass-panel leak-top-blue" style="aspect-ratio: 4/3; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; position: relative;">
-          <div class="brickwall" style="opacity: 0.3;"></div>
-          <div style="position: relative; z-index: 2;">
-            <h3 style="color: var(--ivory); font-family: var(--heading); font-size: 32px; margin: 0 0 8px; line-height: 1.1;">Business & Logos</h3>
-            <p style="color: var(--muted); margin: 0 0 20px; font-size: 15px;">Stand out on the high street.</p>
-            <span class="btn btn-ghost" style="padding: 8px 18px; font-size: 13px;">Shop Collection →</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Category 3 -->
-      <a href="/collections/all" style="text-decoration: none;">
-        <div class="cat-card glass-panel leak-bottom-purple" style="aspect-ratio: 4/3; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; position: relative;">
-          <div class="brickwall" style="opacity: 0.3;"></div>
-          <div style="position: relative; z-index: 2;">
-            <h3 style="color: var(--ivory); font-family: var(--heading); font-size: 32px; margin: 0 0 8px; line-height: 1.1;">Home & Gaming</h3>
-            <p style="color: var(--muted); margin: 0 0 20px; font-size: 15px;">Level up your personal space.</p>
-            <span class="btn btn-ghost" style="padding: 8px 18px; font-size: 13px;">Shop Collection →</span>
-          </div>
-        </div>
-      </a>
+      {% endif %}
 
     </div>
   </div>
@@ -473,6 +467,41 @@
           "default": "#ff2f92"
         }
       ]
+    },
+    {
+      "type": "collection_card",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Override Title (Optional)",
+          "info": "Leave blank to use the collection's name."
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Make your space glow."
+        },
+        {
+          "type": "select",
+          "id": "leak_color",
+          "label": "Glow Leak Color",
+          "options": [
+            { "value": "leak-bottom-pink", "label": "Bottom Pink" },
+            { "value": "leak-top-blue", "label": "Top Blue" },
+            { "value": "leak-bottom-purple", "label": "Bottom Purple" },
+            { "value": "leak-top-cyan", "label": "Top Cyan" }
+          ],
+          "default": "leak-bottom-pink"
+        }
+      ]
     }
   ],
   "presets": [
@@ -484,7 +513,10 @@
         { "type": "color", "settings": { "color_name": "Ultraviolet", "color_hex": "#b26bff" } },
         { "type": "color", "settings": { "color_name": "Amber Glow", "color_hex": "#ffb52e" } },
         { "type": "color", "settings": { "color_name": "Mint Flash", "color_hex": "#3dff8c" } },
-        { "type": "color", "settings": { "color_name": "Ice White", "color_hex": "#ffffff" } }
+        { "type": "color", "settings": { "color_name": "Ice White", "color_hex": "#ffffff" } },
+        { "type": "collection_card", "settings": { "title": "Weddings & Events", "subtitle": "Make your special day glow.", "leak_color": "leak-bottom-pink" } },
+        { "type": "collection_card", "settings": { "title": "Business & Logos", "subtitle": "Stand out on the high street.", "leak_color": "leak-top-blue" } },
+        { "type": "collection_card", "settings": { "title": "Home & Gaming", "subtitle": "Level up your personal space.", "leak_color": "leak-bottom-purple" } }
       ]
     }
   ]
