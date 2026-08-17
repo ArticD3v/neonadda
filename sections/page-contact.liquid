@@ -1,14 +1,14 @@
 <section style="padding: 120px 0 80px; min-height: 80vh; display: flex; align-items: center;">
   <div class="wrap" style="max-width: 1100px;">
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px;">
+    <div class="contact-grid">
       
       <!-- Left Panel: Info -->
-      <div class="glass-panel leak-top-blue" style="padding: 50px; display: flex; flex-direction: column; position: relative;">
+      <div class="glass-panel leak-top-blue contact-panel" style="display: flex; flex-direction: column; position: relative;">
         <div class="brickwall" style="opacity: 0.1;"></div>
         <div style="position: relative; z-index: 2; display: flex; flex-direction: column; height: 100%;">
           <div class="eyebrow" style="margin-bottom: 16px;">Contact Info Section</div>
-          <h2 style="font-family: var(--heading); font-size: 48px; margin: 0 0 16px; line-height: 1.1; color: var(--ivory);">Get in <span class="accent">Touch</span></h2>
+          <h2 class="contact-heading" style="font-family: var(--heading); margin: 0 0 16px; line-height: 1.1; color: var(--ivory);">Get in <span class="accent">Touch</span></h2>
           <p style="color: var(--muted); margin: 0 0 40px; font-size: 16px; line-height: 1.6;">We're here to discuss your custom neon sign and bring your ideas to life with premium craftsmanship.</p>
 
           <div style="display: flex; flex-direction: column; gap: 24px; margin-top: auto;">
@@ -32,7 +32,7 @@
       </div>
 
       <!-- Right Panel: Form -->
-      <div class="glass-panel leak-bottom-pink" style="padding: 50px; position: relative;">
+      <div class="glass-panel leak-bottom-pink contact-panel" style="position: relative;">
         <div class="brickwall" style="opacity: 0.1;"></div>
         <div style="position: relative; z-index: 2;">
           <div class="eyebrow" style="margin-bottom: 24px; justify-content: center;">Contact Form</div>
@@ -45,16 +45,16 @@
             {% endif %}
             {{ form.errors | default_errors }}
             
-            <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
               <input type="text" name="contact[name]" class="glass-chip" style="width: 100%; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.05) !important; box-shadow: inset 0 2px 10px rgba(0,0,0,0.2) !important; border-radius: 50px; outline: none; color: var(--ivory); padding: 16px 24px; font-family: var(--body); font-size: 15px;" placeholder="Your Name*">
               
               <input type="email" name="contact[email]" class="glass-chip" style="width: 100%; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.05) !important; box-shadow: inset 0 2px 10px rgba(0,0,0,0.2) !important; border-radius: 50px; outline: none; color: var(--ivory); padding: 16px 24px; font-family: var(--body); font-size: 15px;" placeholder="Email Address*">
               
               <textarea rows="4" name="contact[body]" class="glass-chip" style="width: 100%; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.05) !important; box-shadow: inset 0 2px 10px rgba(0,0,0,0.2) !important; border-radius: 24px; outline: none; color: var(--ivory); padding: 16px 24px; font-family: var(--body); font-size: 15px; resize: vertical;" placeholder="Write your message..."></textarea>
               
-              <div style="display: flex; gap: 16px; margin-top: 8px;">
+              <div class="contact-buttons" style="display: flex; gap: 16px; margin-top: 8px;">
                 <button type="submit" class="btn btn-neon" style="flex: 1; justify-content: center; padding: 16px; border-radius: 50px; font-size: 15px;">Send Message</button>
-                <a href="https://wa.me/917095844495" target="_blank" class="btn btn-ghost" style="justify-content: center; padding: 16px 24px; border-radius: 50px; border-color: #25D366; color: #25D366;">WhatsApp</a>
+                <a href="https://wa.me/917095844495" target="_blank" class="btn btn-ghost" style="flex: 1; justify-content: center; padding: 16px 24px; border-radius: 50px; border-color: #25D366; color: #25D366;">WhatsApp</a>
               </div>
             </div>
           {% endform %}
@@ -64,6 +64,38 @@
     </div>
   </div>
 </section>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+  }
+  .contact-panel {
+    padding: 50px;
+  }
+  .contact-heading {
+    font-size: 48px;
+  }
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .contact-panel {
+      padding: 30px 20px;
+    }
+    .contact-heading {
+      font-size: 36px;
+    }
+    .contact-buttons {
+      flex-direction: column;
+    }
+    .contact-buttons .btn {
+      width: 100%;
+    }
+  }
+</style>
 
 {% schema %}
 {

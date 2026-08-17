@@ -770,3 +770,5 @@ html, body, .font-picker-grid {
   z-index: 1;
   padding: 10px 24px;
 }
+
+@media (max-width: 768px) { .wrap { padding: 0 16px; } }
