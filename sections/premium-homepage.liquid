@@ -261,7 +261,11 @@
     </div>
     <div class="cat-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
       {% assign shop_collection = collections.all %}
-      {% for product in shop_collection.products limit: 4 %}
+      {% assign count = 0 %}
+      {% for product in shop_collection.products %}
+        {% if product.handle == 'custom-neon-sign' %}{% continue %}{% endif %}
+        {% if count >= 4 %}{% break %}{% endif %}
+        {% assign count = count | plus: 1 %}
         <a href="{{ product.url }}" style="text-decoration: none;">
           <div class="cat-card glass-panel" style="aspect-ratio: 1/1.2; box-shadow: 0 4px 24px rgba(0,0,0,0.4);">
             {% if product.featured_image %}
