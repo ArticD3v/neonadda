@@ -1,6 +1,6 @@
 <section style="padding: 100px 0 60px;">
   <div class="wrap">
-    <div class="neon-product-grid">
+    <div class="neon-product-grid" style="display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; gap: 60px !important; align-items: start !important; width: 100% !important;">
       
       <!-- Product Images -->
       <div class="neon-product-media" style="position: sticky; top: 120px; display: block; width: 100%;">
@@ -9,7 +9,7 @@
             <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title | escape }}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 1; display: block;">
           {% else %}
             <div class="brickwall" style="z-index: 0;"></div>
-            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: clamp(32px, 5vw, 64px); color: var(--ivory); text-align: center; padding: 40px; line-height: 1.2; z-index: 1;">
+            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Great Vibes', cursive; font-size: clamp(32px, 5vw, 64px); color: var(--cyan); text-shadow: 0 0 24px var(--cyan); text-align: center; padding: 40px; line-height: 1.2; z-index: 1;">
               {{ product.title }}
             </div>
           {% endif %}
@@ -87,19 +87,12 @@
 </section>
 
 <style>
-  .neon-product-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 60px;
-    align-items: start;
-    width: 100%;
-  }
   @media (max-width: 900px) {
-    .neon-product-grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
+    .wrap > div {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
     }
-    .neon-product-media {
+    .product-media {
       position: static !important;
     }
   }
