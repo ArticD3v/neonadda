@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Great+Vibes&family=Pacifico&family=Caveat:wght@600;700&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&family=Pacifico&family=Caveat:wght@600;700&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap');
 
 :root{
     --void:#07070b;
@@ -16,9 +16,9 @@
     --muted:#a49bb3;
     --line:rgba(244,238,227,0.09);
     --display: 'Great Vibes', cursive;
-    --heading: 'Plus Jakarta Sans', sans-serif;
+    --heading: 'Bebas Neue', sans-serif;
     --mono: 'Space Mono', monospace;
-    --body: 'Plus Jakarta Sans', sans-serif;
+    --body: 'Montserrat', sans-serif;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -32,7 +32,7 @@
     background-size: 100vw 100vh !important;
     background-attachment: fixed !important;
     color:var(--ivory);
-    font-family:'Plus Jakarta Sans', sans-serif;
+    font-family:'Montserrat', sans-serif;
     font-size:15.5px;
     line-height:1.6;
     letter-spacing:-0.01em;
