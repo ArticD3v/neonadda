@@ -45,8 +45,9 @@
     </div>
 
     <div class="customizer-grid">
-      <div class="preview-pane">
-        <div class="brickwall"></div>
+      <div class="preview-pane" style="position: relative;">
+        <img src="{{ 'logo.png' | asset_url }}" style="position: absolute; top: 24px; right: 24px; width: 60px; height: auto; z-index: 10; opacity: 0.8;" alt="Neon Adda Logo">
+        <div class="brickwall" id="customizer-bg"></div>
         <div class="preview-stage">
           <div id="neonPreview" class="neon-on" style="font-family:'Great Vibes',cursive; color:#ff2f92;">Good Vibes</div>
         </div>
@@ -164,6 +165,16 @@
             {% if section.blocks.size == 0 %}
               <p style="color:var(--muted); font-size:14px; width:100%;">No colors configured. Add them in the Theme Editor.</p>
             {% endif %}
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Wall Background</label>
+          <div class="bg-picker-grid" id="bgRow" style="display:flex; gap:12px; margin-top:8px;">
+            <div class="bg-chip active" data-bg="brick" style="width:48px; height:48px; border-radius:12px; cursor:pointer; background: #1a1a24; border: 2px solid var(--cyan); box-shadow: inset 0 0 10px rgba(0,0,0,0.5);" title="Dark Brick"></div>
+            <div class="bg-chip" data-bg="https://images.unsplash.com/photo-1517646287270-a569ca44e1f7?auto=format&fit=crop&q=80&w=1000" style="width:48px; height:48px; border-radius:12px; cursor:pointer; background: url('https://images.unsplash.com/photo-1517646287270-a569ca44e1f7?w=100') center/cover; border: 1px solid var(--line);" title="Concrete Wall"></div>
+            <div class="bg-chip" data-bg="https://images.unsplash.com/photo-1582216147416-24baeb0b62e4?auto=format&fit=crop&q=80&w=1000" style="width:48px; height:48px; border-radius:12px; cursor:pointer; background: url('https://images.unsplash.com/photo-1582216147416-24baeb0b62e4?w=100') center/cover; border: 1px solid var(--line);" title="Wood Panel"></div>
+            <div class="bg-chip" data-bg="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1000" style="width:48px; height:48px; border-radius:12px; cursor:pointer; background: url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=100') center/cover; border: 1px solid var(--line);" title="Greenery"></div>
           </div>
         </div>
 
