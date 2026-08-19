@@ -168,6 +168,14 @@
           </div>
         </div>
 
+        <div class="field">
+          <label>Wall Background</label>
+          <div class="bg-picker-grid" id="bgRow" style="display:flex; gap:12px; margin-top:8px;">
+            <div class="bg-chip active" data-bg="{{ 'bg_black_couch.jpg' | asset_url }}" style="width:48px; height:48px; border-radius:12px; cursor:pointer; background: url('{{ 'bg_black_couch.jpg' | asset_url }}') center/cover; border: 2px solid var(--cyan); box-shadow: inset 0 0 10px rgba(0,0,0,0.5);" title="Dark Couch"></div>
+            <div class="bg-chip" data-bg="{{ 'bg_dark_tvstand.jpg' | asset_url }}" style="width:48px; height:48px; border-radius:12px; cursor:pointer; background: url('{{ 'bg_dark_tvstand.jpg' | asset_url }}') center/cover; border: 1px solid var(--line);" title="TV Stand"></div>
+            <div class="bg-chip" data-bg="{{ 'bg_dark_chair.jpg' | asset_url }}" style="width:48px; height:48px; border-radius:12px; cursor:pointer; background: url('{{ 'bg_dark_chair.jpg' | asset_url }}') center/cover; border: 1px solid var(--line);" title="Armchair"></div>
+          </div>
+        </div>
 
         <div class="field">
           <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px 20px; border-radius:12px;">
