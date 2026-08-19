@@ -140,7 +140,13 @@
     text-decoration:none;color:var(--ivory);
   }
   .cart-btn:hover{border-color:var(--cyan);}
-  @media (max-width:900px){.navlinks{display:none;}}
+  @media (max-width:900px){
+    .navlinks{display:none !important;}
+    .mobile-toggle { display: block !important; }
+    .logo-img { margin: 0 auto !important; }
+    .nav { justify-content: flex-start !important; gap: 16px; }
+    .nav-cart { margin-left: auto; }
+  }
 
   /* ---------- hero ---------- */
   .hero{
@@ -560,6 +566,10 @@
     .steps{grid-template-columns:1fr;}
     .features{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:500px){
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column; text-align:center;}
   }
 
   @media (prefers-reduced-motion:reduce){
