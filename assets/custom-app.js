@@ -134,15 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
       chip.style.border = '2px solid var(--cyan)';
       
       const bg = chip.dataset.bg;
-      if (bg === 'brick') {
-        customizerBg.style.backgroundImage = '';
-        customizerBg.style.opacity = '1';
-      } else {
-        customizerBg.style.backgroundImage = `url('${bg}')`;
-        customizerBg.style.backgroundSize = 'cover';
-        customizerBg.style.backgroundPosition = 'center';
-        customizerBg.style.opacity = '0.4';
-      }
+      customizerBg.style.backgroundImage = `url('${bg}')`;
+      customizerBg.style.backgroundSize = 'cover';
+      customizerBg.style.backgroundPosition = 'center';
+      customizerBg.style.opacity = '0.4';
     });
   }
 
