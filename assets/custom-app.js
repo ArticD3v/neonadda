@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fallback defaults if config is missing
   const config = window.neonConfig || {
     pricing: { regularChars: 8, mediumChars: 12, basePrice: 1500, addonMedium: 800, addonLarge: 1000 },
-    whatsappNumber: '919876543210'
+    whatsappNumber: '917095844495'
   };
 
   let state = { color: '#ff2f92', price: config.pricing.basePrice, on: true };
