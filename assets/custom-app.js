@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
       customizerBg.style.opacity = '1';
     });
   }
+
   if (powerToggle) {
     powerToggle.addEventListener('click', () => {
       state.on = !state.on;
