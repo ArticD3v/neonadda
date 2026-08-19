@@ -8,17 +8,19 @@
     </a>
     <div class="navlinks" id="desktopNavLinks">
       <a href="/#customizer" {% if request.path == '/' %}class="active"{% endif %}>Customizer</a>
-      <a href="/collections/all" {% if request.path contains '/collections' or request.path contains '/products' %}class="active"{% endif %}>Shop</a>
+      <a href="/collections" {% if request.path == '/collections' %}class="active"{% endif %}>Categories</a>
+      <a href="/collections/all" {% if request.path == '/collections/all' or request.path contains '/products' %}class="active"{% endif %}>Shop</a>
       <a href="/#reviews">Reviews</a>
       <a href="/pages/contact" {% if request.path contains '/pages/contact' %}class="active"{% endif %}>Contact</a>
     </div>
     <div class="nav-cart">
-      <a href="{{ routes.cart_url }}" class="cart-btn">Cart · {{ cart.total_price | money }}</a>
+      <a href="{{ routes.cart_url }}" class="cart-btn">Cart &middot; {{ cart.total_price | money }}</a>
     </div>
   </nav>
 
   <div id="mobileDrawer" style="display:none; flex-direction:column; background:rgba(11, 12, 16, 0.95); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); position:absolute; top:100%; left:0; width:100%; padding:0 32px 24px; border-bottom:1px solid rgba(255,255,255,0.06); z-index:100;">
       <a href="/#customizer" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px; border-bottom:1px solid rgba(255,255,255,0.05);">Customizer</a>
+      <a href="/collections" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px; border-bottom:1px solid rgba(255,255,255,0.05);">Categories</a>
       <a href="/collections/all" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px; border-bottom:1px solid rgba(255,255,255,0.05);">Shop</a>
       <a href="/#reviews" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px; border-bottom:1px solid rgba(255,255,255,0.05);">Reviews</a>
       <a href="/pages/contact" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px;">Contact</a>
