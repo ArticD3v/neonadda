@@ -1,171 +1,26 @@
-<section class="section section--tight">
-  <div class="shell">
-    <span class="eyebrow">{{ section.settings.eyebrow }}</span>
-    <h1>{{ section.settings.title }}</h1>
-    <p class="lead" style="max-width:60ch;color:var(--muted)">{{ section.settings.subheading }}</p>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="shell" style="max-width:820px">
-    <div class="acc">
-      {% for block in section.blocks %}
-        {% if block.type == 'faq' %}
-        <div class="acc__item" data-open="false">
-          <button class="acc__q" aria-expanded="false">
-            {{ block.settings.question }}
-            <svg class="acc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="acc__a"><p>{{ block.settings.answer }}</p></div>
+<section class="premium-page" style="padding: 120px 0 80px; min-height: 70vh; display: flex; align-items: flex-start;">
+  <div class="wrap" style="max-width: 800px; width: 100%;">
+    <div class="glass-panel leak-top-pink" style="padding: 60px 40px; position: relative; border-radius: 16px;">
+      <div class="brickwall" style="opacity: 0.1;"></div>
+      <div style="position: relative; z-index: 2;">
+        <h1 style="font-family: var(--heading); color: var(--ivory); font-size: clamp(36px, 5vw, 48px); margin: 0 0 32px; line-height: 1.1; text-align: center;">Frequently Asked Questions</h1>
+        <div class="rte" style="color: var(--muted); font-size: 16px; line-height: 1.8;">
+          <h3 style="color: var(--cyan); margin-top: 30px;">How long does shipping take?</h3>
+          <p>Orders are handcrafted in Hyderabad and typically take 5-7 business days to process before shipping.</p>
+          
+          <h3 style="color: var(--cyan); margin-top: 30px;">How do I install my sign?</h3>
+          <p>Every sign comes with a free mounting kit. It's as easy as hanging a picture frame!</p>
+          
+          <h3 style="color: var(--cyan); margin-top: 30px;">What is the warranty?</h3>
+          <p>We offer a 2-year warranty on all electrical components.</p>
         </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="shell">
-    <div class="band reveal">
-      <h2>{{ section.settings.cta_title }}</h2>
-      <p>{{ section.settings.cta_text }}</p>
-      <div class="band__cta">
-        <a class="btn btn--primary" href="{{ section.settings.cta_link_1 }}">{{ section.settings.cta_button_1 }}</a>
-        <a class="btn btn--wa" data-wa="Hi Neon Adda, I'd like to ask about a custom sign." href="#">{{ section.settings.cta_button_2 }}</a>
       </div>
     </div>
   </div>
 </section>
-
 {% schema %}
 {
   "name": "FAQ Page",
-  "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "About us"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Questions, answered"
-    },
-    {
-      "type": "textarea",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "If yours isn't here, message us on WhatsApp — we usually reply within a couple of hours during working days."
-    },
-    {
-      "type": "header",
-      "content": "Call to Action"
-    },
-    {
-      "type": "text",
-      "id": "cta_title",
-      "label": "CTA Heading",
-      "default": "Ready to see yours glow?"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Text",
-      "default": "Design it on screen now, or send us a photo of your wall and we'll suggest a size."
-    },
-    {
-      "type": "text",
-      "id": "cta_button_1",
-      "label": "Button 1 Text",
-      "default": "Design your sign"
-    },
-    {
-      "type": "url",
-      "id": "cta_link_1",
-      "label": "Button 1 Link",
-      "default": "/#customizer"
-    },
-    {
-      "type": "text",
-      "id": "cta_button_2",
-      "label": "Button 2 Text",
-      "default": "Ask on WhatsApp"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "faq",
-      "name": "FAQ Item",
-      "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Question",
-          "default": "Question?"
-        },
-        {
-          "type": "textarea",
-          "id": "answer",
-          "label": "Answer",
-          "default": "Answer goes here."
-        }
-      ]
-    }
-  ],
-  "default": {
-    "blocks": [
-      {
-        "type": "faq",
-        "settings": {
-          "question": "How much does a custom neon sign cost?",
-          "answer": "Signs start at ₹2,250. Price depends on size and how many characters you use — the customizer shows your exact total as you type, including shipping and GST."
-        }
-      },
-      {
-        "type": "faq",
-        "settings": {
-          "question": "What size should I choose?",
-          "answer": "Small (40 × 20 cm) suits a desk, shelf or bedside. Medium (60 × 30 cm) is our most popular and sits well above a bed or sofa. Large (90 × 45 cm) is for feature walls, events and shopfronts. Not sure? Send a photo of your wall on WhatsApp and we'll mark up the scale."
-        }
-      },
-      {
-        "type": "faq",
-        "settings": {
-          "question": "Is this real neon gas?",
-          "answer": "No, and that's deliberate. These are LED neon flex signs. They look the same lit, but they use far less power, stay cool, won't shatter, and are safe around children and pets."
-        }
-      },
-      {
-        "type": "faq",
-        "settings": {
-          "question": "How long does delivery take?",
-          "answer": "Usually 5–8 days total: 3–4 days to build after you approve the proof, then 2–4 days in transit. Need it faster for an event? Tell us the date and we'll say honestly whether we can make it."
-        }
-      },
-      {
-        "type": "faq",
-        "settings": {
-          "question": "Can I see it before I pay?",
-          "answer": "Yes. We send a free design proof — your words, your colour, often mocked up on a photo of your own wall. Ask for as many changes as you need. Nothing is made until you approve it."
-        }
-      },
-      {
-        "type": "faq",
-        "settings": {
-          "question": "Can you make a logo or handwriting?",
-          "answer": "Yes. Send the artwork or a clear photo of the handwriting on WhatsApp. Logos are quoted individually because the tube path is more complex, but the proof is still free."
-        }
-      },
-      {
-        "type": "faq",
-        "settings": {
-          "question": "How do I hang it?",
-          "answer": "Every sign ships with screws, wall plugs and a paper drilling template. Line up the template, drill, screw in, plug it in. Most people do it in ten minutes. The acrylic backing has pre-drilled holes at the corners."
-        }
-      }
-    ]
-  }
+  "settings": []
 }
 {% endschema %}
