@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   let state = { color: '#ff2f92', price: config.pricing.basePrice, on: true };
-  let currentFontName = 'Great Vibes';
+  let currentFontName = 'Busted Soul';
   let currentColorName = 'Signal Pink';
   let currentSizeName = 'Regular';
 
