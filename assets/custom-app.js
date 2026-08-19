@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
       customizerBg.style.backgroundImage = `url('${bg}')`;
       customizerBg.style.backgroundSize = 'cover';
       customizerBg.style.backgroundPosition = 'center';
-      customizerBg.style.opacity = '0.4';
+      customizerBg.style.opacity = '1';
     });
   }
 
