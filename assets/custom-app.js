@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateText() {
     if (!textInput || !preview) return;
-    const val = textInput.value || 'Good Vibes';
+    const val = textInput.value || 'Busted Soul';
     preview.textContent = val;
     
     // Auto pricing logic
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateWhatsAppLink() {
     if (!whatsappOrderBtn) return;
-    const text = textInput ? (textInput.value || 'Good Vibes') : 'Good Vibes';
+    const text = textInput ? (textInput.value || 'Busted Soul') : 'Busted Soul';
     let msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: "${text}"\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}`;
     msg += `\n\nPlease confirm availability and details!`;
     
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      const text = textInput ? (textInput.value || 'Good Vibes') : 'Good Vibes';
+      const text = textInput ? (textInput.value || 'Busted Soul') : 'Busted Soul';
       
       const properties = {
         'Custom Text': text,
