@@ -1,0 +1,43 @@
+<section class="premium-collections-list" style="padding: 60px 0; background: var(--bg);">
+  <div class="wrap">
+    <div class="section-head text-center" style="margin-bottom: 40px; text-align: center;">
+      <div class="eyebrow" style="color:var(--cyan); font-family:var(--mono); text-transform:uppercase; letter-spacing:2px; font-size:12px; margin-bottom:12px;">Explore Categories</div>
+      <h1 style="font-family:var(--heading); color:var(--ivory); font-size:48px; margin:0;">All Collections</h1>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
+      {% for collection in collections %}
+        {% if collection.handle != 'frontpage' %}
+          <a href="{{ collection.url }}" style="text-decoration: none; display: block; border-radius: 16px; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.05); position: relative; transition: transform 0.2s ease, border-color 0.2s ease;" onmouseover="this.style.borderColor='var(--pink)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'">
+            <div style="aspect-ratio: 4/3; background: #000; overflow: hidden; position: relative;">
+              {% if collection.image %}
+                <img src="{{ collection.image | img_url: '600x' }}" alt="{{ collection.title | escape }}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+              {% else %}
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1a1a1a; color: var(--pink); font-family: var(--display); font-size: 36px; padding: 20px; text-align: center;">
+                  {{ collection.title }}
+                </div>
+              {% endif %}
+              <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,7,11,0.9), transparent);"></div>
+            </div>
+            <div style="padding: 24px; position: absolute; bottom: 0; left: 0; right: 0;">
+              <h2 style="font-family: var(--heading); color: var(--ivory); font-size: 28px; font-weight: 600; margin: 0 0 8px 0; line-height: 1.2;">{{ collection.title }}</h2>
+              <span style="color: var(--cyan); font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">{{ collection.products_count }} Items &rarr;</span>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Collection List",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Custom Collection List"
+    }
+  ]
+}
+{% endschema %}
