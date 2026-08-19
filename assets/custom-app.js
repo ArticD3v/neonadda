@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const customizerBg = document.getElementById('customizer-bg');
-  const bgRow = document.getElementById('bgRow');
   if (bgRow && customizerBg) {
     bgRow.addEventListener('click', (e) => {
       const chip = e.target.closest('.bg-chip');
