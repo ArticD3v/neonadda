@@ -18,7 +18,7 @@
     --display: 'Great Vibes', cursive;
     --heading: 'Cormorant Garamond', serif;
     --mono: 'Space Mono', monospace;
-    --body: 'Outfit', sans-serif;
+    --body: 'Cormorant Garamond', serif;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -33,8 +33,8 @@
     background-attachment: fixed !important;
     color:var(--ivory);
     font-family:var(--body);
-    font-size:15.5px;
-    line-height:1.6;
+    font-size: 18px;
+    line-height: 1.5;
     letter-spacing:-0.01em;
     overflow-x:hidden;
   }
@@ -169,8 +169,8 @@
       0 0 80px rgba(255,47,146,.3);
   }
   .hero-copy p.lede{
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: 22px;
+    line-height: 1.6;
     color: rgba(255, 255, 255, 0.85);
     max-width: 480px;
     margin: 0 0 32px;
