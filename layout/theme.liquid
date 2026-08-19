@@ -179,9 +179,7 @@
         {{ content_for_layout }}
       </main>
 
-      <footer>
-        {% section 'custom-footer' %}
-      </footer>
+      {% section 'custom-footer' %}
     </div>
 
     {% render 'cart-drawer', render_wrapper: true %}
