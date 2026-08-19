@@ -121,25 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const customizerBg = document.getElementById('customizer-bg');
-  if (bgRow && customizerBg) {
-    bgRow.addEventListener('click', (e) => {
-      const chip = e.target.closest('.bg-chip');
-      if (!chip) return;
-      [...bgRow.children].forEach(c => {
-        c.classList.remove('active');
-        c.style.border = '1px solid var(--line)';
-      });
-      chip.classList.add('active');
-      chip.style.border = '2px solid var(--cyan)';
-      
-      const bg = chip.dataset.bg;
-      customizerBg.style.backgroundImage = `url('${bg}')`;
-      customizerBg.style.backgroundSize = 'cover';
-      customizerBg.style.backgroundPosition = 'center';
-      customizerBg.style.opacity = '1';
-    });
-  }
+
 
 
 
