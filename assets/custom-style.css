@@ -169,7 +169,13 @@
       0 0 80px rgba(255,47,146,.3);
   }
   .hero-copy p.lede{
-    font-size:16.5px;line-height:1.7;color:var(--muted);max-width:460px;margin:0 0 32px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 480px;
+    margin: 0 0 32px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
   }
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
   .hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
