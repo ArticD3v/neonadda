@@ -5,13 +5,14 @@
       <div class="brickwall" style="opacity: 0.1;"></div>
       
       <div style="position: relative; z-index: 2;">
-        <h1 style="font-family: var(--heading); color: var(--ivory); font-size: clamp(36px, 5vw, 48px); margin: 0 0 32px; line-height: 1.1; text-align: center;">{{ page.title }}</h1>
+        <h1 style="font-family: var(--heading); color: var(--ivory); font-size: clamp(36px, 5vw, 48px); margin: 0 0 32px; line-height: 1.1; text-align: center;">
+          {% if page.title != blank %}{{ page.title }}{% else %}Neon Adda{% endif %}
+        </h1>
         
         <div class="rte" style="color: var(--muted); font-size: 16px; line-height: 1.8;">
-          {% assign p_title = page.title | downcase %}
-          {% assign p_handle = page.handle | downcase %}
+          {% assign current_path = request.path | downcase %}
           
-          {% if p_title contains 'faq' or p_handle contains 'faq' %}
+          {% if current_path contains '/faq' %}
             <h3 style="color: var(--cyan); margin-top: 30px;">How long does shipping take?</h3>
             <p>Orders are handcrafted in Hyderabad and typically take 5-7 business days to process before shipping.</p>
             
@@ -26,14 +27,14 @@
             
             {% if page.content != blank and page.content != '<p></p>' %}{{ page.content }}{% endif %}
           
-          {% elsif p_title contains 'story' or p_title contains 'about' or p_handle contains 'story' or p_handle contains 'about' %}
+          {% elsif current_path contains '/story' or current_path contains '/about' %}
             <p>We are <strong>Neon Adda</strong>, born in Hyderabad with a passion for bringing spaces to life with vibrant, custom neon artwork.</p>
             <p>Every sign we create is meticulously handcrafted using premium LED flex, ensuring durability, brightness, and absolute safety for your home, office, or business.</p>
             <p>Whether it's a personalized quote for your bedroom, or a massive glowing logo for your storefront, our team is dedicated to illuminating your vision with unmatched craftsmanship and care.</p>
             
             {% if page.content != blank and page.content != '<p></p>' %}{{ page.content }}{% endif %}
           
-          {% elsif p_title contains 'why' or p_title contains 'shipping' or p_title contains 'warranty' or p_title contains 'return' or p_handle contains 'why' or p_handle contains 'shipping' or p_handle contains 'warranty' or p_handle contains 'return' %}
+          {% elsif current_path contains '/why' or current_path contains '/shipping' or current_path contains '/warranty' or current_path contains '/return' %}
             <h2 style="color: var(--ivory); font-family: var(--heading); font-size: 32px; margin-top: 40px;">Shipping &amp; Returns</h2>
             <p>We proudly ship all over India. Each sign is securely packaged in custom-cut foam and heavy-duty boxes to prevent damage during transit. If your sign arrives damaged, please take photos and contact us within 48 hours for an immediate replacement.</p>
             <p>Because all our signs are custom-made to order, we do not accept returns or refunds for changes of mind. However, your satisfaction is our priority—if there is a manufacturing defect, we will fix it.</p>
@@ -43,7 +44,7 @@
             
             {% if page.content != blank and page.content != '<p></p>' %}{{ page.content }}{% endif %}
 
-          {% elsif p_title contains 'contact' or p_title contains 'location' or p_handle contains 'contact' or p_handle contains 'location' %}
+          {% elsif current_path contains '/contact' or current_path contains '/location' %}
             <h3 style="color: var(--cyan); margin-top: 30px;">Get in Touch</h3>
             <p>We're here to discuss your custom neon sign and bring your ideas to life with premium craftsmanship.</p>
             <ul style="list-style: none; padding: 0;">
