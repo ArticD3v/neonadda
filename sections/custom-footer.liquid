@@ -1,45 +1,51 @@
 <footer id="contact">
   <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col" style="flex: 2; min-width: 250px;">
-        <a href="{{ routes.root_url }}" class="logo-img" style="display: inline-flex; align-items: center; margin-bottom: 24px;">
-          <img src="{{ 'logo.png' | asset_url }}" alt="Neon Adda" style="height: 100px; width: auto; object-fit: contain;">
+    <div class="footer-row" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; margin-bottom: 50px;">
+      
+      <div style="flex: 1; min-width: 250px;">
+        <a href="{{ routes.root_url }}" class="logo-img" style="display: inline-flex; align-items: center; margin-bottom: 12px;">
+          <img src="{{ 'logo.png' | asset_url }}" alt="Neon Adda" style="height: 80px; width: auto; object-fit: contain;">
         </a>
-        <p style="color:var(--muted); font-size:15px; max-width:300px; line-height:1.6; margin-bottom: 24px;">Premium custom neon signs, handcrafted in Hyderabad and shipped all over India.</p>
+        <p style="color:var(--muted); font-size:14px; max-width:300px; line-height:1.6; margin: 0;">Premium custom neon signs, handcrafted in Hyderabad.</p>
       </div>
-      <div>
-        <h5>Shop</h5>
-        <ul>
-          <li><a href="/#customizer">Customizer</a></li>
-          <li><a href="/collections/all">Best sellers</a></li>
-          <li><a href="/collections/all">New arrivals</a></li>
-          <li><a href="/collections/all">Business logos</a></li>
-        </ul>
+      
+      <div class="footer-links" style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
+        <a href="/#customizer" style="text-decoration:none; color:var(--ivory); font-size:15px; font-weight: 500; opacity: 0.9;">Customizer</a>
+        <a href="/collections/all" style="text-decoration:none; color:var(--ivory); font-size:15px; font-weight: 500; opacity: 0.9;">Categories</a>
+        <a href="/pages/contact" style="text-decoration:none; color:var(--ivory); font-size:15px; font-weight: 500; opacity: 0.9;">Contact Us</a>
+        <a href="https://wa.me/917095844495" target="_blank" style="text-decoration:none; color:var(--cyan); font-size:15px; font-weight: 600;">WhatsApp Us</a>
       </div>
-      <div>
-        <h5>Company</h5>
-        <ul>
-          <li><a href="/pages/story">About us</a></li>
-          <li><a href="/pages/contact">Contact us</a></li>
-          <li><a href="/pages/contact">Location</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Support</h5>
-        <ul>
-          <li><a href="https://wa.me/917095844495" target="_blank">WhatsApp us</a></li>
-          <li><a href="/pages/why">Shipping &amp; returns</a></li>
-          <li><a href="/pages/why">Warranty</a></li>
-          <li><a href="/pages/faq">FAQs</a></li>
-        </ul>
-      </div>
+      
     </div>
+    
     <div class="footer-bottom">
       <span>&copy; {{ 'now' | date: '%Y' }} Neon Adda. Handmade in Hyderabad.</span>
       <span>Custom Neon Signs &middot; LED Wall Art &middot; Business Logos</span>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-links a:hover {
+    color: var(--pink) !important;
+    opacity: 1 !important;
+  }
+  @media (max-width: 768px) {
+    .footer-row {
+      flex-direction: column !important;
+      text-align: center;
+    }
+    .footer-row > div:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-links {
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+</style>
 
 {% schema %}
 {

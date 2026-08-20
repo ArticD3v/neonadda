@@ -12,39 +12,7 @@
         <div class="rte" style="color: var(--muted); font-size: 16px; line-height: 1.8;">
           {% assign current_path = request.path | downcase %}
           
-          {% if current_path contains '/faq' %}
-            <h3 style="color: var(--cyan); margin-top: 30px;">How long does shipping take?</h3>
-            <p>Orders are handcrafted in Hyderabad and typically take 5-7 business days to process before shipping.</p>
-            
-            <h3 style="color: var(--cyan); margin-top: 30px;">How do I install my sign?</h3>
-            <p>Every sign comes with a free mounting kit. It's as easy as hanging a picture frame, just drill, screw the mounts, and plug it in!</p>
-            
-            <h3 style="color: var(--cyan); margin-top: 30px;">What is the warranty?</h3>
-            <p>We offer a 2-year warranty on all electrical components. If your sign malfunctions under normal use, we will replace the faulty parts free of charge.</p>
-            
-            <h3 style="color: var(--cyan); margin-top: 30px;">Can I use my sign outdoors?</h3>
-            <p>Our standard signs are designed for indoor use. If you need an outdoor waterproof sign, please mention this when contacting our team for a custom order!</p>
-            
-            {% if page.content != blank and page.content != '<p></p>' %}{{ page.content }}{% endif %}
-          
-          {% elsif current_path contains '/story' or current_path contains '/about' %}
-            <p>We are <strong>Neon Adda</strong>, born in Hyderabad with a passion for bringing spaces to life with vibrant, custom neon artwork.</p>
-            <p>Every sign we create is meticulously handcrafted using premium LED flex, ensuring durability, brightness, and absolute safety for your home, office, or business.</p>
-            <p>Whether it's a personalized quote for your bedroom, or a massive glowing logo for your storefront, our team is dedicated to illuminating your vision with unmatched craftsmanship and care.</p>
-            
-            {% if page.content != blank and page.content != '<p></p>' %}{{ page.content }}{% endif %}
-          
-          {% elsif current_path contains '/why' or current_path contains '/shipping' or current_path contains '/warranty' or current_path contains '/return' %}
-            <h2 style="color: var(--ivory); font-family: var(--heading); font-size: 32px; margin-top: 40px;">Shipping &amp; Returns</h2>
-            <p>We proudly ship all over India. Each sign is securely packaged in custom-cut foam and heavy-duty boxes to prevent damage during transit. If your sign arrives damaged, please take photos and contact us within 48 hours for an immediate replacement.</p>
-            <p>Because all our signs are custom-made to order, we do not accept returns or refunds for changes of mind. However, your satisfaction is our priority—if there is a manufacturing defect, we will fix it.</p>
-            
-            <h2 style="color: var(--ivory); font-family: var(--heading); font-size: 32px; margin-top: 40px;">Warranty Information</h2>
-            <p>We stand by our craftsmanship. All our neon signs come with a 2-year warranty covering electrical failures such as the power adapter, dimmer, or internal wiring. (Note: Warranty does not cover physical damage caused after delivery or improper installation).</p>
-            
-            {% if page.content != blank and page.content != '<p></p>' %}{{ page.content }}{% endif %}
-
-          {% elsif current_path contains '/contact' or current_path contains '/location' %}
+          {% if current_path contains '/contact' or current_path contains '/location' %}
             <h3 style="color: var(--cyan); margin-top: 30px;">Get in Touch</h3>
             <p>We're here to discuss your custom neon sign and bring your ideas to life with premium craftsmanship.</p>
             <ul style="list-style: none; padding: 0;">
