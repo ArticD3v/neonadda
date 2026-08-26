@@ -1,0 +1,31 @@
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Handcrafted in India -+ Est. 2022</div>
+      <h1>This isn't lighting.<br><span class="dim">It's</span></h1>
+      <div class="script-line accent" style="padding:4px 36px;">branding.</div>
+      <p class="lede">Every neon sign we build is bent, wired, and tested by hand in our Hyderabad workshop GÇö then mounted on your wall as a permanent glow-up for your room, cafe, or storefront.</p>
+      <div class="hero-actions">
+        <a href="#customizer" class="btn btn-neon">Design your sign GåÆ</a>
+        <a href="#categories" class="btn btn-ghost">Browse the shop</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num"><em>10,000+</em> km</div><div class="lbl">Neon flex used</div></div>
+        <div><div class="num"><em>1 Lakh+</em></div><div class="lbl">Signs shipped</div></div>
+        <div><div class="num"><em>2 yr</em></div><div class="lbl">Warranty</div></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="brickwall"></div>
+      <div class="leafshadow"></div>
+      <div class="hero-art-content">
+        <div class="goodvibes">Busted</div>
+        <div class="vibes2">Soul</div>
+      </div>
+      <div class="plate">Mounted -+ 18+ù11 in -+ Warm Pink</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip">

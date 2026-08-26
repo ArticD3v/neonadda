@@ -1,46 +1,32 @@
-<!-- ================= CARNIVAL HERO ================= -->
-<section style="position: relative; width: 100%; min-height: 80vh; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; padding: 60px 20px;">
-  <div style="position: absolute; inset: 0; background: url('{{ 'carnival_banner.jpg' | asset_url }}') center/cover no-repeat; opacity: 0.6;"></div>
-  
-  <div style="position: relative; z-index: 2; text-align: center; max-width: 800px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
-    <h2 style="font-family: var(--display); font-size: clamp(40px, 8vw, 80px); color: #fff; margin: 0 0 10px; line-height: 1; text-shadow: 0 0 20px rgba(155, 0, 255, 0.8), 0 0 40px rgba(155, 0, 255, 0.5);">CARNIVAL <span style="color: var(--lime);">SALE</span></h2>
-    <h1 style="font-family: var(--heading); font-size: clamp(24px, 4vw, 42px); color: #fff; font-weight: 700; margin: 0 0 10px; letter-spacing: -1px;">EXPERTLY CRAFTED NEON SIGNS</h1>
-    <p style="font-family: var(--body); font-size: clamp(16px, 2vw, 22px); color: #ccc; margin: 0 0 30px;">with a <span style="color: #ffb703; font-weight: 700;">2 Years</span> Guarantee</p>
-    
-    <div style="background: var(--purple); border-radius: 12px; padding: 20px 40px; margin-bottom: 30px; border: 2px solid rgba(255,255,255,0.2);">
-      <h3 style="font-family: var(--heading); color: #fff; font-size: clamp(28px, 5vw, 48px); margin: 0; font-weight: 800; line-height: 1;">GET FLAT <span style="color: var(--lime);">20% OFF</span></h3>
-      <p style="font-family: var(--mono); color: #fff; font-size: 14px; margin: 5px 0 0; letter-spacing: 2px;">+ FREE NEON SIGN SITEWIDE</p>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Handcrafted in India -+ Est. 2022</div>
+      <h1>This isn't lighting.<br><span class="dim">It's</span></h1>
+      <div class="script-line accent" style="padding:4px 36px;">branding.</div>
+      <p class="lede">Every neon sign we build is bent, wired, and tested by hand in our Hyderabad workshop GÇö then mounted on your wall as a permanent glow-up for your room, cafe, or storefront.</p>
+      <div class="hero-actions">
+        <a href="#customizer" class="btn btn-neon">Design your sign GåÆ</a>
+        <a href="#categories" class="btn btn-ghost">Browse the shop</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num"><em>10,000+</em> km</div><div class="lbl">Neon flex used</div></div>
+        <div><div class="num"><em>1 Lakh+</em></div><div class="lbl">Signs shipped</div></div>
+        <div><div class="num"><em>2 yr</em></div><div class="lbl">Warranty</div></div>
+      </div>
     </div>
-    
-    <a href="#customizer" style="display: inline-flex; align-items: center; justify-content: center; background: var(--lime); color: #000; font-family: var(--heading); font-size: 18px; font-weight: 700; padding: 18px 40px; border-radius: 999px; text-decoration: none; transition: transform 0.2s ease;">Shop Now <svg width="24" height="24" style="margin-left:8px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+    <div class="hero-art">
+      <div class="brickwall"></div>
+      <div class="leafshadow"></div>
+      <div class="hero-art-content">
+        <div class="goodvibes">Busted</div>
+        <div class="vibes2">Soul</div>
+      </div>
+      <div class="plate">Mounted -+ 18+ù11 in -+ Warm Pink</div>
+    </div>
   </div>
 </section>
-
-<!-- ================= HOMEGROWN SECTION ================= -->
-<section style="background: #000; color: #fff; padding: 100px 5%; display: flex; align-items: center; justify-content: center;">
-  <div style="max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-    
-    <div class="hg-content" style="padding-right: 40px;">
-      <h2 style="font-family: var(--heading); font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.1; margin: 0 0 20px;">100% Homegrown,<br>Expertly Crafted</h2>
-      <p style="font-family: var(--body); font-size: 16px; color: #aaa; margin: 0 0 30px; line-height: 1.6;">All our products are handmade in India with flawless finishing.</p>
-      <p style="font-family: var(--body); font-size: 16px; color: #aaa; margin: 0 0 40px; line-height: 1.6;">That enables us to create 100% customized Neon Signs as per your preference. Just reach out to us and we'll take care of it!</p>
-      <a href="https://wa.me/917095844495" style="display: inline-flex; align-items: center; justify-content: center; background: var(--lime); color: #000; font-family: var(--heading); font-size: 16px; font-weight: 600; padding: 14px 28px; border-radius: 999px; text-decoration: none; transition: background 0.2s ease;">Reach out to us &rarr;</a>
-    </div>
-    
-    <div class="hg-image" style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
-      <img src="{{ 'neon_craftsman.jpg' | asset_url }}" style="width: 100%; height: auto; display: block;" alt="Neon Sign Craftsman">
-    </div>
-    
-  </div>
-</section>
-
-<style>
-  @media(max-width: 900px) {
-    .hg-content { padding-right: 0 !important; text-align: center; }
-    .hg-image { order: -1; }
-    section > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 40px !important; }
-  }
-</style>
 
 <div class="marquee-strip">
   <div class="marquee-track">
