@@ -1,29 +1,23 @@
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <div class="eyebrow">Handcrafted in India -+ Est. 2022</div>
-      <h1>This isn't lighting.<br><span class="dim">It's</span></h1>
-      <div class="script-line accent" style="padding:4px 36px;">branding.</div>
-      <p class="lede">Every neon sign we build is bent, wired, and tested by hand in our Hyderabad workshop GÇö then mounted on your wall as a permanent glow-up for your room, cafe, or storefront.</p>
-      <div class="hero-actions">
-        <a href="#customizer" class="btn btn-neon">Design your sign GåÆ</a>
-        <a href="#categories" class="btn btn-ghost">Browse the shop</a>
+<!-- ================= BOXED HERO BANNER ================= -->
+<section style="background: var(--void); padding: 40px 5% 60px; display: flex; justify-content: center;">
+  <div style="width: 100%; max-width: 1200px; position: relative; border-radius: 24px; overflow: hidden; background: #000; box-shadow: 0 20px 50px rgba(255, 47, 146, 0.15);">
+    
+    <!-- Background Image -->
+    <div style="position: absolute; inset: 0; background: url('{{ 'carnival_banner.jpg' | asset_url }}') center/cover no-repeat; opacity: 0.5; filter: saturate(1.2) hue-rotate(-10deg);"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));"></div>
+    
+    <!-- Banner Content -->
+    <div style="position: relative; z-index: 2; padding: 80px 40px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+      
+      <h2 style="font-family: var(--display); font-size: clamp(40px, 8vw, 70px); color: var(--ivory); margin: 0 0 10px; line-height: 1; text-shadow: 0 0 20px rgba(255, 47, 146, 0.6), 0 0 40px rgba(255, 47, 146, 0.3);">CUSTOM NEON</h2>
+      <h1 style="font-family: var(--heading); font-size: clamp(24px, 4vw, 36px); color: #fff; font-weight: 700; margin: 0 0 15px; letter-spacing: 1px; text-transform: uppercase;">Bring Your Space To Life</h1>
+      <p style="font-family: var(--body); font-size: clamp(16px, 2vw, 20px); color: #ddd; margin: 0 0 40px;">Expertly crafted in India with a <span style="color: var(--amber); font-weight: 700;">2 Years</span> Guarantee</p>
+      
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+        <a href="#customizer" style="display: inline-flex; align-items: center; justify-content: center; background: var(--pink); color: #fff; font-family: var(--heading); font-size: 16px; font-weight: 700; padding: 16px 36px; border-radius: 999px; text-decoration: none; transition: transform 0.2s ease; box-shadow: 0 0 20px rgba(255,47,146,0.4);">Design Your Sign &rarr;</a>
+        <a href="/collections/all" style="display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: var(--heading); font-size: 16px; font-weight: 700; padding: 16px 36px; border-radius: 999px; text-decoration: none; backdrop-filter: blur(10px);">Shop Best Sellers</a>
       </div>
-      <div class="hero-stats">
-        <div><div class="num"><em>10,000+</em> km</div><div class="lbl">Neon flex used</div></div>
-        <div><div class="num"><em>1 Lakh+</em></div><div class="lbl">Signs shipped</div></div>
-        <div><div class="num"><em>2 yr</em></div><div class="lbl">Warranty</div></div>
-      </div>
-    </div>
-    <div class="hero-art">
-      <div class="brickwall"></div>
-      <div class="leafshadow"></div>
-      <div class="hero-art-content">
-        <div class="goodvibes">Busted</div>
-        <div class="vibes2">Soul</div>
-      </div>
-      <div class="plate">Mounted -+ 18+ù11 in -+ Warm Pink</div>
+      
     </div>
   </div>
 </section>
