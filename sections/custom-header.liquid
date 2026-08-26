@@ -1,47 +1,73 @@
-<header style="position: relative;">
-  <nav class="nav">
-    <button id="mobileNavToggle" class="mobile-toggle" aria-label="Menu" style="display:none; background:none; border:none; color:var(--ivory); cursor:pointer; padding:8px;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-    </button>
-    <a href="{{ routes.root_url }}" class="logo-img" style="display: flex; align-items: center; margin: -16px 0;">
-      <img src="{{ 'logo.png' | asset_url }}" alt="Neon Adda" style="height: 80px; width: auto; object-fit: contain;">
-    </a>
-    <div class="navlinks" id="desktopNavLinks">
-      <a href="/#customizer" {% if request.path == '/' %}class="active"{% endif %}>Customizer</a>
-      <a href="/collections" {% if request.path == '/collections' %}class="active"{% endif %}>Categories</a>
-      <a href="/collections/all" {% if request.path == '/collections/all' or request.path contains '/products' %}class="active"{% endif %}>Shop</a>
-      <a href="/#reviews">Reviews</a>
-      <a href="/pages/contact" {% if request.path contains '/pages/contact' %}class="active"{% endif %}>Contact</a>
-    </div>
-    <div class="nav-cart">
-      <a href="{{ routes.cart_url }}" class="cart-btn">Cart &middot; {{ cart.total_price | money }}</a>
-    </div>
-  </nav>
+<div class="header-wrapper" style="background: #000;">
 
-  <div id="mobileDrawer" style="display:none; flex-direction:column; background:rgba(11, 12, 16, 0.95); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); position:absolute; top:100%; left:0; width:100%; padding:0 32px 24px; border-bottom:1px solid rgba(255,255,255,0.06); z-index:100;">
-      <a href="/#customizer" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px; border-bottom:1px solid rgba(255,255,255,0.05);">Customizer</a>
-      <a href="/collections" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px; border-bottom:1px solid rgba(255,255,255,0.05);">Categories</a>
-      <a href="/collections/all" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px; border-bottom:1px solid rgba(255,255,255,0.05);">Shop</a>
-      <a href="/#reviews" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px; border-bottom:1px solid rgba(255,255,255,0.05);">Reviews</a>
-      <a href="/pages/contact" style="color:var(--ivory); padding:16px 0; text-decoration:none; font-family:var(--heading); font-size:20px;">Contact</a>
+  <!-- Announcement Tier 1 (Black) -->
+  <div style="background: #000; color: #fff; text-align: center; font-family: var(--mono); font-size: 11px; padding: 6px 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+    ?? Neon Carnival Sale Ends in <span style="font-weight:bold; color:var(--lime);">1h : 20m : 31s</span>
   </div>
-</header>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const toggle = document.getElementById('mobileNavToggle');
-    const drawer = document.getElementById('mobileDrawer');
-    if(toggle && drawer) {
-      toggle.addEventListener('click', function() {
-        if(drawer.style.display === 'none') {
-          drawer.style.display = 'flex';
-        } else {
-          drawer.style.display = 'none';
-        }
-      });
-    }
-  });
-</script>
+  <!-- Announcement Tier 2 (Purple) -->
+  <div style="background: var(--purple); color: #fff; text-align: center; font-family: var(--body); font-size: 12px; font-weight: 500; padding: 8px 15px;">
+    ?? Trusted by Shark Tank India | ?? Neon Carnival is Live! Flat 20% OFF Site-wide + Free Neon Sign on Orders Above 6K
+  </div>
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 15px 40px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+    
+    <!-- Logo -->
+    <a href="{{ routes.root_url }}" style="display: flex; align-items: center; text-decoration: none;">
+      <span style="font-family: var(--heading); font-size: 28px; font-weight: 700; letter-spacing: -1px; line-height: 1; -webkit-text-stroke: 1px #fff; color: transparent;">NEON</span>
+      <br>
+      <span style="font-family: 'Busted Soul', cursive; font-size: 20px; color: var(--lime); transform: translateY(-5px) translateX(-40px); position: absolute; margin-top: 26px;">adda</span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="desktop-nav" style="display: flex; gap: 30px;">
+      <a href="/#customizer" class="nav-link">Customise Your Neon Light</a>
+      <a href="/collections/all" class="nav-link">Shop Neon Collection</a>
+      <a href="/collections/all" class="nav-link">Best Sellers</a>
+      <a href="/collections/all" class="nav-link">Business Logo</a>
+      <a href="/pages/story" class="nav-link">Shark Tank</a>
+    </nav>
+
+    <!-- Icons -->
+    <div style="display: flex; gap: 15px; align-items: center;">
+      <a href="#" class="icon-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </a>
+      <a href="/account" class="icon-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      </a>
+      <a href="/cart" class="icon-link cart-icon-wrapper" style="position:relative;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span class="cart-count" style="position: absolute; top:-6px; right:-10px; background: #fff; color: #000; font-size:10px; font-weight:700; border-radius:50%; width:16px; height:16px; display:flex; align-items:center; justify-content:center;">{{ cart.item_count }}</span>
+      </a>
+    </div>
+
+  </header>
+</div>
+
+<style>
+  .nav-link {
+    font-family: var(--body);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover {
+    color: var(--lime);
+  }
+  .icon-link {
+    color: #fff;
+    transition: color 0.2s ease;
+  }
+  .icon-link:hover {
+    color: var(--lime);
+  }
+  @media(max-width: 900px) {
+    .desktop-nav { display: none !important; }
+  }
+</style>
 
 {% schema %}
 {
