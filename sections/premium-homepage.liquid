@@ -22,6 +22,32 @@
   </div>
 </section>
 
+<!-- ================= HOMEGROWN SECTION ================= -->
+<section style="background: var(--void); color: #fff; padding: 100px 5%; display: flex; align-items: center; justify-content: center;">
+  <div style="max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+    
+    <div class="hg-content" style="padding-right: 40px;">
+      <h2 style="font-family: var(--heading); font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.1; margin: 0 0 20px;">100% Homegrown,<br>Expertly Crafted</h2>
+      <p style="font-family: var(--body); font-size: 16px; color: #aaa; margin: 0 0 30px; line-height: 1.6;">All our products are handmade in India with flawless finishing.</p>
+      <p style="font-family: var(--body); font-size: 16px; color: #aaa; margin: 0 0 40px; line-height: 1.6;">That enables us to create 100% customized Neon Signs as per your preference. Just reach out to us and we'll take care of it!</p>
+      <a href="https://wa.me/917095844495" style="display: inline-flex; align-items: center; justify-content: center; background: var(--lime); color: #000; font-family: var(--heading); font-size: 16px; font-weight: 600; padding: 14px 28px; border-radius: 999px; text-decoration: none; transition: background 0.2s ease;">Reach out to us &rarr;</a>
+    </div>
+    
+    <div class="hg-image" style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+      <img src="{{ 'neon_craftsman.jpg' | asset_url }}" style="width: 100%; height: auto; display: block;" alt="Neon Sign Craftsman">
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  @media(max-width: 900px) {
+    .hg-content { padding-right: 0 !important; text-align: center; }
+    .hg-image { order: -1; }
+    section > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 40px !important; }
+  }
+</style>
+
 <div class="marquee-strip">
   <div class="marquee-track">
     <span>Weddings <em>·</em></span><span>Cafés &amp; Bars <em>·</em></span><span>Home Studios <em>·</em></span><span>Storefronts <em>·</em></span><span>Gaming Rooms <em>·</em></span><span>Birthdays <em>·</em></span><span>Brand Logos <em>·</em></span>
