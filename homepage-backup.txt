@@ -1,5 +1,5 @@
 <!-- ================= BOXED HERO BANNER ================= -->
-<section style="background: #000; padding: 40px 5% 60px; display: flex; justify-content: center;">
+<section style="background: var(--void); padding: 40px 5% 60px; display: flex; justify-content: center;">
   <div style="width: 100%; max-width: 1200px; position: relative; border-radius: 24px; overflow: hidden; background: #000; box-shadow: 0 20px 50px rgba(255, 47, 146, 0.15);">
     
     <!-- Background Image -->
@@ -48,7 +48,7 @@
   }
 </style>
 
-<div class="marquee-strip" style="background: #fff; color: #000; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+<div class="marquee-strip">
   <div class="marquee-track">
     <span>Weddings <em>·</em></span><span>Cafés &amp; Bars <em>·</em></span><span>Home Studios <em>·</em></span><span>Storefronts <em>·</em></span><span>Gaming Rooms <em>·</em></span><span>Birthdays <em>·</em></span><span>Brand Logos <em>·</em></span>
     <span>Weddings <em>·</em></span><span>Cafés &amp; Bars <em>·</em></span><span>Home Studios <em>·</em></span><span>Storefronts <em>·</em></span><span>Gaming Rooms <em>·</em></span><span>Birthdays <em>·</em></span><span>Brand Logos <em>·</em></span>
@@ -56,12 +56,12 @@
 </div>
 
 <!-- ================= CUSTOMIZER ================= -->
-<section class="customizer" id="customizer" style="background: #fff; color: #000;">
+<section class="customizer" id="customizer">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Live Neon Customizer</div>
-      <h2 style="color: #000;">Type it. Light it. <span class="accent">See it glow.</span></h2>
-      <p style="color: #555;">Write your text, pick a font and colour, choose a size — the preview lights up exactly like the sign that lands on your wall.</p>
+      <h2>Type it. Light it. <span class="accent">See it glow.</span></h2>
+      <p>Write your text, pick a font and colour, choose a size — the preview lights up exactly like the sign that lands on your wall.</p>
     </div>
 
     <div class="customizer-grid">
@@ -81,8 +81,8 @@
       </div>
 
       <div class="controls-pane">
-        <h3 style="color: #000;">Build your sign</h3>
-        <p class="sub" style="color: #555;">This is a working demo of the customizer — plug in your Shopify product variants to make it checkout-ready.</p>
+        <h3>Build your sign</h3>
+        <p class="sub">This is a working demo of the customizer — plug in your Shopify product variants to make it checkout-ready.</p>
 
         <div class="field">
           <label>Your text <span class="val" id="charCount">10 / 24</span></label>
@@ -399,8 +399,8 @@
       <div class="brickwall"></div>
       <div class="final-cta-inner">
         <div class="eyebrow">Ready when you are</div>
-        <h2 style="color: #000;">Let's light up your wall.</h2>
-        <p style="color: #555;">Every project begins with a story. Bring yours to the customizer, or message our team directly and we'll design it with you.</p>
+        <h2>Let's light up your wall.</h2>
+        <p>Every project begins with a story. Bring yours to the customizer, or message our team directly and we'll design it with you.</p>
         <a href="#customizer" class="btn btn-neon">Start designing →</a>
       </div>
     </div>
