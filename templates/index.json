@@ -36,12 +36,84 @@
             "color_name": "White",
             "color_hex": "#FFFFFF"
           }
+        },
+        "color_anLN8k": {
+          "type": "color",
+          "settings": {
+            "color_name": "Warm white",
+            "color_hex": "#FDF4DC"
+          }
+        },
+        "color_byJERA": {
+          "type": "color",
+          "settings": {
+            "color_name": "Yellow",
+            "color_hex": "#FFFF00"
+          }
+        },
+        "color_AWP8gn": {
+          "type": "color",
+          "settings": {
+            "color_name": "Orange",
+            "color_hex": "#FFA500"
+          }
+        },
+        "color_qi7P68": {
+          "type": "color",
+          "settings": {
+            "color_name": "Red",
+            "color_hex": "#FF0000"
+          }
+        },
+        "color_DH49dh": {
+          "type": "color",
+          "settings": {
+            "color_name": "Green",
+            "color_hex": "#008000"
+          }
+        },
+        "color_8yAghq": {
+          "type": "color",
+          "settings": {
+            "color_name": "Blue",
+            "color_hex": "#0000FF"
+          }
+        },
+        "color_Q6bYFx": {
+          "type": "color",
+          "settings": {
+            "color_name": "Sky blue",
+            "color_hex": "#87CEEB"
+          }
+        },
+        "color_A4Fhng": {
+          "type": "color",
+          "settings": {
+            "color_name": "Pink",
+            "color_hex": "#FFC0CB"
+          }
+        },
+        "color_xaQyaq": {
+          "type": "color",
+          "settings": {
+            "color_name": "Purple",
+            "color_hex": "#800080"
+          }
         }
       },
       "block_order": [
         "collection_card_cpU9mJ",
         "collection_card_LPMwHR",
-        "color_cYgrYL"
+        "color_cYgrYL",
+        "color_anLN8k",
+        "color_byJERA",
+        "color_AWP8gn",
+        "color_qi7P68",
+        "color_DH49dh",
+        "color_8yAghq",
+        "color_Q6bYFx",
+        "color_A4Fhng",
+        "color_xaQyaq"
       ],
       "settings": {
         "customizer_product": "custom-neon-sign",
