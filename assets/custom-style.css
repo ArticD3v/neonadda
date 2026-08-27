@@ -790,3 +790,47 @@ html, body, .font-picker-grid {
 }
 
 @media (max-width: 768px) { .wrap { padding: 0 16px; } }
+
+@media (max-width: 900px) {
+  #fontRow {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding-bottom: 12px !important;
+    max-height: none !important;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px !important;
+    scrollbar-width: none;
+  }
+  #fontRow::-webkit-scrollbar {
+    display: none;
+  }
+  #fontRow .font-chip {
+    flex: 0 0 140px;
+    height: 70px;
+  }
+  
+  #colorRow, #bgRow {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding-bottom: 12px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #colorRow::-webkit-scrollbar, #bgRow::-webkit-scrollbar {
+    display: none;
+  }
+  #colorRow .color-chip, #bgRow .bg-chip {
+    flex: 0 0 auto;
+  }
+  
+  .controls-pane {
+    padding: 20px 16px !important;
+  }
+  .preview-pane {
+    min-height: 280px !important;
+    height: 40vh;
+  }
+}
