@@ -34,35 +34,35 @@
           "type": "color",
           "settings": {
             "color_name": "White",
-            "color_hex": "#FFFFFF"
+            "color_hex": "#ffffff"
           }
         },
         "color_anLN8k": {
           "type": "color",
           "settings": {
             "color_name": "Warm white",
-            "color_hex": "#FDF4DC"
+            "color_hex": "#fdf4dc"
           }
         },
         "color_byJERA": {
           "type": "color",
           "settings": {
             "color_name": "Yellow",
-            "color_hex": "#FFFF00"
+            "color_hex": "#ffff00"
           }
         },
         "color_AWP8gn": {
           "type": "color",
           "settings": {
             "color_name": "Orange",
-            "color_hex": "#FFA500"
+            "color_hex": "#ffa500"
           }
         },
         "color_qi7P68": {
           "type": "color",
           "settings": {
             "color_name": "Red",
-            "color_hex": "#FF0000"
+            "color_hex": "#ff0000"
           }
         },
         "color_DH49dh": {
@@ -76,21 +76,21 @@
           "type": "color",
           "settings": {
             "color_name": "Blue",
-            "color_hex": "#0000FF"
+            "color_hex": "#0000ff"
           }
         },
         "color_Q6bYFx": {
           "type": "color",
           "settings": {
             "color_name": "Sky blue",
-            "color_hex": "#87CEEB"
+            "color_hex": "#87ceeb"
           }
         },
         "color_A4Fhng": {
           "type": "color",
           "settings": {
             "color_name": "Pink",
-            "color_hex": "#FFC0CB"
+            "color_hex": "#ffc0cb"
           }
         },
         "color_xaQyaq": {
@@ -121,7 +121,7 @@
         "price_medium_chars": 12,
         "price_base": 1500,
         "price_addon_medium": 800,
-        "price_addon_large": 1000,
+        "price_addon_large": 1800,
         "whatsapp_number": "917095844495"
       }
     }
