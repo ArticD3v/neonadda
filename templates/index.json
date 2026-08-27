@@ -12,6 +12,15 @@
     "premium-homepage": {
       "type": "premium-homepage",
       "blocks": {
+        "collection_card_XjmqED": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "gaming-neon-signs",
+            "title": "",
+            "subtitle": "Make your space glow.",
+            "leak_color": "leak-bottom-pink"
+          }
+        },
         "collection_card_cpU9mJ": {
           "type": "collection_card",
           "settings": {
@@ -102,6 +111,7 @@
         }
       },
       "block_order": [
+        "collection_card_XjmqED",
         "collection_card_cpU9mJ",
         "collection_card_LPMwHR",
         "color_cYgrYL",
