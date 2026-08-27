@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+﻿function initNeonCustomizer() {
   const preview = document.getElementById('neonPreview');
   const textInput = document.getElementById('textInput');
   const charCount = document.getElementById('charCount');
@@ -11,12 +11,12 @@
   const powerToggle = document.getElementById('powerToggle');
   const powerDot = document.getElementById('powerDot');
   const powerLabel = document.getElementById('powerLabel');
-  const previewPane = document.querySelector('.preview-pane');
   const addToCartBtn = document.getElementById('addToCartBtn');
   const whatsappOrderBtn = document.getElementById('whatsappOrderBtn');
   const autoSizeIndicator = document.getElementById('autoSizeIndicator');
 
-  // Fallback defaults if config is missing
+  if (!preview || !textInput) return;
+
   const config = window.neonConfig || {
     pricing: { regularChars: 8, mediumChars: 12, basePrice: 1500, addonMedium: 800, addonLarge: 1000 },
     whatsappNumber: '917095844495'
@@ -27,16 +27,16 @@
   let currentColorName = 'White';
   let currentSizeName = 'Regular';
 
-  // Initialize color from active chip
   const activeColorChip = document.querySelector('.color-chip.active');
   if (activeColorChip) {
     state.color = activeColorChip.dataset.color;
-    currentColorName = activeColorChip.dataset.name || 'Signal Pink';
+    currentColorName = activeColorChip.dataset.name || 'White';
   }
 
   function hexToRgb(hex) {
+    if(!hex) return '255,255,255';
     const v = hex.replace('#', '');
-    const n = parseInt(v.length === 3 • v.split('').map(c => c + c).join('') : v, 16);
+    const n = parseInt(v.length === 3 ? v.split('').map(c => c + c).join('') : v, 16);
     return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`;
   }
 
@@ -52,108 +52,140 @@
   }
 
   function updateText() {
-    if (!textInput || !preview) return;
-    const val = textInput.value || 'Your Sign Here';
-    preview.textContent = val;
+    const tInput = document.getElementById('textInput');
+    const pView = document.getElementById('neonPreview');
+    if (!tInput || !pView) return;
     
-    // Auto pricing logic
-    const charLen = textInput.value.length;
-    if (charLen <= config.pricing.regularChars) {
+    const val = tInput.value || 'Your Sign Here';
+    pView.textContent = val;
+    
+    const liveConfig = window.neonConfig || config;
+    const charLen = tInput.value.length;
+    
+    if (charLen <= liveConfig.pricing.regularChars) {
       currentSizeName = 'Regular';
-      state.price = config.pricing.basePrice;
-      preview.style.fontSize = '42px';
-    } else if (charLen <= config.pricing.mediumChars) {
+      state.price = liveConfig.pricing.basePrice;
+      pView.style.fontSize = window.innerWidth <= 768 ? '32px' : '42px';
+    } else if (charLen <= liveConfig.pricing.mediumChars) {
       currentSizeName = 'Medium';
-      state.price = config.pricing.basePrice + config.pricing.addonMedium;
-      preview.style.fontSize = '64px';
+      state.price = liveConfig.pricing.basePrice + liveConfig.pricing.addonMedium;
+      pView.style.fontSize = window.innerWidth <= 768 ? '42px' : '64px';
     } else {
       currentSizeName = 'Large';
-      state.price = config.pricing.basePrice + config.pricing.addonLarge;
-      preview.style.fontSize = '86px';
+      state.price = liveConfig.pricing.basePrice + liveConfig.pricing.addonLarge;
+      pView.style.fontSize = window.innerWidth <= 768 ? '52px' : '86px';
     }
 
-    if (autoSizeIndicator) autoSizeIndicator.textContent = currentSizeName;
-    if (priceVal) priceVal.textContent = state.price.toLocaleString('en-IN');
-    if (charCount) charCount.textContent = `${charLen} / 24`;
+    const asInd = document.getElementById('autoSizeIndicator');
+    const pVal = document.getElementById('priceVal');
+    const cCount = document.getElementById('charCount');
+    if (asInd) asInd.textContent = currentSizeName;
+    if (pVal) pVal.textContent = state.price.toLocaleString('en-IN');
+    if (cCount) cCount.textContent = `${charLen} / 24`;
     
-    // Hide error if user starts typing
     const textError = document.getElementById('textError');
-    if (textInput.value.trim().length > 0) {
+    if (tInput.value.trim().length > 0) {
       if (textError) textError.style.display = 'none';
-      textInput.style.borderColor = 'var(--line)';
+      tInput.style.borderColor = 'var(--line)';
     }
 
-    updateWhatsAppLink();
+    updateWhatsAppLink(liveConfig);
   }
 
-  function updateWhatsAppLink() {
-    if (!whatsappOrderBtn) return;
-    const text = textInput • (textInput.value || 'Your Sign Here') : 'Your Sign Here';
-    let msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: ""\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}`;
-    msg += `\n\nPlease confirm availability and details!`;
+  function updateWhatsAppLink(liveConfig) {
+    const wBtn = document.getElementById('whatsappOrderBtn');
+    const tInput = document.getElementById('textInput');
+    if (!wBtn) return;
+    const text = tInput ? (tInput.value || 'Your Sign Here') : 'Your Sign Here';
     
-    whatsappOrderBtn.dataset.href = `https://wa.me/${config.whatsappNumber}•text=${encodeURIComponent(msg)}`;
+    let msg = "Hi Neon Adda! I want to order a custom neon sign:\n";
+    msg += "• Text: \"" + text + "\"\n";
+    msg += "• Font: " + currentFontName + "\n";
+    msg += "• Color: " + currentColorName + "\n";
+    msg += "• Size: " + currentSizeName + "\n";
+    msg += "• Estimated Price: INR " + state.price.toLocaleString('en-IN') + "\n\n";
+    msg += "Please confirm availability and details!";
+    
+    wBtn.dataset.href = `https://wa.me/${liveConfig.whatsappNumber}?text=${encodeURIComponent(msg)}`;
   }
 
   function validateInput() {
-    if (!textInput.value || textInput.value.trim() === "") {
+    const tInput = document.getElementById('textInput');
+    if (!tInput) return false;
+    if (!tInput.value || tInput.value.trim() === "") {
       const textError = document.getElementById('textError');
       if (textError) textError.style.display = 'block';
-      textInput.style.borderColor = '#ff5555';
-      textInput.focus();
+      tInput.style.borderColor = '#ff5555';
+      tInput.focus();
       return false;
     }
     return true;
   }
 
-  if (whatsappOrderBtn) {
-    whatsappOrderBtn.addEventListener('click', (e) => {
+  const wBtn = document.getElementById('whatsappOrderBtn');
+  if (wBtn) {
+    const newBtn = wBtn.cloneNode(true);
+    wBtn.replaceWith(newBtn);
+    newBtn.addEventListener('click', (e) => {
       e.preventDefault();
       if (validateInput()) {
-        window.open(whatsappOrderBtn.dataset.href, '_blank');
+        window.open(newBtn.dataset.href, '_blank');
       }
     });
   }
 
-  if (textInput) {
-    textInput.addEventListener('input', updateText);
+  const tInput = document.getElementById('textInput');
+  if (tInput) {
+    const newTextInput = tInput.cloneNode(true);
+    tInput.replaceWith(newTextInput);
+    newTextInput.addEventListener('input', updateText);
   }
 
-  const selectedFontName = document.getElementById('selectedFontName');
-
-  if (fontRow) {
-    fontRow.addEventListener('click', (e) => {
+  const fRow = document.getElementById('fontRow');
+  if (fRow) {
+    const newFRow = fRow.cloneNode(true);
+    fRow.replaceWith(newFRow);
+    newFRow.addEventListener('click', (e) => {
       const chip = e.target.closest('.font-chip');
       if (!chip) return;
-      [...fontRow.children].forEach(c => c.classList.remove('active'));
+      [...newFRow.children].forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-      if (preview) preview.style.fontFamily = chip.dataset.font;
+      const pView = document.getElementById('neonPreview');
+      if (pView) pView.style.fontFamily = chip.dataset.font;
       currentFontName = chip.dataset.name || chip.dataset.font.split(',')[0].replace(/'/g, '');
-      if (selectedFontName) selectedFontName.textContent = currentFontName;
-      updateWhatsAppLink();
+      const sFontName = document.getElementById('selectedFontName');
+      if (sFontName) sFontName.textContent = currentFontName;
+      updateWhatsAppLink(window.neonConfig || config);
     });
   }
 
-  if (colorRow) {
-    colorRow.addEventListener('click', (e) => {
+  const cRow = document.getElementById('colorRow');
+  if (cRow) {
+    const newCRow = cRow.cloneNode(true);
+    cRow.replaceWith(newCRow);
+    newCRow.addEventListener('click', (e) => {
       const chip = e.target.closest('.color-chip');
       if (!chip) return;
-      [...colorRow.children].forEach(c => c.classList.remove('active'));
+      [...newCRow.children].forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       state.color = chip.dataset.color;
-      currentColorName = chip.dataset.name || 'Signal Pink';
-      if (colorName) colorName.textContent = currentColorName;
+      currentColorName = chip.dataset.name || 'White';
+      const cName = document.getElementById('colorName');
+      if (cName) cName.textContent = currentColorName;
       applyGlow();
-      updateWhatsAppLink();
+      updateWhatsAppLink(window.neonConfig || config);
     });
   }
 
   const customizerBg = document.getElementById('customizer-bg');
-  if (bgRow && customizerBg) {
-    bgRow.addEventListener('click', (e) => {
+  const bRow = document.getElementById('bgRow');
+  if (bRow && customizerBg) {
+    const newBRow = bRow.cloneNode(true);
+    bRow.replaceWith(newBRow);
+    newBRow.addEventListener('click', (e) => {
       const chip = e.target.closest('.bg-chip');
       if (!chip) return;
-      [...bgRow.children].forEach(c => {
+      [...newBRow.children].forEach(c => {
         c.classList.remove('active');
         c.style.border = '1px solid var(--line)';
       });
@@ -162,69 +194,65 @@
       
       const bg = chip.dataset.bg;
       customizerBg.style.backgroundImage = `url('${bg}')`;
-      customizerBg.style.backgroundSize = 'cover';
-      customizerBg.style.backgroundPosition = 'center';
-      customizerBg.style.opacity = '1';
     });
   }
 
-  if (powerToggle) {
-    powerToggle.addEventListener('click', () => {
+  const pToggle = document.getElementById('powerToggle');
+  if (pToggle) {
+    const newPower = pToggle.cloneNode(true);
+    pToggle.replaceWith(newPower);
+    newPower.addEventListener('click', () => {
       state.on = !state.on;
-      if (preview) {
-        preview.classList.toggle('neon-off', !state.on);
-        preview.classList.toggle('neon-on', state.on);
+      const pView = document.getElementById('neonPreview');
+      if (pView) {
+        pView.classList.toggle('neon-off', !state.on);
+        pView.classList.toggle('neon-on', state.on);
       }
-      if (powerDot) powerDot.classList.toggle('on', state.on);
-      if (powerLabel) powerLabel.textContent = state.on • 'Power on' : 'Power off';
+      const pDot = document.getElementById('powerDot');
+      if (pDot) pDot.classList.toggle('on', state.on);
+      const pLabel = document.getElementById('powerLabel');
+      if (pLabel) pLabel.textContent = state.on ? 'Power on' : 'Power off';
     });
   }
 
-  if (addToCartBtn) {
-    addToCartBtn.addEventListener('click', async (e) => {
+  const aCartBtn = document.getElementById('addToCartBtn');
+  if (aCartBtn) {
+    const newCartBtn = aCartBtn.cloneNode(true);
+    aCartBtn.replaceWith(newCartBtn);
+    newCartBtn.addEventListener('click', async (e) => {
       e.preventDefault();
       
       if (!validateInput()) return;
       
-      let variantId = addToCartBtn.dataset.variantId;
-      console.log('Default variantId from button:', variantId);
-      console.log('Available variants map:', window.customizerVariants);
-      console.log('Current Size Name:', currentSizeName);
-      
+      let variantId = newCartBtn.dataset.variantId;
       if (window.customizerVariants && currentSizeName) {
-        // Map 'Regular' to 'Small' for Shopify variant matching
         let searchName = currentSizeName.toLowerCase();
         if (searchName === 'regular') searchName = 'small';
         
-        console.log('Searching for variant:', searchName);
         const matchingId = window.customizerVariants[searchName];
         if (matchingId) {
           variantId = matchingId;
-          console.log('Found matching variantId:', variantId);
-        } else {
-          console.log('No matching variant found, falling back to default.');
         }
       }
 
-      const text = textInput • (textInput.value || 'Your Sign Here') : 'Your Sign Here';
+      const tInput = document.getElementById('textInput');
+      const text = tInput ? (tInput.value || 'Your Sign Here') : 'Your Sign Here';
       
       const properties = {
         'Custom Text': text,
         'Font Style': currentFontName,
         'Glow Color': currentColorName,
         'Size': currentSizeName,
-        'Customizer Price': `â‚¹${state.price.toLocaleString('en-IN')}`
+        'Customizer Price': `INR ${state.price.toLocaleString('en-IN')}`
       };
 
-      console.log('Payload being sent:', { id: variantId, quantity: 1, properties });
-
-      addToCartBtn.textContent = 'Adding...';
-      addToCartBtn.disabled = true;
+      newCartBtn.textContent = 'Adding...';
+      newCartBtn.disabled = true;
 
       try {
         const payload = {
           items: [{
-            id: variantId • parseInt(variantId, 10) : undefined,
+            id: variantId ? parseInt(variantId, 10) : undefined,
             quantity: 1,
             properties: properties
           }]
@@ -240,28 +268,27 @@
           window.location.href = '/cart';
         } else {
           const errData = await res.json().catch(() => ({}));
-          console.error('Add to cart failed:', errData);
-          if (errData.description && errData.description.includes('sold out')) {
-            alert(`Sorry, this product is currently out of stock.\nDebug ID: ${variantId}\nError: ${errData.description}`);
-          } else {
-            alert('An error occurred while adding to cart. ' + (errData.description || 'Please try again.'));
-          }
+          alert('An error occurred while adding to cart. ' + (errData.description || 'Please try again.'));
         }
       } catch (err) {
-        console.error('Error adding to cart:', err);
         alert('A network error occurred. Please try again.');
       } finally {
-        addToCartBtn.textContent = 'Add to cart';
-        addToCartBtn.disabled = false;
+        newCartBtn.textContent = 'Add to cart';
+        newCartBtn.disabled = false;
       }
     });
   }
 
-  if (colorName) colorName.textContent = currentColorName;
+  const cName = document.getElementById('colorName');
+  if (cName) cName.textContent = currentColorName;
   applyGlow();
   updateText();
-  updateWhatsAppLink();
+}
+
+document.addEventListener('DOMContentLoaded', initNeonCustomizer);
+document.addEventListener('shopify:section:load', initNeonCustomizer);
+
+window.addEventListener('resize', () => {
+  const tInput = document.getElementById('textInput');
+  if(tInput) tInput.dispatchEvent(new Event('input'));
 });
-
-
-
