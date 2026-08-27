@@ -834,3 +834,25 @@ html, body, .font-picker-grid {
     height: 40vh;
   }
 }
+
+/* ================= REMOVE ALL OPACITY/OVERLAYS ================= */
+.card__media::after,
+.media::after,
+.collection-hero__image-container::after,
+.media--overlay::after,
+.card-wrapper .media::after,
+.card .media::after {
+  display: none !important;
+  opacity: 0 !important;
+  background: transparent !important;
+}
+
+.card__media,
+.media,
+.card-wrapper .media,
+.card .media,
+.card__inner,
+.card__media img {
+  opacity: 1 !important;
+  filter: none !important;
+}

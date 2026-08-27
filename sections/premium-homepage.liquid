@@ -276,9 +276,9 @@
           
           <a href="{{ col.url | default: '/collections/all' }}" style="text-decoration: none;" {{ block.shopify_attributes }}>
             <div class="cat-card glass-panel {{ block.settings.leak_color }}" style="aspect-ratio: 4/3; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden;">
-              <div class="brickwall" style="opacity: 0.3; {% if col.image %}background-image: url('{{ col.image | img_url: '600x' }}'); background-size: cover; background-position: center; filter: none; opacity: 0.75;{% endif %}"></div>
+              <div class="brickwall" style="opacity: 1; {% if col.image %}background-image: url('{{ col.image | img_url: '600x' }}'); background-size: cover; background-position: center; filter: none; opacity: 1;{% endif %}"></div>
               {% if col.image %}
-                <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,7,11,0) 0%, rgba(7,7,11,0.95) 100%); z-index: 1;"></div>
+                <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%); z-index: 1;"></div>
               {% endif %}
               <div style="position: relative; z-index: 2;">
                 <h3 style="color: var(--ivory); font-family: var(--heading); font-size: 32px; margin: 0 0 8px; line-height: 1.1;">{{ title }}</h3>
