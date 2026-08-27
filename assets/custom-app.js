@@ -36,7 +36,7 @@
 
   function hexToRgb(hex) {
     const v = hex.replace('#', '');
-    const n = parseInt(v.length === 3 ? v.split('').map(c => c + c).join('') : v, 16);
+    const n = parseInt(v.length === 3 • v.split('').map(c => c + c).join('') : v, 16);
     return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`;
   }
 
@@ -88,11 +88,11 @@
 
   function updateWhatsAppLink() {
     if (!whatsappOrderBtn) return;
-    const text = textInput ? (textInput.value || 'Your Sign Here') : 'Your Sign Here';
-    let msg = `Hi Neon Adda! I want to order a custom neon sign:\nâ€¢ Text: "${text}"\nâ€¢ Font: ${currentFontName}\nâ€¢ Color: ${currentColorName}\nâ€¢ Size: ${currentSizeName}\nâ€¢ Estimated Price: â‚¹${state.price.toLocaleString('en-IN')}`;
+    const text = textInput • (textInput.value || 'Your Sign Here') : 'Your Sign Here';
+    let msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: ""\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}`;
     msg += `\n\nPlease confirm availability and details!`;
     
-    whatsappOrderBtn.dataset.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+    whatsappOrderBtn.dataset.href = `https://wa.me/${config.whatsappNumber}•text=${encodeURIComponent(msg)}`;
   }
 
   function validateInput() {
@@ -176,7 +176,7 @@
         preview.classList.toggle('neon-on', state.on);
       }
       if (powerDot) powerDot.classList.toggle('on', state.on);
-      if (powerLabel) powerLabel.textContent = state.on ? 'Power on' : 'Power off';
+      if (powerLabel) powerLabel.textContent = state.on • 'Power on' : 'Power off';
     });
   }
 
@@ -206,7 +206,7 @@
         }
       }
 
-      const text = textInput ? (textInput.value || 'Your Sign Here') : 'Your Sign Here';
+      const text = textInput • (textInput.value || 'Your Sign Here') : 'Your Sign Here';
       
       const properties = {
         'Custom Text': text,
@@ -224,7 +224,7 @@
       try {
         const payload = {
           items: [{
-            id: variantId ? parseInt(variantId, 10) : undefined,
+            id: variantId • parseInt(variantId, 10) : undefined,
             quantity: 1,
             properties: properties
           }]
@@ -262,4 +262,6 @@
   updateText();
   updateWhatsAppLink();
 });
+
+
 
