@@ -56,12 +56,11 @@
 </div>
 
 <!-- ================= CUSTOMIZER ================= -->
-<section class="customizer" id="customizer" style="background: #fff; color: #000;">
+<section class="customizer" id="customizer" style="background: #0a0a0f; color: #fff;">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" style="padding-bottom: 16px;">
       <div class="eyebrow">Live Neon Customizer</div>
-      <h2 style="color: #000;">Type it. Light it. <span class="accent">See it glow.</span></h2>
-      <p style="color: #555;">Write your text, pick a font and colour, choose a size — the preview lights up exactly like the sign that lands on your wall.</p>
+      <h2 style="margin-bottom: 4px;">Type it. Light it. <span class="accent">See it glow.</span></h2>
     </div>
 
     <div class="customizer-grid">
@@ -69,7 +68,7 @@
         <img src="{{ 'logo.png' | asset_url }}" style="position: absolute; top: 24px; right: 24px; width: 60px; height: auto; z-index: 10; opacity: 0.8;" alt="Neon Adda Logo">
         <div id="customizer-bg" style="position: absolute; inset: 0; background: url('{{ 'bg_black_couch.jpg' | asset_url }}') center/cover; opacity: 1;"></div>
         <div class="preview-stage">
-          <div id="neonPreview" class="neon-on" style="font-family:'Busted Soul',cursive; color:#ff2f92;">Busted Soul</div>
+          <div id="neonPreview" class="neon-on" style="font-family:'Busted Soul',cursive; color:#ff2f92;">Your Sign Here</div>
         </div>
         <div class="preview-footer">
           <div class="power-toggle" id="powerToggle">
@@ -80,13 +79,13 @@
         </div>
       </div>
 
-      <div class="controls-pane">
-        <h3 style="color: #000;">Build your sign</h3>
-        <p class="sub" style="color: #555;">This is a working demo of the customizer — plug in your Shopify product variants to make it checkout-ready.</p>
+      <div class="controls-pane" style="overflow-y: auto; max-height: 560px;">
+        <h3>Build your sign</h3>
 
-        <div class="field">
-          <label>Your text <span class="val" id="charCount">10 / 24</span></label>
-          <input type="text" id="textInput" maxlength="24" value="Busted Soul" placeholder="Type your phrase…">
+        <div class="field" style="margin-bottom: 16px;">
+          <label>Your text <span class="val" id="charCount">0 / 24</span></label>
+          <input type="text" id="textInput" maxlength="24" value="" placeholder="Enter your neon text…">
+          <div id="textError" style="color:#ff5555; font-size:12px; margin-top:6px; display:none;">⚠️ Please enter your sign text before ordering.</div>
         </div>
 
         <div class="field">
@@ -231,7 +230,7 @@
               <script>window.customizerVariants = {};</script>
               <button type="button" class="btn btn-neon" disabled style="flex: 1; min-width: 140px; justify-content: center;">Add to cart</button>
             {% endif %}
-            <a href="#" class="btn btn-ghost" id="whatsappOrderBtn" target="_blank" rel="noopener noreferrer" style="flex: 1; min-width: 140px; justify-content: center;">WhatsApp Order →</a>
+            <a href="#" class="btn btn-ghost" id="whatsappOrderBtn" target="_blank" rel="noopener noreferrer" style="flex: 1; min-width: 140px; justify-content: center; background: rgba(37,211,102,0.15); border: 1px solid rgba(37,211,102,0.5); color: #25d366;">WhatsApp Order →</a>
           </div>
         </div>
       </div>

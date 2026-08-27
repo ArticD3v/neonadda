@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateText() {
     if (!textInput || !preview) return;
-    const val = textInput.value || 'Busted Soul';
+    const val = textInput.value || 'Your Sign Here';
     preview.textContent = val;
     
     // Auto pricing logic
@@ -76,16 +76,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if (priceVal) priceVal.textContent = state.price.toLocaleString('en-IN');
     if (charCount) charCount.textContent = `${charLen} / 24`;
     
+    // Hide error if user starts typing
+    const textError = document.getElementById('textError');
+    if (textInput.value.trim().length > 0) {
+      if (textError) textError.style.display = 'none';
+      textInput.style.borderColor = 'var(--line)';
+    }
+
     updateWhatsAppLink();
   }
 
   function updateWhatsAppLink() {
     if (!whatsappOrderBtn) return;
-    const text = textInput ? (textInput.value || 'Busted Soul') : 'Busted Soul';
+    const text = textInput ? (textInput.value || 'Your Sign Here') : 'Your Sign Here';
     let msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: "${text}"\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}`;
     msg += `\n\nPlease confirm availability and details!`;
     
-    whatsappOrderBtn.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+    whatsappOrderBtn.dataset.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+  }
+
+  function validateInput() {
+    if (!textInput.value || textInput.value.trim() === "") {
+      const textError = document.getElementById('textError');
+      if (textError) textError.style.display = 'block';
+      textInput.style.borderColor = '#ff5555';
+      textInput.focus();
+      return false;
+    }
+    return true;
+  }
+
+  if (whatsappOrderBtn) {
+    whatsappOrderBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (validateInput()) {
+        window.open(whatsappOrderBtn.dataset.href, '_blank');
+      }
+    });
   }
 
   if (textInput) {
@@ -157,6 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
     addToCartBtn.addEventListener('click', async (e) => {
       e.preventDefault();
       
+      if (!validateInput()) return;
+      
       let variantId = addToCartBtn.dataset.variantId;
       console.log('Default variantId from button:', variantId);
       console.log('Available variants map:', window.customizerVariants);
@@ -177,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      const text = textInput ? (textInput.value || 'Busted Soul') : 'Busted Soul';
+      const text = textInput ? (textInput.value || 'Your Sign Here') : 'Your Sign Here';
       
       const properties = {
         'Custom Text': text,

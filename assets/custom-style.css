@@ -317,12 +317,12 @@
   .power-dot.on{background:var(--cyan);box-shadow:0 0 8px var(--cyan), 0 0 18px var(--cyan);}
   .mount-hint{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em;}
 
-  .controls-pane{padding:44px 40px;background:rgba(0,0,0,0.15);border-left:1px solid rgba(255,255,255,0.04);}
+  .controls-pane{padding:24px 30px;background:rgba(0,0,0,0.15);border-left:1px solid rgba(255,255,255,0.04);}
   .controls-pane h3{
     font-family:var(--heading);font-weight:700;font-size:22px;margin:0 0 6px;
   }
-  .controls-pane .sub{font-size:13.5px;color:var(--muted);margin:0 0 30px;line-height:1.6;}
-  .customizer .field { margin-bottom:28px; display:block !important; width:100% !important; }
+  .controls-pane .sub{font-size:13.5px;color:var(--muted);margin:0 0 20px;line-height:1.6;}
+  .customizer .field { margin-bottom:20px; display:block !important; width:100% !important; }
   .customizer .field label {
     display:flex;justify-content:space-between;align-items:baseline;
     font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
