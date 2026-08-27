@@ -36,20 +36,12 @@
             "color_name": "White",
             "color_hex": "#FFFFFF"
           }
-        },
-        "color_7qpPqC": {
-          "type": "color",
-          "settings": {
-            "color_name": "Signal Pink",
-            "color_hex": "#ff2f92"
-          }
         }
       },
       "block_order": [
         "collection_card_cpU9mJ",
         "collection_card_LPMwHR",
-        "color_cYgrYL",
-        "color_7qpPqC"
+        "color_cYgrYL"
       ],
       "settings": {
         "customizer_product": "custom-neon-sign",
