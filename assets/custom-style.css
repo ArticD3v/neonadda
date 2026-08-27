@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&family=Great+Vibes&family=Pacifico&family=Caveat:wght@600;700&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&family=Great+Vibes&family=Pacifico&family=Caveat:wght@600;700&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap');
 
 :root{
     --void:#07070b;
@@ -790,3 +790,33 @@ html, body, .font-picker-grid {
 }
 
 @media (max-width: 768px) { .wrap { padding: 0 16px; } }
+@ m e d i a   ( m a x - w i d t h :   9 0 0 p x )   { 
+     . c u s t o m i z e r - g r i d   { 
+         d i s p l a y :   f l e x ; 
+         f l e x - d i r e c t i o n :   c o l u m n ; 
+     } 
+@media (max-width: 900px) {
+  .customizer-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .preview-pane {
+    min-height: 260px !important;
+    height: 35vh;
+  }
+  .preview-stage {
+    padding: 20px;
+  }
+  .controls-pane {
+    padding: 20px !important;
+    max-height: 60vh !important;
+    overflow-y: auto;
+  }
+  .customizer .field {
+    margin-bottom: 16px !important;
+  }
+  .font-picker-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    max-height: 180px;
+  }
+}
