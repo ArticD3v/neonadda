@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
   const preview = document.getElementById('neonPreview');
   const textInput = document.getElementById('textInput');
   const charCount = document.getElementById('charCount');
@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
     whatsappNumber: '917095844495'
   };
 
-  let state = { color: '#ff2f92', price: config.pricing.basePrice, on: true };
+  let state = { color: '#FFFFFF', price: config.pricing.basePrice, on: true };
   let currentFontName = 'Busted Soul';
-  let currentColorName = 'Signal Pink';
+  let currentColorName = 'White';
   let currentSizeName = 'Regular';
 
   // Initialize color from active chip
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateWhatsAppLink() {
     if (!whatsappOrderBtn) return;
     const text = textInput ? (textInput.value || 'Your Sign Here') : 'Your Sign Here';
-    let msg = `Hi Neon Adda! I want to order a custom neon sign:\n• Text: "${text}"\n• Font: ${currentFontName}\n• Color: ${currentColorName}\n• Size: ${currentSizeName}\n• Estimated Price: ₹${state.price.toLocaleString('en-IN')}`;
+    let msg = `Hi Neon Adda! I want to order a custom neon sign:\nâ€¢ Text: "${text}"\nâ€¢ Font: ${currentFontName}\nâ€¢ Color: ${currentColorName}\nâ€¢ Size: ${currentSizeName}\nâ€¢ Estimated Price: â‚¹${state.price.toLocaleString('en-IN')}`;
     msg += `\n\nPlease confirm availability and details!`;
     
     whatsappOrderBtn.dataset.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(msg)}`;
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Font Style': currentFontName,
         'Glow Color': currentColorName,
         'Size': currentSizeName,
-        'Customizer Price': `₹${state.price.toLocaleString('en-IN')}`
+        'Customizer Price': `â‚¹${state.price.toLocaleString('en-IN')}`
       };
 
       console.log('Payload being sent:', { id: variantId, quantity: 1, properties });
@@ -262,3 +262,4 @@ document.addEventListener('DOMContentLoaded', () => {
   updateText();
   updateWhatsAppLink();
 });
+
