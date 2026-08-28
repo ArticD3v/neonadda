@@ -856,3 +856,28 @@ html, body, .font-picker-grid {
   opacity: 1 !important;
   filter: none !important;
 }
+
+/* ================= REMOVE ALL NATIVE OVERLAYS ================= */
+.overlay, .overlay--solid, .overlay--gradient {
+  display: none !important;
+  opacity: 0 !important;
+  background: transparent !important;
+}
+
+/* ================= FIX ASSET-PACK IMAGE OPACITY ================= */
+.resource-image__image,
+.product-media__image,
+.deferred-media__poster-image,
+.product-card img,
+.collection-card img {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.resource-image::after,
+.product-media::after,
+.product-card::after {
+  display: none !important;
+  opacity: 0 !important;
+  background: transparent !important;
+}
