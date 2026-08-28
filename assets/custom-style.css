@@ -953,3 +953,24 @@ html, body, .font-picker-grid {
   mix-blend-mode: normal !important;
   visibility: visible !important;
 }
+
+/* ================= RESOURCE CARD OVERLAY NUKE ================= */
+.resource-card::before,
+.resource-card::after,
+.resource-card--overlay::before,
+.resource-card--overlay::after,
+.resource-card__media::before,
+.resource-card__media::after {
+  display: none !important;
+  opacity: 0 !important;
+  background: transparent !important;
+}
+
+.resource-card__image,
+.resource-card__collection-image {
+  opacity: 1 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+  visibility: visible !important;
+}
