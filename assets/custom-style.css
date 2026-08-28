@@ -974,3 +974,9 @@ html, body, .font-picker-grid {
   mix-blend-mode: normal !important;
   visibility: visible !important;
 }
+
+/* Boost brightness of the product images which were uploaded very dark */
+.resource-card__image {
+  filter: brightness(1.5) contrast(1.15) saturate(1.1) !important;
+  -webkit-filter: brightness(1.5) contrast(1.15) saturate(1.1) !important;
+}
