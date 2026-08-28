@@ -23,7 +23,7 @@
   };
 
   let state = { color: '#FFFFFF', price: config.pricing.basePrice, on: true };
-  let currentFontName = 'Busted Soul';
+  let currentFontName = 'Neon Flow';
   let currentColorName = 'White';
   let currentSizeName = 'Regular';
 
@@ -292,3 +292,4 @@ window.addEventListener('resize', () => {
   const tInput = document.getElementById('textInput');
   if(tInput) tInput.dispatchEvent(new Event('input'));
 });
+
