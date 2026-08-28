@@ -881,3 +881,57 @@ html, body, .font-picker-grid {
   opacity: 0 !important;
   background: transparent !important;
 }
+
+/* ================= EXTREME OVERLAY NUKE ================= */
+.product-card::before,
+.product-card::after,
+.product-grid__card::before,
+.product-grid__card::after,
+.card-gallery::before,
+.card-gallery::after,
+.product-media-container::before,
+.product-media-container::after,
+.resource-image::before,
+.resource-image::after,
+.slideshow-slide::before,
+.slideshow-slide::after,
+.product-media::before,
+.product-media::after,
+.product-card__content::before,
+.product-card__content::after,
+.product-card__link::before,
+.product-card__link::after,
+.card::before,
+.card::after,
+.media::before,
+.media::after,
+.product-card-gallery::before,
+.product-card-gallery::after,
+.overlay,
+.overlay--solid,
+.overlay--gradient {
+  display: none !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  visibility: hidden !important;
+}
+
+.product-card img,
+.collection-card img,
+.card-gallery img,
+.product-media-container img,
+.resource-image__image,
+.product-media__image,
+.slideshow-slide img,
+.media img {
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  -webkit-filter: none !important;
+  visibility: visible !important;
+}
+
+/* Also reset the card background if it was darkened */
+.product-grid__card {
+  background-color: transparent !important;
+}
