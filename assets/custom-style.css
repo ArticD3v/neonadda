@@ -936,9 +936,7 @@ html, body, .font-picker-grid {
   background-color: transparent !important;
 }
 
-/* ================= ARTIFICIAL BRIGHTNESS BOOST ================= */
-/* The uploaded product images are naturally very dark (Mean RGB ~40/255). 
-   This filter artificially boosts their brightness and contrast to make the neon pop. */
+/* ================= ALL IMAGES 100% VISIBLE & CLEAN ================= */
 .product-card img,
 .collection-card img,
 .card-gallery img,
@@ -946,10 +944,14 @@ html, body, .font-picker-grid {
 .resource-image__image,
 .product-media__image,
 .slideshow-slide img,
-.media img {
+.media img,
+.product-card-img,
+.col-img,
+.resource-card__image,
+.resource-card__collection-image {
   opacity: 1 !important;
-  filter: brightness(1.4) contrast(1.2) saturate(1.1) !important;
-  -webkit-filter: brightness(1.4) contrast(1.2) saturate(1.1) !important;
+  filter: none !important;
+  -webkit-filter: none !important;
   mix-blend-mode: normal !important;
   visibility: visible !important;
 }
@@ -973,10 +975,4 @@ html, body, .font-picker-grid {
   -webkit-filter: none !important;
   mix-blend-mode: normal !important;
   visibility: visible !important;
-}
-
-/* Boost brightness of the product images which were uploaded very dark */
-.resource-card__image {
-  filter: brightness(1.5) contrast(1.15) saturate(1.1) !important;
-  -webkit-filter: brightness(1.5) contrast(1.15) saturate(1.1) !important;
 }
