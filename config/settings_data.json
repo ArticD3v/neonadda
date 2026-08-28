@@ -11,6 +11,7 @@
   "current": {
     "logo_height": 36,
     "logo_height_mobile": 28,
+    "favicon": "shopify://shop_images/New_Logo_pages-to-jpg-0001-removebg-preview.png",
     "page_text_color": "{{ settings.color_palette.foreground }}",
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n5",
@@ -42,7 +43,7 @@
     "type_font_h6": "subheading",
     "type_size_h6": "12",
     "type_line_height_h6": "display-loose",
-    "page_background_color": "{{ settings.color_palette.background }}",
+    "page_background_color": "#ffffff",
     "page_width": "narrow",
     "page_transition_enabled": false,
     "transition_to_main_product": false,
@@ -114,11 +115,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "13070091535480640111": {
-        "type": "shopify://apps/attrac/blocks/app-embed/b783956d-47a9-4434-91ad-4ec960bd74b0",
-        "disabled": false,
-        "settings": {}
-      },
       "17270581071990108477": {
         "type": "shopify://apps/hoppy-popups/blocks/Email_collection_Bar/0403c282-cb2c-4202-b054-d6c540cb0df9",
         "disabled": false,
